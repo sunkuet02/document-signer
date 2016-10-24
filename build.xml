@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ======================================================================= -->
+<!--                                                                         -->
+<!--  SignServer: The OpenSource Automated Signing Server                    -->
+<!--                                                                         -->
+<!--  This software is free software; you can redistribute it and/or         -->
+<!--  modify it under the terms of the GNU Lesser General Public             -->
+<!--  License as published by the Free Software Foundation; either           -->
+<!--  version 2.1 of the License, or any later version.                      -->
+<!--                                                                         -->
+<!--  See terms of license at gnu.org.                                       -->
+<!--                                                                         -->
+<!-- ======================================================================= -->
+<!-- Version: $Id: build.xml 6002 2015-04-30 23:30:18Z netmackan $ -->
+<project name="signserver" default="usage" basedir=".">
+    <description>SignServer targets.</description>
+    <property name="deploytools.version" value="1.1.2"/>
+    <import file="res/deploytools/build-impl.xml"/>
+
+    <!-- SignServer has some extra application server features -->
+    <property name="dss-appserver-impl.file" value="${basedir}/res/appserver/${appserver.type}.xml"/>
+    <property name="dss-noappserver-impl.file" value="${basedir}/res/appserver/noappserver.xml"/>
+    <import file="${dss-appserver-impl.file}" optional="true"/>
+    <import file="${dss-noappserver-impl.file}" optional="true"/>
+
+    <!-- Used by some SignServer-specific parts. -->
+    <property name="platform.project.dir" location="."/>
+
+    <!-- TODO: Below should be contributed back to DeployTools -->
+    <!-- Replace back slashes with forward slashes for post-processed paths
+to work on Windows. -->
+    <property name="base" location="."/>
+    <loadresource property="basepath">
+        <propertyresource name="base"/>
+        <filterchain>
+          <tokenfilter>
+            <filetokenizer/>
+            <replacestring from="\" to="/"/>
+          </tokenfilter>
+        </filterchain>
+    </loadresource>
+    <echo level="verbose">basepath: ${basepath}</echo>
+
+    <available file="${conf}/${app.name}_build.properties" property="legacy-build-properties1.available" value="true"/>
+    <available file="${app.name}_build.properties" property="legacy-build-properties2.available" value="true"/>
+    <fail if="legacy-build-properties1.available" message="Legacy signserver_build.properties detected. From 3.7 the file should be called signserver_deploy.properties"/>
+    <fail if="legacy-build-properties2.available" message="Legacy signserver_build.properties detected. From 3.7 the file should be called signserver_deploy.properties"/>
+
+    <!-- Project properties such as folder names and locations. Can be overriden 
+        by creating a file called signserver-project-custom.properties. -->
+    <property file="res/signserver-project-custom.properties"/>
+    <property file="res/signserver-project.properties"/>
+
+    <!--
+    A little special something to handle backward compatibility with people
+    using JBOSS_HOME. They can switch to APPSRV_HOME now, and both will work.
+    -->
+    <condition property="jboss.home" value="${env.JBOSS_HOME}" >
+      <equals arg1="${appserver.home}" arg2="${appserver.home}"/>
+    </condition>
+    <condition property="appserver.home" value="${env.APPSRV_HOME}" else="${jboss.home}">
+      <contains string="${jboss.home}" substring="JBOSS_HOME"/>
+    </condition>
+    <property name="j2ee.server.home" value="${appserver.home}"/>
+
+    <!-- Lastly import the default properties -->
+    <property file="${res}/default_build.properties"/>
+    
+    <condition property="j2ee.web-nohttps.condition">
+        <istrue value="${j2ee.web-nohttps}"/>
+    </condition>
+    
+    <import file="${custom.build.xml}" optional="true"/>
+
+    <!-- Properties with paths to all module projects -->
+    <property file="${res}/modules-project.properties"/>
+    
+    <condition property="web.admingui.dist.conditionenabled">
+        <istrue value="${web.admingui.dist.enabled}"/>
+    </condition>
+    
+    <import file="${modules}/modules.xml" optional="true"/> 
+    <import file="${modules}/compile.xml" optional="true"/>
+    
+    
+    <!--
+        There exist several targets which are by default empty and which can be
+        used for execution of your tasks. These targets are usually executed
+        before and after some main targets. They are:
+
+          -pre-init:                 called before initialization
+          -post-init:                called after initialization
+          -pre-configure-ear:        called before configuring the EAR
+          -pre-build-ear:            called before zipping the final EAR
+          -post-configure-ear:       called after configuring the EAR
+          -pre-deploy-ear:           called before deploying the EAR
+          -post-deploy-ear:          called after deploying the EAR
+        -->
+
+    <!-- Any project-specific targets goes here -->
+    
+    
+    
+    
+    <!-- =================================================================== -->
+    <!-- Help targets                                                        -->
+    <!-- =================================================================== -->
+    
+    <target name="help" depends="usage"/>
+    <target name="usage" description="Displays usage examples for this Ant script">
+        <echo>
+Usage examples for the SignServer Ant script
+
+
+bin/ant -p                  Prints the main Ant targets supported by this 
+                            script.
+bin/ant usage               Prints this text with sample usages.
+bin/ant clean               Cleans temporary files, the final EAR file and if 
+                            this is a source distribution all the built 
+                            binaries.
+
+Some targets available in both binary and source distribution:
+bin/ant display-properties  Prints the properties that will be used to build or
+                            composing the EAR file.
+bin/ant configure-ear       Puts together the final configured EAR file.
+bin/ant deploy              Configures the EAR file and then deploys it and 
+                            data sources etc (if supported) to the configured 
+                            application server.
+bin/ant deploy-ear          Configures the EAR file and then deploys it but does
+                            not do any other application server configurations.
+bin/ant systemtest:jars     Run all available systemtest JARs.
+            
+Some targets available only in the source distribution:
+bin/ant build               Builds everything enabled.
+bin/ant build-systemtests   Builds the systemtest JARs.
+bin/ant test:run            Run the default JUnit tests.
+bin/ant test:compile        Compiles the tests so they can be run by an IDE.
+            
+To clean &amp; build and deploy run:
+bin/ant clean build deploy
+        </echo>
+    </target>
+
+
+    <!-- =================================================================== -->
+    <!-- Main Clean                                                          -->
+    <!-- =================================================================== -->
+
+    <target name="clean">
+        <echo>Cleaning tmp</echo>
+        <delete dir="${tmp}"/>	
+
+        <!-- Clean everything if this is a source distribution -->
+        <subant target="clean-build" inheritall="true" failonerror="true">
+            <fileset dir="${base}" includes="modules/compile.xml"/>
+         </subant>
+    </target>
+
+    
+    <!-- =================================================================== -->
+    <!-- Configuring                                                         -->
+    <!-- =================================================================== -->
+
+    <!-- We also create an AdminGUI dist. -->
+    <target name="-post-configure-ear" depends="-create-admingui-dist"/>
+
+    <!-- Allow the old name for configure-ear to still be working. -->
+    <target name="compose-ear" depends="configure-ear"/>
+    <!-- Filter out things we don't want from CESeCore. This is project specifc. -->
+    <target name="-pre-build-ear" depends="-init-filters,-init-filter-jars-db,-init-filter-jars-nodb">
+        <echo/>
+        <echo message="Filtering jars..."/>
+
+        <!-- cesecore-ejb.jar -->
+        <property name="cesecore-ejb.jar" value="cesecore-ejb-6.1.1.jar"/>
+        <move todir="${tmp}" file="${app.ear.dir}/${cesecore-ejb.jar}"/>
+        <jar destfile="${app.ear.dir}/${cesecore-ejb.jar}">
+            <zipfileset src="${tmp}/${cesecore-ejb.jar}" excludes="${cesecore-ejb-excludes}"/>
+        </jar>
+
+        <!-- cesecore-entities.jar -->
+        <property name="cesecore-entities.jar" value="cesecore-entity-6.1.1.jar"/>
+        <move todir="${tmp}" file="${app.ear.dir}/lib/${cesecore-entities.jar}"/>
+        <jar destfile="${app.ear.dir}/lib/${cesecore-entities.jar}">
+            <zipfileset src="${tmp}/${cesecore-entities.jar}" excludes="${cesecore.entities.excludes}"/>
+        </jar>
+
+        <!-- signserver-ejb.jar -->
+        <property name="signserver-ejb.jar" value="SignServer-ejb.jar"/>
+        <move todir="${tmp}" file="${app.ear.dir}/${signserver-ejb.jar}"/>
+        <jar destfile="${app.ear.dir}/${signserver-ejb.jar}">
+            <zipfileset src="${tmp}/${signserver-ejb.jar}" excludes="${signserver-ejb-excludes}"/>
+        </jar>
+    </target>
+    <target name="-init-filter-jars-db" unless="noDB">
+        <property name="cesecore-ejb-excludes" value="${cesecore.ejb.withdb.excludes}"/>
+        <property name="signserver-ejb-excludes" value="${signserver.ejb.withdb.excludes}"/>
+    </target>
+    <target name="-init-filter-jars-nodb" if="noDB">
+        <property name="cesecore-ejb-excludes" value="${cesecore.ejb.nodb.excludes}"/>
+        <property name="signserver-ejb-excludes" value="${signserver.ejb.nodb.excludes}"/>
+    </target>
+    <target name="-init-filters"></target>
+
+    <!-- We support the old name for deploy-ear. -->
+    <target name="deploy" depends="deploy-ear,j2ee:deploy-other" description="Deploys SignServer"/>
+
+
+    <!-- Target for creating a binary distribution for arbitrary jars and their dependencies. -->
+    <target name="dist">
+        <fail unless="dist.jars" message="Usage: bin/ant dist -Ddist.jars=JARNAME -Ddist.includes=OTHERFILES"/>
+        
+        <loadresource property="classpath">
+            <zipentry zipfile="lib/${dist.jars}" name="META-INF/MANIFEST.MF"/>
+            <filterchain>
+                <tokenfilter>
+                    <filetokenizer/>
+                    <replaceregex pattern="\r?\n (.+)$" replace="\1" flags="m"/>
+                </tokenfilter>
+                <tokenfilter>
+                    <filetokenizer/>
+                    <replaceregex pattern="\r?\n (.+)$" replace="\1" flags="m"/>
+                </tokenfilter>
+                <tokenfilter>
+                    <filetokenizer/>
+                    <replaceregex pattern="\r?\n (.+)$" replace="\1" flags="m"/>
+                </tokenfilter>
+                <tokenfilter>
+                    <filetokenizer/>
+                    <replaceregex pattern="\r?\n (.+)$" replace="\1" flags="m"/>
+                </tokenfilter>
+                <tokenfilter>
+                    <filetokenizer/>
+                    <replaceregex pattern="\r?\n (.+)$" replace="\1" flags="m"/>
+                </tokenfilter>
+                <tokenfilter>
+                    <filetokenizer/>
+                    <replaceregex pattern="\r?\n (.+)$" replace="\1" flags="m"/>
+                </tokenfilter>
+                <tokenfilter>
+                    <filetokenizer/>
+                    <replaceregex pattern="\r?\n (.+)$" replace="\1" flags="m"/>
+                </tokenfilter>
+                <tokenfilter>
+                    <filetokenizer/>
+                    <replaceregex pattern="\r?\n (.+)$" replace="\1" flags="m"/>
+                </tokenfilter>
+                <tokenfilter>
+                    <filetokenizer/>
+                    <replaceregex pattern="\r?\n (.+)$" replace="\1" flags="m"/>
+                </tokenfilter>
+                <tokenfilter>
+                    <filetokenizer/>
+                    <replaceregex pattern="\r?\n (.+)$" replace="\1" flags="m"/>
+                </tokenfilter>
+                <tokenfilter>
+                    <filetokenizer/>
+                    <replaceregex pattern="\r?\n (.+)$" replace="\1" flags="m"/>
+                </tokenfilter>
+                <tokenfilter>
+                    <filetokenizer/>
+                    <replaceregex pattern="\r?\n (.+)$" replace="\1" flags="m"/>
+                </tokenfilter>
+                <tokenfilter>
+                    <filetokenizer/>
+                    <replaceregex pattern="\r?\n (.+)$" replace="\1" flags="m"/>
+                </tokenfilter>
+                <tokenfilter>
+                    <filetokenizer/>
+                    <replaceregex pattern="\r?\n (.+)$" replace="\1" flags="m"/>
+                </tokenfilter>
+                <tokenfilter>
+                    <filetokenizer/>
+                    <replaceregex pattern="\r?\n (.+)$" replace="\1" flags="m"/>
+                </tokenfilter>
+                <tokenfilter>
+                    <filetokenizer/>
+                    <replaceregex pattern="\r?\n (.+)$" replace="\1" flags="m"/>
+                </tokenfilter>
+                <tokenfilter>
+                    <filetokenizer/>
+                    <replaceregex pattern="\r?\n (.+)$" replace="\1" flags="m"/>
+                </tokenfilter>
+                <tokenfilter>
+                    <containsregex pattern="^Class-Path: (.+)$" flags="i"/>
+                    <replaceregex pattern="^Class-Path: (.+)$" replace="\1" flags="i"/>
+                </tokenfilter>
+                <tokenfilter>
+                    <filetokenizer/>
+                    <replaceregex pattern="(\r?\n)+" replace="" flags="m"/>
+                </tokenfilter>
+                <tokenfilter>
+                    <filetokenizer/>
+                    <replaceregex pattern="( )+" replace="," flags="g"/>
+                </tokenfilter>
+            </filterchain>
+        </loadresource>
+        <echo level="verbose">Class-path from MANIFEST-MF: ${classpath}</echo>
+        
+        <property name="dist.dir" location="${tmp}/dist"/>
+        <echo>Copying distribution to ${dist.dir}</echo>
+        <mkdir dir="${dist.dir}"/>
+        
+        <mkdir dir="${dist.dir}/lib"/>
+        <copy todir="${dist.dir}" overwrite="true">
+            <fileset dir="." includes="_NON_EXISTING,${dist.includes}" excludes="_NON_EXISTING,${dist.excludes.extra}"/>
+        </copy>
+        <chmod perm="a+x">
+            <fileset dir="${dist.dir}/bin/" includes="*"/>
+        </chmod>
+        <copy todir="${dist.dir}/lib">
+            <fileset dir="lib" includes="_NON_EXISTING,${dist.jars}"/>
+            <fileset dir="lib" includes="_NON_EXISTING,${classpath}"/>
+        </copy>
+        
+    </target>
+    
+    <target name="dist:zip" description="Create a zip file from the dist output">
+        <fail unless="dist.zipdest" message="Usage: bin/ant dist:zip -Ddist.zipdest=tmp/admingui-bin.zip -Ddist.zipprefix=admingui"/>
+        <fail unless="dist.zipprefix" message="Usage: bin/ant dist:zip -Ddist.zipdest=tmp/admingui-bin.zip -Ddist.zipprefix=admingui"/>
+        <property name="dist.zipsrc" location="${tmp}/dist"/>
+
+        <delete file="${dist.zipdest}" failonerror="false"/>
+        <zip destfile="${dist.zipdest}">
+            <zipfileset dir="${dist.zipsrc}" prefix="${dist.zipprefix}" filemode="600" dirmode="700" excludes="bin/*"/>
+            <zipfileset dir="${dist.zipsrc}" prefix="${dist.zipprefix}" filemode="700" dirmode="700" includes="bin/*"/>
+        </zip>
+        <echo>Wrote ${dist.zipdest}</echo>
+    </target>
+
+    <target name="dist:admingui">
+        <available file="${basedir}/lib/SignServer-AdminGUI.jar" property="admingui.jar" value="SignServer-AdminGUI.jar"/>
+        <available file="${basedir}/lib/SignServer-AdminGUI-${app.version.number}.jar" property="admingui.jar" value="SignServer-AdminGUI-${app.version.number}.jar"/>
+        <fail unless="admingui.jar" message="Must build SignServer-AdmingGUI first"/>
+        <antcall target="dist">
+            <param name="dist.jars" value="${admingui.jar}"/>
+            <param name="dist.includes" value="
+                bin/signserver-gui,
+                bin/signserver-gui.cmd,
+                conf/admingui_default.properties,
+                conf/log4j.properties,
+                res/admingui-splash.png,
+                doc/sample-configs/*.properties,
+                ${dist.includes.extra}
+                "/>
+        </antcall>
+    </target>
+    <target name="dist:admingui-zip" description="Create a binary ZIP distribution of the Admin GUI">
+        <delete dir="${tmp}/dist"/> <!-- Only include the admingui in the zip file -->
+        <antcall target="dist:admingui"/>
+        <antcall target="dist:zip">
+            <param name="dist.zipdest" value="${web.admingui.dist.file}"/>
+            <param name="dist.zipprefix" value="signserver"/>
+        </antcall>
+    </target>
+
+    <target name="-create-admingui-dist" if="web.admingui.dist.conditionenabled">
+        <delete dir="${tmp}/dist"/> <!-- Only include the admingui in the zip file -->
+        <antcall target="dist:admingui"/>
+        <antcall target="dist:zip">
+            <param name="dist.zipdest" value="${web.admingui.dist.file}"/>
+            <param name="dist.zipprefix" value="signserver"/>
+        </antcall>
+    </target>
+    
+    <target name="dist:clientcli">
+        <available file="${basedir}/lib/SignServer-Client-CLI.jar" property="clientcli.jar" value="SignServer-Client-CLI.jar"/>
+        <available file="${basedir}/lib/SignServer-Client-CLI-${app.version.number}.jar" property="clientcli.jar" value="SignServer-Client-CLI-${app.version.number}.jar"/>
+        <fail unless="clientcli.jar" message="Must build SignServer-Client-CLI first"/>
+        <antcall target="dist">
+            <param name="dist.jars" value="${clientcli.jar}"/>
+            <param name="dist.includes" value="
+                bin/signclient,
+                bin/signclient.cmd,
+                conf/log4j.properties,
+                doc/lgpl-2.1.txt,
+                ${dist.includes.extra}
+                "/>
+        </antcall>
+    </target>
+    <target name="dist:clientcli-zip" description="Create a binary ZIP distribution of the Client CLI">
+        <delete dir="${tmp}/dist"/> <!-- Only include the clientcli in the zip file -->
+        <antcall target="dist:clientcli"/>
+        <antcall target="dist:zip">
+            <param name="dist.zipdest" value="${basedir}/tmp/SignServer-ClientCLI-${app.version.number}-bin.zip"/>
+            <param name="dist.zipprefix" value="signserver"/>
+        </antcall>
+    </target>
+    
+</project>

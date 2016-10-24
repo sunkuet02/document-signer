@@ -1,0 +1,1589 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+    <html lang="en">
+    <!-- GENERATED FILE, DO NOT EDIT, EDIT THE XML FILE IN xdocs INSTEAD! -->
+    <head>
+      <META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+        <title>SignServer - Open Source server side Digital Signatures - Miscellaneous</title>
+                <link rel="shortcut icon" href="../images/pk-favIcon.png">
+        <link type="text/css" href="../page.css" rel="stylesheet">
+        </head>
+
+    <body>
+
+      <div class="logobar">
+          <table width="100%">
+            <tr>
+                <td width="15%"><a href="http://www.signserver.org/"><img src="../images/SignServer_pki_by_primekey.png" alt="Click the PKI-by-PrimeKey-SignServer-logo to visit www.signserver.org" title="The logo squares follow a given magnitude of primes, symbolizing the encryption method of PrimeKey PKI." width="245" height="76" style="border:none;"></a></td>
+                <td style="text-align:right">
+                    <div class="searchcaption">
+                            Search signserver.org for:<br>
+                            <form id="searchForm" target="_blank" onsubmit="q.value = query.value + ' site:signserver.org'" action="http://www.google.com/search" method="get">
+                                <input name="q" type="hidden">
+                                <div style="height: 18px; white-space: nowrap;">
+                                    <input name="query" id="searchBox" maxlength="255">
+                                    <input type="submit" value="Go">
+                                </div>
+                            </form>
+                    </div>
+                </td>
+        	<td id="services"><a href="https://www.primekey.se/service-support/support/?pk_campaign=ssorg&amp;pk_kwd=head_click-here" target="pk">Click here to learn about PrimeKey Support Services!</a></td>
+            </tr>
+          </table>
+      </div>
+
+                    
+  <div class="menucontainer">
+
+    <div class="menu">
+      <ul>
+              <li><div class="menuheader">General Information</div>
+          <ul>
+                            <li>
+                                    <a href="../index.html">Home</a>
+                                </li>
+                            <li>
+                                    <a href="../features.html">Features</a>
+                                </li>
+                            <li>
+                                    <a href="../architecture.html">Architecture</a>
+                                </li>
+                            <li>
+                                    <a href="../license.html">License</a>
+                                </li>
+                            <li>
+                                    <a href="../contact.html">Contact & Support</a>
+                                </li>
+                            <li>
+                                    <a href="../credits.html">Credits</a>
+                                </li>
+                            <li>
+                                    <a href="../installations.html">Reference installations</a>
+                                </li>
+                            <li>
+                                    <a href="../required.html">Required software</a>
+                                </li>
+                            <li>
+                                    <a href="http://sourceforge.net/projects/signserver/" class="externalLink">SourceForge project</a>
+                                </li>
+                      </ul>
+        </li>
+              <li><div class="menuheader">Documentation</div>
+          <ul>
+                            <li>
+                                    <a href="../manual.html">Manual</a>
+                                </li>
+                            <li>
+                                    <a href="../manual/installguide.html">Installation Guide</a>
+                                </li>
+                            <li>
+                                    <a href="https://jira.primekey.se/browse/DSS?report=com.atlassian.jira.plugin.system.project:changelog-panel" class="externalLink">Changelog</a>
+                                </li>
+                      </ul>
+        </li>
+              <li><div class="menuheader">Download</div>
+          <ul>
+                            <li>
+                                    <a href="../download.html">Latest releases</a>
+                                </li>
+                      </ul>
+        </li>
+              <li><div class="menuheader">Contributing</div>
+          <ul>
+                            <li>
+                                    <a href="../contributors.html">Contributors</a>
+                                </li>
+                            <li>
+                                    <a href="https://jira.primekey.se/" class="externalLink">Bug Database</a>
+                                </li>
+                            <li>
+                                    <a href="../repositories.html">Repositories</a>
+                                </li>
+                      </ul>
+        </li>
+              <li><div class="menuheader">Continous integration</div>
+          <ul>
+                            <li>
+                                    <a href="../hudson.html">Jenkins</a>
+                                </li>
+                      </ul>
+        </li>
+            
+        <li><div class="menuheader">Used Services</div>
+          <p><br>
+          <a href="http://sourceforge.net/projects/signserver/"><img style="border:none; margin-left:20px;" src="http://sourceforge.net/sflogo.php?group_id=190195&amp;type=13" width="120" height="30" alt="Get SignServer at SourceForge.net. Fast, secure and Free Open Source software downloads" /></a>
+          </p>
+        </li>
+        <li><div class="menuheader">PKI by PrimeKey</div>
+          <p>
+          <br>
+                <a href="https://www.primekey.se/technologies/products-overview/ejbca-enterprise/" target="ejbca">
+                <img style="border:none; margin-left:20px;" src="../images/ejbca_pki_by_primekey.png" alt="Click the PKI-by-PrimeKey-EJBCA-logo to visit www.ejbca.org"/>
+                </a>
+          </p>
+          <p>
+                <a href="https://www.primekey.se/" target="primekey">
+                <img style="border:none; margin-left:20px;" src="../images/logo-PrimeKey.png" alt="Click the PrimeKey logo to check out the products and services offered at www.primekey.se" title="The logo squares follow a given magnitude of primes, symbolizing the encryption method of PrimeKey PKI."/>
+                </a>
+          </p>
+        </li>
+      </ul>
+    </div>
+ 	
+  </div>
+  <div class="main">
+  <div class="content">
+                <div id="minitoc-area">
+            <ul class="chapterminitoc">
+                                    <li><a href="#ch_misc">Miscellaneous</a> 
+                                            
+                                                <ul class="minitoc">
+                                                            <li><a href="#The Global Configuration Store">The Global Configuration Store</a>
+                                                                                                                 <ul class="minitoc">
+                                                                                            <li><a href="#SignServer specific">SignServer specific</a></li>
+                                                                                      </ul>
+                                                                    </li>
+                                                            <li><a href="#Status Repository">Status Repository</a>
+                                                                                                        </li>
+                                                            <li><a href="#Logging">Logging</a>
+                                                                                                                 <ul class="minitoc">
+                                                                                            <li><a href="#Worker Log">Worker Log</a></li>
+                                                                                            <li><a href="#System Log">System Log</a></li>
+                                                                                            <li><a href="#CESeCore Security Events Logger">CESeCore Security Events Logger</a></li>
+                                                                                            <li><a href="#Debug Log">Debug Log</a></li>
+                                                                                            <li><a href="#Configure Log4j for Audit logs">Configure Log4j for Audit logs</a></li>
+                                                                                            <li><a href="#Status Repository Logging">Status Repository Logging</a></li>
+                                                                                      </ul>
+                                                                    </li>
+                                                            <li><a href="#Database Command Line Interface">Database Command Line Interface</a>
+                                                                                                                 <ul class="minitoc">
+                                                                                            <li><a href="#Building">Building</a></li>
+                                                                                            <li><a href="#Configuring">Configuring</a></li>
+                                                                                            <li><a href="#Running">Running</a></li>
+                                                                                      </ul>
+                                                                    </li>
+                                                            <li><a href="#SignServer without Database">SignServer without Database</a>
+                                                                                                                 <ul class="minitoc">
+                                                                                            <li><a href="#Configuration">Configuration</a></li>
+                                                                                            <li><a href="#Structure of data">Structure of data</a></li>
+                                                                                            <li><a href="#Migrating to/from database">Migrating to/from database</a></li>
+                                                                                      </ul>
+                                                                    </li>
+                                                            <li><a href="#SignServer TimeMonitor">SignServer TimeMonitor</a>
+                                                                                                        </li>
+                                                            <li><a href="#Installation Packages">Installation Packages</a>
+                                                                                                        </li>
+                                                            <li><a href="#Contributed Howtos">Contributed Howtos</a>
+                                                                                                        </li>
+                                                            <li><a href="#References">References</a>
+                                                                                                        </li>
+                                                    </ul>
+
+                    </li>
+
+
+                             </ul>
+                            <a href="complete.en.html">Complete manual</a>
+                    </div>
+        
+            <div class="chapter">
+    <h2>
+      <a name="ch_misc"></a>
+      Miscellaneous
+    </h2>
+      			          <div class="section">
+    <h3>
+      <a name="The Global Configuration Store"></a>
+      The Global Configuration Store
+    </h3>
+      				  <p>
+The available workers and its crypto tokens and services is configured in something called the global configuration store that is slightly different from a worker configuration.
+                </p>
+	      				  <p>
+Is is dynamically configured and activated immediately. I can contain any type of data (in string representation) and can be of two types, either with global scope or node scope. A Global scoped property can be accessed by  all nodes in the cluster while a Node scoped property in only used within a node and cannot be accessed by the other nodes.
+                </p>
+	      			      	  <div class="subsection">
+      <h4>
+        <a name="SignServer specific"></a>
+        SignServer specific
+      </h4>
+      				  <p>
+Database failure is handled differently. If a node looses connection to the database it put itself in a state called 'unsynchronised' and will continue its operation without storing the data to database by using a cached global configuration. It is possible to later resynchronise one nodes cached global configuration data  with the database with a CLI command called 'resync'. But it is only possible to sync one of the nodes global configuration to the database.
+                    </p>
+	            </div>
+	            </div>
+          			          <div class="section">
+    <h3>
+      <a name="Status Repository"></a>
+      Status Repository
+    </h3>
+      				  <p>
+The status repository holds non-persistent local (per JVM) status information (properties) with optional expiration times. After the expiration time the property is not returned. The value is also not preserved among server restarts. 
+                </p>
+	      				  <p>
+This could be used by having workers read the status from the repository while an external (or internal) service periodically updates it. The (optional) expiration time on the values makes it possible to detect if an periodic service has failed to update the value within the specified time.
+                </p>
+	      				  <p>
+From the Admin CLI the status repository can be controlled using the <i>getstatusproperties</i>, <i>getstatusproperty</i> and <i>setstatusproperty</i> commands.
+                </p>
+	            </div>
+          			          <div class="section">
+    <h3>
+      <a name="Logging"></a>
+      Logging
+    </h3>
+      				  <p>
+SignServer uses Log4j for debug logging and the security events logger from CESeCore 
+for system/audit logging. In addition the worker logger (transaction log) can be configured 
+to use Log4j and/or the security events logger.
+                </p>
+	      			      	  <div class="subsection">
+      <h4>
+        <a name="Worker Log"></a>
+        Worker Log
+      </h4>
+      				  <p>
+The purpose of the Worker Loggers are to log each transaction handled by the
+worker. Each worker can choose to have its own configuration for the logger. By
+default the AllFieldsWorkerLogger is used which used logs all the available
+fields one after each other separated by semi colons.
+                    </p>
+	      				  <p>
+Which Worker Logger configuration to use is configured by setting the
+<b>WORKERLOGGER</b> property to the full class name of the IWorkerLogger
+implementation in the worker's configuration.
+                    </p>
+	      				  	  <div class="subsubsection">
+      <h5>
+        <a name="AllFieldsWorkerLogger"></a>
+        *** AllFieldsWorkerLogger ***
+      </h5>
+      				  <p>
+The default worker logger for most workers. Can be used during testing to find 
+which fields a worker logs and then changed to the PatternWorkerLogger with only 
+does fields that are of interest chosen.<br />
+LOGLEVEL_DEFAULT sets the level at which
+the logger will do log output. These are specified as standard Log4J levels
+(FATAL, ERROR, WARNING, INFO, DEBUG, and TRACE), if not set, it defaults to INFO.
+                        </p>
+	      				  <pre class="code">
+WORKERLOGGER=org.signserver.server.log.AllFieldsWorkerLogger
+LOGLEVEL_DEFAULT=INFO
+                        </pre>
+	            </div>
+	      				  	  <div class="subsubsection">
+      <h5>
+        <a name="SecurityEventsWorkerLogger"></a>
+        *** SecurityEventsWorkerLogger ***
+      </h5>
+      				  <p>
+Worker logger using the CESeCore security events logger.
+This logger included all fields in the additionalDetails fields in the audit log, except the worker ID, which is mapped to searchDetail2. 
+                        </p>
+	      				  <p>
+The properties LOGINCLUDEFIELDS and LOGEXCLUDEFIELDS can be used to restrict the fields included in additionalDetails by explicitly setting a
+comma-separated list of field names. Only one of these options can be set at a time.
+                        </p>
+	      				  <pre class="code">
+WORKERLOGGER=org.signserver.server.log.SecurityEventsWorkerLogger
+                        </pre>
+	            </div>
+	      				  	  <div class="subsubsection">
+      <h5>
+        <a name="PatternWorkerLogger"></a>
+        *** PatternWorkerLogger ***
+      </h5>
+      				  <p>
+The LOGLEVEL_DEFAULT property has the same behavior as for the AllFieldsWorkerLogger.
+                    	</p>
+	      				  <pre class="code">
+WORKERLOGGER=org.signserver.server.log.PatternWorkerLogger
+LOGTIMEZONE=GMT
+LOGDATEFORMAT=yyyy-MM-dd:HH:mm:ss:z
+LOGPATTERN=\$\{(.+?)\}
+LOGORDER=AUDIT; LOG_ID: ${LOG_ID}; CLIENT_IP: ${CLIENT_IP}; REQUEST_FULLURL: ${REQUEST_FULLURL}; RequestTime: ${LOG_TIME}; ResponseTime: ${REPLY_TIME}; EXCEPTION: ${EXCEPTION};
+LOGLEVEL_DEFAULT=INFO
+                        </pre>
+	            </div>
+	      				  	  <div class="subsubsection">
+      <h5>
+        <a name="DefaultTimeStampLogger"></a>
+        *** DefaultTimeStampLogger ***
+      </h5>
+      				  <p>
+Pattern logger with a default log order suitable for logging time-stamp requests. This logger is the default logger used by the <a href="complete.en.html#Time-stamp%20Signer">TimeStampSigner</a>.
+                        </p>
+	      				  <pre class="code">
+WORKERLOGGER=org.signserver.module.tsa.DefaultTimeStampLogger
+                        </pre>
+	            </div>
+	      				  	  <div class="subsubsection">
+      <h5>
+        <a name="NullWorkerLogger"></a>
+        *** NullWorkerLogger ***
+      </h5>
+      				  <p>
+Worker logger that does not log anything.    
+                        </p>
+	      				  <pre class="code">
+WORKERLOGGER=org.signserver.server.log.NullWorkerLogger                            
+                        </pre>
+	            </div>
+	      				  	  <div class="subsubsection">
+      <h5>
+        <a name="CustomTimeStampLogger1"></a>
+        *** CustomTimeStampLogger1 ***
+      </h5>
+      				  <pre class="code">
+WORKERLOGGER=org.signserver.module.tsa.CustomTimeStampLogger1
+                        </pre>
+	            </div>
+	      				  	  <div class="subsubsection">
+      <h5>
+        <a name="FileWorkerLogger"></a>
+        *** FileWorkerLogger ***
+      </h5>
+      				  <p>
+Worker logger that writes the log values to a worker-specific log file (the logger logs all fields, similar to
+AllFieldsWorkerLogger.<br />
+This logger is mainly intended for use by unit tests, and is not thread safe.
+						</p>
+	      				  <pre class="code">
+WORKERLOGGER=org.signserver.server.log.FileWorkerLogger
+LOG_FILE_PATH=/path/to/logfile
+						</pre>
+	            </div>
+	            </div>
+	      			      	  <div class="subsection">
+      <h4>
+        <a name="System Log"></a>
+        System Log
+      </h4>
+      				  <p>
+The purpose of the system log is to log events concerning the SignServer application but not necessarily related to any signing transaction (that is covered by the Worker Log). The audit log covers key and certificate management events, status properties updates (for instance for the status of the time source) and to some extent also configuration changes. For details see the table of events below.<br />
+From version 3.4.0 SignServer uses the CESeCore library to perform audit logging.
+                    </p>
+	      				  	  <div class="subsubsection">
+      <h5>
+        <a name="Available log events"></a>
+        *** Available log events ***
+      </h5>
+      				        <table class="ForrestTable" cellspacing="1" cellpadding="4">
+              <tr>
+                      <th colspan="2" rowspan="1"
+      valign="top" align="left">
+          
+<i>Services</i>
+
+      </th>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          
+<b>SIGNSERVER_STARTUP</b>
+
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          
+                                    <p>
+Logged at startup of the SignServer application.
+                                    </p>
+                                    <p>
+<b>VERSION:</b> The version of SignServer.
+                                    </p>
+                                    <p>
+Example:<br />
+<pre class="code">EVENT: SIGNSERVER_STARTUP; MODULE: SERVICE; ADMINISTRATOR: null; ISSUER: null; SERIAL_NUMBER: null; WORKER_ID: null; VERSION: SignServer 3.3.0alpha12; REPLY_TIME:1350562045545</pre>
+                                    </p>
+                                
+      </td>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          
+<b>SIGNSERVER_SHUTDOWN</b>
+
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          
+                                    <p>
+Logged at shutdown of the SignServer application.
+                                    </p>
+                                    <p>
+<b>VERSION:</b> The version of SignServer.
+                                    </p>
+                                    <p>
+Example:<br />
+<pre class="code">EVENT: SIGNSERVER_SHUTDOWN; MODULE: SERVICE; ADMINISTRATOR: null; ISSUER: null; SERIAL_NUMBER: null; WORKER_ID: null; VERSION: SignServer 3.3.0alpha12; REPLY_TIME:1350562045545</pre>
+                                    </p>
+                                
+      </td>
+      </tr>
+                  <tr>
+                      <th colspan="2" rowspan="1"
+      valign="top" align="left">
+          
+<i>Global configuration</i>
+
+      </th>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          
+<b>SET_GLOBAL_PROPERTY</b>
+
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          
+                                    <p>
+Logged when a global configuration property was updated.
+                                    </p>
+                                    <p>
+<b>GLOBALCONFIG_PROPERTY:</b> The property that was updated.<br />
+<b>GLOBALCONFIG_VALUE:</b> The new value of the property.
+                                    </p>
+                                    <p>
+Example:<br />
+<pre class="code">EVENT: SET_GLOBAL_PROPERTY; MODULE: GLOBAL_CONFIG; ADMINISTRATOR: null; ISSUER: null; SERIAL_NUMBER: null; WORKER_ID: null; GLOBALCONFIG_VALUE: TESTVALUE47; GLOBALCONFIG_PROPERTY: GLOB.TESTPROPERTY47; REPLY_TIME:1350657202153</pre>
+                                    </p>
+                                
+      </td>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          
+<b>REMOVE_GLOBAL_PROPERTY</b>
+
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          
+                                    <p>
+Logged when a global configuration property was removed.
+                                    </p>
+                                    <p>
+<b>GLOBALCONFIG_PROPERTY:</b> The property that was removed.
+                                    </p>
+                                    <p>
+Example:<br />
+<pre class="code">EVENT: REMOVE_GLOBAL_PROPERTY; MODULE: GLOBAL_CONFIG; ADMINISTRATOR: null; ISSUER: null; SERIAL_NUMBER: null; WORKER_ID: null; GLOBALCONFIG_PROPERTY: GLOB.TESTPROPERTY47; REPLY_TIME:1350657202444</pre>
+                                    </p>
+                                
+      </td>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          
+<b>GLOBAL_CONFIG_RELOAD</b>
+
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          
+                                    <p>
+Logged when the global configuration was reloaded from the database.
+                                    </p>
+                                    <p>
+Example:
+<pre class="code">EVENT: GLOBAL_CONFIG_RELOAD; MODULE: GLOBAL_CONFIG; ADMINISTRATOR: null; ISSUER: null; SERIAL_NUMBER: null; WORKER_ID: null; REPLY_TIME:1350657202593</pre>
+                                    </p>
+                                
+      </td>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          
+<b>GLOBAL_CONFIG_RESYNC</b>
+
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          
+                                    <p>
+Logged when the resync command was executed.
+                                    </p>
+                                    <p>
+Example:<br />
+<pre class="code">EVENT: GLOBAL_CONFIG_RESYNC; MODULE: GLOBAL_CONFIG; ADMINISTRATOR: null; ISSUER: null; SERIAL_NUMBER: null; WORKER_ID: null; REPLY_TIME:1350894343902</pre>
+                                    </p>
+                                
+      </td>
+      </tr>
+                  <tr>
+                      <th colspan="2" rowspan="1"
+      valign="top" align="left">
+          
+<i>Worker configuration</i>
+
+      </th>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          
+<b>SET_WORKER_CONFIG</b>
+
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          
+                                    <p>
+Logged when a worker's configuration was updated by adding and/or removing and/or changing any values.
+                                    </p>
+                                    <p>
+<b>WORKER_ID:</b> The ID of the worker.
+                                    </p>
+                                    <p>
+Changes in worker properties are logged with prefixes <b>added/changed/removed</b> followed by a colon and the property name a colon and the property value.<br />
+Several property changes can occur in one log line (see examples below).<br />
+Authorized clients are shown as a property with the name <b>authorized_client</b>.
+                                    </p>
+                                    <p>
+Example:<br />
+<pre class="code">EVENT: SET_WORKER_CONFIG; MODULE: WORKER_CONFIG; ADMINISTRATOR: null; ISSUER: null; SERIAL_NUMBER: null; WORKER_ID: 100; added:FOO: bar; REPLY_TIME:1350657202773</pre>
+                                    </p>
+                                    <p>
+<pre class="code">EVENT: SET_WORKER_CONFIG; MODULE: WORKER_CONFIG; ADMINISTRATOR: null; ISSUER: null; SERIAL_NUMBER: null; WORKER_ID: 100; changed:FOO: newvalue; REPLY_TIME:1350657202873</pre>
+                                    </p>
+                                    <p>
+<pre class="code">EVENT: SET_WORKER_CONFIG; MODULE: WORKER_CONFIG; ADMINISTRATOR: null; ISSUER: null; SERIAL_NUMBER: null; WORKER_ID: 100; removed:FOO: newvalue; REPLY_TIME:1350657202873</pre>
+                                    </p>
+                                    <p>
+<pre class="code">EVENT: SET_WORKER_CONFIG; MODULE: WORKER_CONFIG; ADMINISTRATOR: null; ISSUER: null; SERIAL_NUMBER: null; WORKER_ID: 100; added:FOO: bar; changed:BAR: newvalue; REPLY_TIME:1350657202873</pre>                                    
+                                    </p>
+                                    <p>
+<pre class="code">EVENT: SET_WORKER_CONFIG; MODULE: WORKER_CONFIG; ADMINISTRATOR: null; ISSUER: null; SERIAL_NUMBER: null; WORKER_ID: 100; added:authorized_client: SN: 1234567890, issuer DN: CN=Test; REPLY_TIME:1350657202873</pre>
+                                    </p>
+                                    
+                                
+      </td>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          
+<b>CERTINSTALLED</b>
+
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          
+                                    <p>
+Logged when a certificate was uploaded to the worker configuration.
+                                    </p>
+                                    <p>
+<b>WORKER_ID:</b> The ID of the worker.<br />
+<b>CERTIFICATE:</b> The certificate in PEM format.<br />
+<b>SCOPE: </b> If the setting was at GLOBAL or NODE scope.<br />
+<b>NODE: </b> The ID of the node if the setting was at NODE scope, otherwise not available.
+                                    </p>
+                                    <p>
+Example:<br />
+<pre class="code">EVENT: CERTINSTALLED; MODULE: WORKER_CONFIG; ADMINISTRATOR: null; ISSUER: null; SERIAL_NUMBER: null; WORKER_ID: 100; CERTIFICATE: Subject: CN=Anyone
+Issuer: CN=Anyone
+-----BEGIN CERTIFICATE-----
+MIIBnTCCAQagAwIBAgIIWWNYSOeuN+swDQYJKoZIhvcNAQEFBQAwETEPMA0GA1UE
+AwwGQW55b25lMB4XDTEyMTAxOTE0MzMyM1oXDTEzMTAxOTE0MzMyM1owETEPMA0G
+A1UEAwwGQW55b25lMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCDE9GElbJd
+e74WmIpPSsIF9r5vv0oH6WWo7n31goR1zMIHJPC9V1mpwQZ6C0uCHCV2ZvqQIIAE
+ZQM7mgbPfxjCF74RqKzScZlOSaHnvdf7zCWpYraVrIDt9Wg3HMxye0/L3cCImmkY
+FkFtabtoa5UuPZObdIt154Yg+GpGB8aPBwIDAQABMA0GCSqGSIb3DQEBBQUAA4GB
+AHm3oAUHwM0KwMcEUwWouE0f4+UK6ZvYvxLAgiCVZQnPImcqX1oBl+iFV59FlsXj
+rqoQYJROxIeV0ByGeyBYXqvgTw1YtdqoR+wKmiymjn/lynmTh1fQMcFoUouGfubX
+EK4rfPBXEl33gKbsO5aeMHd5iF2jtx7RfYMsOuHKoDSe
+-----END CERTIFICATE-----
+; SCOPE: GLOBAL; REPLY_TIME:1350657204367</pre>
+                                    </p>
+                                
+      </td>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          
+<b>CERTCHAININSTALLED</b>
+
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          
+                                    <p>
+Logged when a certificate chain was uploaded to the worker configuration or imported to a crypto token.
+                                    </p>
+                                    <p>
+With MODULE: WORKER_CONFIG the certificate chain was installed in the configuration:
+                                    </p>
+                                    <p>
+<b>WORKER_ID:</b> The ID of the worker.<br />
+<b>CERTIFICATECHAIN:</b> The certificates in PEM format.<br />
+<b>SCOPE: </b> If the setting was at GLOBAL or NODE scope.<br />
+<b>NODE: </b> The ID of the node if the setting was at NODE scope, otherwise not available.
+                                    </p>
+                                    <p>
+Example:<br />
+<pre class="code">EVENT: CERTCHAININSTALLED; MODULE: WORKER_CONFIG; ADMINISTRATOR: null; ISSUER: null; SERIAL_NUMBER: null; WORKER_ID: 100; CERTIFICATECHAIN: Subject: CN=Signer,C=SE
+Issuer: CN=Issuer,C=SE
+-----BEGIN CERTIFICATE-----
+MIIBdjCCASCgAwIBAgIIE+fXOs/SAwMwDQYJKoZIhvcNAQEFBQAwHjEPMA0GA1UE
+AwwGSXNzdWVyMQswCQYDVQQGEwJTRTAeFw0xMjEwMjIwNzQ1MDZaFw0xMzEwMjIw
+NzQ1MDZaMB4xDzANBgNVBAMMBlNpZ25lcjELMAkGA1UEBhMCU0UwgZ8wDQYJKoZI
+hvcNAQEBBQADgY0AMIGJAoGBAKpX5psdaL5CHAKSxoOvB12Ie8iUb/mX6ikF8jfu
+zrbwVgf6bX0RCUnD+v+t9vY7byz+nN32KnmGluNGdBFdM1Ug9Oc+64ZNBbgZi9mi
+cHnKMDLLSECBY2Nux62PZejp5SwtzpjFymt3TMCtRr4UHGu3zkuqLLCHFlGRdvdo
+MPQ9AgMBAAEwDQYJKoZIhvcNAQEFBQADQQADlInGm9AujZfL+1kM7ehaKyKKencF
+fp6YGElOpGEplxxIwgmVc0iYKv4rCkfUAysYL6l3AC+VLK1asxkpEJc1
+-----END CERTIFICATE-----
+Subject: CN=Issuer,C=SE
+Issuer: CN=Issuer,C=SE
+-----BEGIN CERTIFICATE-----
+MIIBMTCB3KADAgECAggbfKZHs8ttKDANBgkqhkiG9w0BAQUFADAeMQ8wDQYDVQQD
+DAZJc3N1ZXIxCzAJBgNVBAYTAlNFMB4XDTEyMTAyMjA3NDUwNloXDTEzMTAyMjA3
+NDUwNlowHjEPMA0GA1UEAwwGSXNzdWVyMQswCQYDVQQGEwJTRTBcMA0GCSqGSIb3
+DQEBAQUAA0sAMEgCQQCpgzxJ6r6D1cP8v1AB88pJsCwi0SJdeRSGYydYYBOafJk0
+fpqxJCwaiFS3tt9OkWUAXzcixv5+sItkEuEOpmp7AgMBAAEwDQYJKoZIhvcNAQEF
+BQADQQCC5NG3eWx/mXXKZmePOvZEIwyqWHOwzsBB174gkzlyhOdiOr3YwVihyebI
+VAfkEktRrO04Hi5eLR+AxW7EVz6l
+-----END CERTIFICATE-----
+; SCOPE: GLOBAL; REPLY_TIME:1350891906417
+</pre>
+                                    </p>
+                                    <p>
+With MODULE: KEY_MANAGEMENT the certificate chain was imported to the token:
+                                    </p>
+                                    <p>
+<b>WORKER_ID:</b> The ID of the worker.<br />
+<b>CERTIFICATECHAIN:</b> The certificates in PEM format.<br />
+<b>KEYALIAS:</b> The alias of the entry in the token.<br />
+<b>CRYPTOTOKEN:</b> Name of the configured crypto worker or the name or ID of the current worker if no separate crypto worker is used.
+                                    </p>
+                                    <p>
+Example:<br />
+<pre class="code">EVENT: CERTCHAININSTALLED; MODULE: KEY_MANAGEMENT; ADMINISTRATOR: CLI user; ISSUER: null; SERIAL_NUMBER: null; WORKER_ID: 5801; KEYALIAS: testkeyalias10; CRYPTOTOKEN: HSMCryptoToken1; CERTIFICATECHAIN: Subject: CN=testkeyalias10,C=SE
+Issuer: CN=Issuer,C=SE
+-----BEGIN CERTIFICATE-----
+MIIBMjCB3aADAgECAgEBMA0GCSqGSIb3DQEBCwUAMB4xDzANBgNVBAMMBklzc3Vl
+cjELMAkGA1UEBhMCU0UwHhcNMTUwNTI5MTEzMTAyWhcNMTYwNTI4MTEzMTAyWjAm
+MRcwFQYDVQQDDA50ZXN0a2V5YWxpYXMxMDELMAkGA1UEBhMCU0UwXDANBgkqhkiG
+9w0BAQEFAANLADBIAkEAggmuPO78M3hhwh4MrxYzt0LM6vLmI4IWjLxO8EK8R0FV
+cDu5Rruxc/a51LCt8J8dOxm34h0RakqzObbFYZxwZwIDAQABMA0GCSqGSIb3DQEB
+CwUAA0EAYR/N98UTyjnkFMnRmd1dQfsD6cih7Dt6NTi+qxFeMbbuzVA9HhRcXwQn
+NChSJMtvJ9sKslfhlfqwZGPChSFg3g==
+-----END CERTIFICATE-----
+Subject: CN=Issuer,C=SE
+Issuer: CN=Issuer,C=SE
+-----BEGIN CERTIFICATE-----
+MIIBMTCB3KADAgECAghQdZlXUcZalTANBgkqhkiG9w0BAQUFADAeMQ8wDQYDVQQD
+DAZJc3N1ZXIxCzAJBgNVBAYTAlNFMB4XDTE1MDUyOTExMzEwMloXDTE2MDUyODEx
+MzEwMlowHjEPMA0GA1UEAwwGSXNzdWVyMQswCQYDVQQGEwJTRTBcMA0GCSqGSIb3
+DQEBAQUAA0sAMEgCQQCa35ZZru5A2DigDNyOdsZL789dVVlUTXch/Fa0e82X+FLc
+kuMoRqAuxrEw/5+uG1Xi7EkysdgyRPbdYHmv3hBlAgMBAAEwDQYJKoZIhvcNAQEF
+BQADQQAS3us4jsjHRSooeNuaaAdWjrA7b/nVnkhRjEmHUCORJXGwnHykUGB2idj6
+d3UejoxEJ78E+EAYWO2JvKbhV0ku
+-----END CERTIFICATE-----
+; REPLY_TIME:1432899062650
+
+</pre>
+                                    </p>                                    
+                                
+      </td>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          
+<b>KEYSELECTED</b>
+
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          
+                                    <p>
+Logged when the key-pair to use was selected by changing the value of the DEFAULTKEY worker property.
+                                    </p>
+                                    <p>
+<b>WORKER_ID:</b> The ID of the worker.<br />
+<b>KEYALIAS:</b> The new key alias.<br />
+<b>CRYPTOTOKEN:</b> Name of the configured crypto worker or the name or ID of the current worker if no separate crypto worker is used.<br />
+<b>SCOPE: </b> If the setting was at GLOBAL or NODE scope.<br />
+<b>NODE: </b> The ID of the node if the setting was at NODE scope, otherwise not available.
+                                    </p>
+                                    <p>
+Example:<br />
+<pre class="code">EVENT: KEYSELECTED; MODULE: WORKER_CONFIG; ADMINISTRATOR: null; ISSUER: null; SERIAL_NUMBER: null; WORKER_ID: 100; KEYALIAS: ts_key00002; CRYPTOTOKEN: TestSigner6000; SCOPE: GLOBAL; REPLY_TIME:1350891907048</pre>
+                                    </p>
+                                
+      </td>
+      </tr>
+                  <tr>
+                      <th colspan="2" rowspan="1"
+      valign="top" align="left">
+          
+<i>Key management</i>
+
+      </th>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          
+<b>KEYGEN</b>
+
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          
+                                    <p>
+Logged when a new key-pair was generated using the built-in key generation command.
+                                    </p>
+                                    <p>
+<b>WORKER_ID:</b> The ID of the worker.<br />
+<b>KEYALIAS:</b> The new key alias.<br />
+<b>CRYPTOTOKEN:</b> Name of the configured crypto worker or the name or ID of the current worker if no separate crypto worker is used.<br />
+<b>KEYSPEC:</b> The key specification (ie. RSA/DSA bit length or EC curve).<br />
+<b>KEYALG:</b> The key algorithm.
+                                    </p>
+                                    <p>
+Example:<br />
+<pre class="code">EVENT: KEYGEN; MODULE: KEY_MANAGEMENT; ADMINISTRATOR: null; ISSUER: null; SERIAL_NUMBER: null; WORKER_ID: 5676; KEYALIAS: ts_key00004; CRYPTOTOKEN: HSMCryptoToken0; KEYSPEC: 2048; KEYALG: RSA; REPLY_TIME:135089190791</pre>
+                                    </p>
+                                
+      </td>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          
+<b>KEYTEST</b>
+
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          
+                                    <p>
+Logged when the key test command was executed and a test signing with either the specified key or all keys in the slot if that was specified.
+                                    </p>
+                                    <p>
+<b>WORKER_ID:</b> The ID of the worker.<br />
+<b>KEYALIAS:</b> Alias of the the key to test or "all" to test all available keys in the slot.<br />
+<b>CRYPTOTOKEN:</b> Name of the configured crypto worker or the name or ID of the current worker if no separate crypto worker is used.<br />
+<b>TESTRESULTS:</b> The test report with an entry for each tested key.
+                                    </p>
+                                    <p>
+Example:<br />            
+<pre class="code">EVENT: KEYTEST; MODULE: KEY_MANAGEMENT; ADMINISTRATOR: null; ISSUER: null; SERIAL_NUMBER: null; WORKER_ID: 47; KEYALIAS: all; CRYPTOTOKEN: HSMCryptoToken1; TESTRESULTS: KeyTestResult{alias=tsu47_key00005, success=true, status=, publicKeyHash=979359e5261112b11fac341962bec1e7e6052d9e}
+KeyTestResult{alias=key5, success=true, status=, publicKeyHash=46b264e4892ef2e4fd9616e4927534ca3597fd9c}
+KeyTestResult{alias=key3, success=true, status=, publicKeyHash=ae64792f1f50e23eb54bf79d46d819bc07db2d79}
+KeyTestResult{alias=key2, success=true, status=, publicKeyHash=b1317f363e6124a8e15bba8c1adb9f20b2f4ef59}
+KeyTestResult{alias=TS Signer 1, success=true, status=, publicKeyHash=8f6dfccdcea931d4deee9466f43c0eb0e7f4d8b1}
+; REPLY_TIME:1350564289165</pre>
+                                    </p>
+                                
+      </td>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          
+<b>GENCSR</b>
+
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          
+                                    <p>
+Logged when a certificate signing request (CSR) was generated.
+                                    </p>
+                                    <p>
+<b>WORKER_ID:</b> The ID of the worker.<br />
+<b>KEYALIAS:</b> The key alias of the key used to generate the CSR.<br />
+<b>FOR_DEFAULTKEY: </b> True if the "default key" was requested.<br />
+<b>CRYPTOTOKEN:</b> Name of the configured crypto worker or the name or ID of the current worker if no separate crypto worker is used.<br />
+<b>CSR:</b> Base64 encoded CSR (typically in PKCS#10 format).
+                                    </p>
+                                    <p>
+Example:<br />
+<pre class="code">EVENT: GENCSR; MODULE: KEY_MANAGEMENT; ADMINISTRATOR: null; ISSUER: null; SERIAL_NUMBER: null; WORKER_ID: 5676; KEYALIAS: ts_key00004; CRYPTOTOKEN: HSMCryptoToken0; CSR: MIIBYDCBygIBADAjMRQwEgYDVQQDDAtUUyBTaWduZXIgMTELMAkGA1UEBhMCU0Uw
+gZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAJt8F51wD+QcX+WLyIxjWu3at3q+
+IiJrL5jIenmggUhjOLHGHOStoNOiYEQAaiiTZ623m9y7O3zhqFdAdWZg+JrfsHQJ
+pjKV9RgvJznl6yk/K54BWOBgqjvbloAUGtn8y8Hf+5DYJUJNFqrzvRLcmCQ9JU0H
+mgSmEIqgOIwBL3oBAgMBAAEwDQYJKoZIhvcNAQEFBQADgYEAer5hr/cUYx4jy0XO
+N4U8sP/2gSFppytx9dn5BamVBLjDkcML8B3c9u9omDPebd+LEsCU+HCmYN9xHkSS
+Ei8lcAqyVv+SDLEmvE8gnrPFR/J7uADCRayLVQumW6/YpVO/sFEGuM6rgnn8ZJmW
+X2lhvJ4V1UhlkEAeyIQ861U3IgE=; REPLY_TIME:1350891907981</pre>
+                                    </p>
+                                
+      </td>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          
+<b>KEYREMOVE</b>
+
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          
+                                    <p>
+Logged when a key was removed or an removal attempt was performed.
+                                    </p>
+                                    <p>
+<b>WORKER_ID:</b> The ID of the worker.<br />
+<b>KEYALIAS:</b> The key alias of the key removed.<br />
+<b>CRYPTOTOKEN:</b> Name of the configured crypto worker or the name or ID of the current worker if no separate crypto worker is used.<br />
+<b>SUCCESS:</b> True if the key was removed or false if the removal failed or if removal was not supported by the token.<br />
+                                    </p>
+                                    <p>
+Example:<br />
+<pre class="code">EVENT: KEYREMOVE; MODULE: KEY_MANAGEMENT; ADMINISTRATOR: CLI user; ISSUER: null; SERIAL_NUMBER: null; WORKER_ID: 20003; KEYALIAS: signKey000002; CRYPTOTOKEN: HSMCryptoToken1; SUCCESS: true; REPLY_TIME:1391008847962</pre>
+                                    </p>
+                                
+      </td>
+      </tr>
+                  <tr>
+                      <th colspan="2" rowspan="1"
+      valign="top" align="left">
+          
+<i>Status Repository</i>
+
+      </th>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          
+<b>SET_STATUS_PROPERTY</b>
+
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          
+                                    <p>
+Logged when a status property was updated.
+                                    </p>
+                                    <p>
+<b>STATUSREPO_PROPERTY:</b> The updated property.<br />
+<b>STATUSREPO_VALUE:</b> The new property value.<br />
+<b>STATUSREPO_EXPIRATION:</b> Expiration time for the status property (timestamp), if any.
+                                    </p>
+                                    <p>
+Example:<br />
+<pre class="code">EVENT: SET_STATUS_PROPERTY; MODULE: STATUS_REPOSITORY; ADMINISTRATOR: null; ISSUER: null; SERIAL_NUMBER: null; WORKER_ID: null; STATUSREPO_EXPIRATION: 1350891909366; STATUSREPO_PROPERTY: TEST_PROPERTY1; STATUSREPO_VALUE: TESTVALUE47; REPLY_TIME:1350891908372</pre>
+                                    </p>
+                                
+      </td>
+      </tr>
+                  <tr>
+                      <th colspan="2" rowspan="1"
+      valign="top" align="left">
+          
+<i>Worker processing</i>
+
+      </th>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          
+<b>PROCESS</b>
+
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          
+                                    <p>
+Logged for events regarding worker processing but when a worker logger can not be used because the requested worker does not exist etc.
+                                    </p>
+                                    <p>
+<b>WORKER_ID:</b> The ID of the worker or empty in case of non existing worker.<br />
+<b>Worker logger fields:</b> All fields available to the worker logger.<br />
+                                    </p>
+                                    <p>
+Example:<br />
+<pre class="code">EVENT: PROCESS; MODULE: WORKER; ADMINISTRATOR: null; ISSUER: null; SERIAL_NUMBER: null; WORKER_ID: null; LOG_ID: db517726-ff0d-40dd-8f2b-2297925cb4d3; CLIENT_IP: 127.0.0.1; PROCESS_SUCCESS: false; REQUEST_LENGTH: 0; XFORWARDEDFOR: null; FILENAME: noname.dat; 
+REQUEST_FULLURL: http://localhost:8080/signserver/process?null; LOG_TIME: 1350628977410; WORKER_ID: 0; EXCEPTION: No such worker: 0; REPLY_TIME:1350628977411
+</pre>
+                                    </p>
+                                
+      </td>
+      </tr>
+        </table>
+                </div>
+	            </div>
+	      			      	  <div class="subsection">
+      <h4>
+        <a name="CESeCore Security Events Logger"></a>
+        CESeCore Security Events Logger
+      </h4>
+      				  <p>
+The default logging implementation, <code>org.signserver.server.log.SignServerLog4jDevice</code> uses Log4J and a similar logging format as the old SystemLogger.
+                    </p>
+	      				  	  <div class="subsubsection">
+      <h5>
+        <a name="Signed log"></a>
+        *** Signed log ***
+      </h5>
+      				  <div class="frame note">
+<div class="label">Note</div>
+<div class="content">
+This is a SignServer Enterprise Edition (EE) feature.
+                        </div>
+</div>
+	      				  <p>
+An example configuration for CESeCore is provided in <code>conf/cesecore.properties.sample</code>.
+                        </p>
+	      				  <p>
+To enable signed audit logs configure conf/databaseprotection.properties (see conf/databaseprotection.properties.sample). And set the following which enables signing of the AuditRecordData table as well as verification of the log entries queried using for instance the CLI or GUI:
+                        </p>
+	      				  <pre class="code">
+databaseprotection.enablesign.AuditRecordData = true
+databaseprotection.enableverify.AuditRecordData = true
+                        </pre>
+	      				  <p>
+Configure a key-pair to use for signing and verification of the log with something similar to this:
+                        </p>
+	      				  <pre class="code">
+databaseprotection.keyid = 400
+databaseprotection.keyid.0 = 400
+databaseprotection.keylabel.0 = dbProtKey
+databaseprotection.classname.0 = org.cesecore.keys.token.PKCS11CryptoToken
+databaseprotection.properties.0 = sharedLibrary=/opt/utimaco/Software/PKCS11/lib/Linux-x86-64/libcs2_pkcs11.so, slotLabelType=SLOT_NUMBER, slotLabelValue=1
+databaseprotection.data.0 =
+databaseprotection.tokenpin.0 = userpin1
+databaseprotection.version.0 = 2
+                        </pre>
+	      				  <p>
+Note: each SignServer node writing to the audit log needs to use different node IDs. By default the hostname is used. If multiple instances 
+are running from the same host set the node id manually in conf/cesecore.properties as cluster.nodeid.
+                        </p>
+	      				  <p>
+If enableverify is set to true, all individual log entries that are displayed 
+using CLI, GUI or over web services are verified at the server side and in case 
+of inconsistent signatures an error message is displayed. This verification will 
+not discover missing log entries. To verify the complete log for all nodes as 
+well as detect gaps in the sequence numbering, run the <a href="complete.en.html#Database%20CLI">Database CLI</a>.
+                        </p>
+	            </div>
+	      				  	  <div class="subsubsection">
+      <h5>
+        <a name="AuditRecordData table"></a>
+        *** AuditRecordData table ***
+      </h5>
+      				  <p>
+The exact database table structure is described in the SQL scripts available under doc/sql-scripts/.                            
+                        </p>
+	      				        <table class="ForrestTable" cellspacing="1" cellpadding="4">
+              <tr>
+                      <th colspan="1" rowspan="1"
+      valign="top" align="left">
+          Friendly Name
+      </th>
+                          <th colspan="1" rowspan="1"
+      valign="top" align="left">
+          Table Name
+      </th>
+                          <th colspan="1" rowspan="1"
+      valign="top" align="left">
+          Description
+      </th>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          Time
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          timeStamp
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          
+                                    <p>
+Time stamp (number of milliseconds since January 1, 1970, 00:00:00 GMT). Example:
+                                    </p>
+                                    <pre class="code">1359550503607</pre>
+                                
+      </td>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          Outcome
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          eventStatus
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          
+                                    <p>Status/result of the operation performed. Can be:</p>
+                                    <ul>
+                                        <li>SUCCESS</li>
+                                        <li>FAILURE</li>
+                                        <li>VOID</li>
+                                    </ul>
+                                
+      </td>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          Event
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          eventType
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          
+                                    <p>The event. Some examples:</p>
+                                    <ul>
+                                        <li>SIGNSERVER_STARTUP</li>
+                                        <li>SET_GLOBAL_PROPERTY</li>
+                                        <li>SET_WORKER_CONFIG</li>
+                                        <li>KEYGEN</li>
+                                        <li>PROCESS</li>
+                                    </ul>
+                                
+      </td>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          Module
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          module
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          
+                                    <p>The source module of the event. Some examples:</p>
+                                    <ul>
+                                        <li>SERVICE</li>
+                                        <li>GLOBAL_CONFIG</li>
+                                        <li>WORKER_CONFIG</li>
+                                        <li>KEY_MANAGEMENT</li>
+                                        <li>WORKER</li>
+                                        <li>STATUS_REPOSITORY</li>
+                                    </ul>
+                                
+      </td>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          Service
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          service
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          
+                                    <p>The service performing the operation. Some examples:</p>
+                                    <ul>
+                                        <li>CORE</li>
+                                        <li>SIGNSERVER</li>
+                                        <li>EJBCA</li>
+                                    </ul>
+                                
+      </td>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          Admin Subject
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          authToken
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          
+                                    <p>Information about which administrator performed the operation.</p>
+                                    <p>
+Subject DN from the administrator's certificate if the operation was performed 
+over web services, "CLI User" if the EJB remote interface was used, the name 
+of the service if it was an internal operation or "Client User" if the request 
+came from a client.
+                                    </p>
+                                    <p>Some examples:</p>
+                                    <pre class="code">C=SE, O=My Organization, CN=Admin 1</pre>
+                                    <pre class="code">CLI User</pre>
+                                    <pre class="code">StartServicesServlet.init</pre>
+                                    <pre class="code">Client User</pre>
+                                
+      </td>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          Admin Serial Number
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          searchDetail1
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          
+                                    <p>Information about which administrator performed the operation.</p>
+                                    <p>Certificate serial number for the administrator performing the operation (if available). Example:</p>
+                                    <pre class="code">4a3442e98e3ce428</pre>
+                                
+      </td>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          Admin Issuer
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          customId
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          
+                                    <p>Information about which administrator performed the operation.</p>
+                                    <p>
+Issuer DN from the administrator's certificate (if available). Example:
+                                    </p>
+                                    <pre class="code">C=SE, O=My Organization, CN=AdminCA1</pre>
+                                
+      </td>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          Worker ID
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          searchDetail2
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          
+                                    <p>ID of worker involved in the operation (if any). Example:</p>
+                                    <pre class="code">71</pre>
+                                
+      </td>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          Node
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          nodeId
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          
+                                    <p>ID of the node (typically the hostname if not explicitly specified). Example:</p>
+                                    <pre class="code">dsstsa1.example.com</pre>
+                                
+      </td>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          Details
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          additionalDetails
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          
+                                    <p>Additional key-value pairs with information about the operation encoded with Java XML serialization. Example:</p>
+                                    <pre class="code">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;java version="1.6.0_24" class="java.beans.XMLDecoder"&gt;
+ &lt;object class="org.cesecore.util.Base64PutHashMap"&gt;
+  &lt;void method="put"&gt;
+   &lt;string&gt;GLOBALCONFIG_PROPERTY&lt;/string&gt;
+   &lt;string&gt;GLOB.WORKER1.CLASSPATH&lt;/string&gt;
+  &lt;/void&gt;
+  &lt;void method="put"&gt;
+   &lt;string&gt;GLOBALCONFIG_VALUE&lt;/string&gt;
+   &lt;string&gt;org.signserver.module.xmlsigner.XMLSigner&lt;/string&gt;
+  &lt;/void&gt;
+ &lt;/object&gt;
+&lt;/java&gt;
+                                    </pre>
+                                
+      </td>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          Sequence Number
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          sequenceNumber
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          
+                                    <p>Sequence number of the log entry. Should be unique and sequential per node.</p>
+                                
+      </td>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          Row Protection
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          rowProtection
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          
+                                    <p>Contains information about wich key-pair and signature algorithm that has been used and the actual signature value (if the row is signed). Example:</p>
+                                    <pre class="code">1:2:400:079b6c2d89671702077b1802ff221cd7c6d71804ea3771b7d5f7cd1...</pre>
+                                
+      </td>
+      </tr>
+        </table>
+                </div>
+	            </div>
+	      			      	  <div class="subsection">
+      <h4>
+        <a name="Debug Log"></a>
+        Debug Log
+      </h4>
+      				  <p>
+The debug log is just the normal log that can be useful for finding out
+configuration problems etc.
+                    </p>
+	            </div>
+	      			      	  <div class="subsection">
+      <h4>
+        <a name="Configure Log4j for Audit logs"></a>
+        Configure Log4j for Audit logs
+      </h4>
+      				  <p>
+For JBoss you can configure JBOSS_HOME/server/default/conf/jboss-log4j.xml to
+put the audit logs in a separate file.
+                    </p>
+	      				  <pre class="code">
+&lt;appender name=&quot;SIGNSERVER_AUDIT&quot; class=&quot;org.jboss.logging.appender.DailyRollingFileAppender&quot;&gt;
+    &lt;errorHandler class=&quot;org.jboss.logging.util.OnlyOnceErrorHandler&quot;/&gt;
+    &lt;param name=&quot;File&quot; value=&quot;${jboss.server.log.dir}/signserver_audit.log&quot; /&gt;
+    &lt;param name=&quot;Append&quot; value=&quot;true&quot; /&gt;
+
+    &lt;!-- Rollover at midnight each day --&gt;
+    &lt;param name=&quot;DatePattern&quot; value=&quot;'.'yyyy-MM-dd&quot; /&gt;
+    &lt;layout class=&quot;org.apache.log4j.PatternLayout&quot;&gt;
+        &lt;param name=&quot;ConversionPattern&quot; value=&quot;%d{ISO8601} %-5p [%c{1}] %m%n&quot; /&gt;
+    &lt;/layout&gt;
+&lt;/appender&gt;
+
+&lt;category name=&quot;org.signserver.server.log.SignServerLog4jDevice&quot;&gt;
+    &lt;appender-ref ref=&quot;SIGNSERVER_AUDIT&quot;/&gt;
+&lt;/category&gt;
+&lt;category name=&quot;org.signserver.server.log.IWorkerLogger&quot;&gt;
+    &lt;appender-ref ref=&quot;SIGNSERVER_AUDIT&quot;/&gt;
+&lt;/category&gt;
+                    </pre>
+	      				  <p>
+For GlassFish a similar setup is already configured in SIGNSERVER_HOME/modules/SignServer-Module-Log4j/src/log4j.properties. 
+                    </p>
+	      				  <p>
+For JBoss 7/EAP6 the following can be edited in JBOSS_HOME/standalone/configuration/standalone.xml:
+                    </p>
+	      				  <pre class="code">
+&lt;subsystem xmlns=&quot;urn:jboss:domain:logging:1.2&quot;&gt;
+    ...
+    &lt;periodic-rotating-file-handler name=&quot;SignServer&quot; autoflush=&quot;true&quot;&gt;
+        &lt;formatter&gt;
+            &lt;pattern-formatter pattern=&quot;%d{HH:mm:ss,SSS} %-5p [%c] (%t) %s%E%n&quot;/&gt;
+        &lt;/formatter&gt;
+        &lt;file relative-to=&quot;jboss.server.log.dir&quot; path=&quot;signserver.log&quot;/&gt;
+        &lt;suffix value=&quot;.yyyy-MM-dd&quot;/&gt;
+        &lt;append value=&quot;true&quot;/&gt;
+    &lt;/periodic-rotating-file-handler&gt;
+    &lt;periodic-rotating-file-handler name=&quot;SignServer_audit&quot; autoflush=&quot;true&quot;&gt;
+        &lt;formatter&gt;
+            &lt;pattern-formatter pattern=&quot;%d{HH:mm:ss,SSS} %-5p [%c] (%t) %s%E%n&quot;/&gt;
+        &lt;/formatter&gt;
+        &lt;file relative-to=&quot;jboss.server.log.dir&quot; path=&quot;signserver_audit.log&quot;/&gt;
+        &lt;suffix value=&quot;.yyyy-MM-dd&quot;/&gt;
+        &lt;append value=&quot;true&quot;/&gt;
+    &lt;/periodic-rotating-file-handler&gt;
+
+    &lt;logger category=&quot;org.signserver&quot;&gt;
+        &lt;level name=&quot;DEBUG&quot;/&gt;
+        &lt;handlers&gt;
+            &lt;handler name=&quot;SignServer&quot;/&gt;
+        &lt;/handlers&gt;
+    &lt;/logger&gt;
+    &lt;logger category=&quot;org.ejbca&quot;&gt;
+        &lt;level name=&quot;DEBUG&quot;/&gt;
+        &lt;handlers&gt;
+            &lt;handler name=&quot;SignServer&quot;/&gt;
+        &lt;/handlers&gt;
+    &lt;/logger&gt;
+    &lt;logger category=&quot;org.cesecore&quot;&gt;
+        &lt;level name=&quot;DEBUG&quot;/&gt;
+        &lt;handlers&gt;
+            &lt;handler name=&quot;SignServer&quot;/&gt;
+        &lt;/handlers&gt;
+    &lt;/logger&gt;
+    &lt;logger category=&quot;org.signserver.server.log.SignServerLog4jDevice&quot;&gt;
+        &lt;handlers&gt;
+            &lt;handler name=&quot;SignServer_audit&quot;/&gt;
+        &lt;/handlers&gt;
+    &lt;/logger&gt;
+    &lt;logger category=&quot;org.signserver.server.log.ISystemLogger&quot;&gt;
+        &lt;handlers&gt;
+            &lt;handler name=&quot;SignServer_audit&quot;/&gt;
+        &lt;/handlers&gt;
+    &lt;/logger&gt;
+    ...
+&lt;/subsystem&gt;             
+                    </pre>
+	            </div>
+	      			      	  <div class="subsection">
+      <h4>
+        <a name="Status Repository Logging"></a>
+        Status Repository Logging
+      </h4>
+      				  <p>
+By default the Status Repository produces a log entry for every update. This can 
+be disabled or changed in the configuration so that only changes are 
+logged. See the property <i>statusrepository.log</i> in 
+signserver_deploy.properties.sample.
+                    </p>
+	            </div>
+	            </div>
+          			          <div class="section">
+    <h3>
+      <a name="Database Command Line Interface"></a>
+      Database Command Line Interface
+    </h3>
+      				  <p>
+The SignServer DB CLI can be run against a database. Currently it only supports 
+verifying the audit log.
+                </p>
+	      			      	  <div class="subsection">
+      <h4>
+        <a name="Building"></a>
+        Building
+      </h4>
+      				  <p>
+The DB CLI is built if the property databasecli.enabled=true is specified in 
+signserver_deploy.properties. It can also be built using:
+                    </p>
+	      				  <pre class="code">
+$ bin/ant -f modules/SignServer-DatabaseCLI/build.xml dist-module
+                    </pre>
+	            </div>
+	      			      	  <div class="subsection">
+      <h4>
+        <a name="Configuring"></a>
+        Configuring
+      </h4>
+      				  <p>
+Configure the dbcli.* properties in conf/signserver_cli.properties.
+                    </p>
+	            </div>
+	      			      	  <div class="subsection">
+      <h4>
+        <a name="Running"></a>
+        Running
+      </h4>
+      				  <p>
+There is start-up script available under bin. You might have specify a classpath
+containing the JDBC connectors for the specific database type. Example:
+                    </p>
+	      				  <pre class="code">
+$ OPTIONAL_CLASSPATH=/usr/share/java/mysql-connector-java.jar bin/signserver-db audit verifylog
+                    </pre>
+	            </div>
+	            </div>
+          			          <div class="section">
+    <h3>
+      <a name="SignServer without Database"></a>
+      SignServer without Database
+    </h3>
+      				  <p>
+Since SignServer 3.2.3 it is sometimes possible to operate SignServer without a database management system and instead rely on SignServer to manage persistence using local files.
+                </p>
+	      				  <p>
+Notice that all features of SignServer is not supported without having a database and that the performance and scalability characteristics might be different. Currently archiving to database is not supported.
+                </p>
+	      				  <p>
+To increase throughput it is recommended to disable the key usage counter as every request would otherwise have to lock and update that file. See the property DISABLEKEYUSAGECOUNTER in the section <a href="complete.en.html#Limiting%20the%20number%20of%20signatures">Limiting the number of signatures</a>.
+                </p>
+	      			      	  <div class="subsection">
+      <h4>
+        <a name="Configuration"></a>
+        Configuration
+      </h4>
+      				  <p>
+In signserver_deploy.properties, set database.type to "nodb".
+                    </p>
+	      				  <pre class="code">
+database.type=nodb
+					</pre>
+	      				  <p>
+Set the location for the local file-based database.
+					</p>
+	      				  <pre class="code">
+database.nodb.location=/path/to/filedb
+					</pre>
+	      				  <p>
+Where the path is some location where SignServer can write files. The default value is empty. If an relative path is used it is most likely relative to the application server's working directory.
+					</p>
+	      				  <p>
+This directory should either point to an existing SignServer file database or be completely empty. If the directory is empty, SignServer will create the initial database structure at startup.
+					</p>
+	            </div>
+	      			      	  <div class="subsection">
+      <h4>
+        <a name="Structure of data"></a>
+        Structure of data
+      </h4>
+      				  <p>
+The file based database uses a number of files in the specified directory. Read/write synchronization is handled internally in the application and it is thus  not support to do manual changes to the files while the application server is running. It is normally also not supported to have multiple application servers running with SignServer using the same database directory.
+                    </p>
+	            </div>
+	      			      	  <div class="subsection">
+      <h4>
+        <a name="Migrating to/from database"></a>
+        Migrating to/from database
+      </h4>
+      				  <p>
+The recommended way of migrating either to or from an other database management system without setting up all worker configuration from scratch is do use admin command "dumpproperties" to dump the current configuration to a file and then on the new system use the "setproperties" followed by the reload command for every worker id.
+                    </p>
+	      				  <p>
+Notice: The dumpproperties command will not include the list of authorized clients so those will have to be setup again in the new system. Check with the admin command "listauthorizedclients" if you have any of those.
+                    </p>
+	            </div>
+	            </div>
+          			          <div class="section">
+    <h3>
+      <a name="SignServer TimeMonitor"></a>
+      SignServer TimeMonitor
+    </h3>
+      				  <div class="frame note">
+<div class="label">Note</div>
+<div class="content">
+The SignServer TimeMonitor is an Enterprise Edition feature.
+                </div>
+</div>
+	      				  <p>
+This is an external application that can be used together with the StatusReadingLocalComputerTimeSource for monitoring of the local time and
+informing SignServer about its state.
+                </p>
+	      				  <p>
+In SignServer, either a <a href="complete.en.html#StatusPropertiesWorker">StatusPropertiesWorker</a> or a <a href="complete.en.html#TimeMonitorManager">TimeMonitorManager</a> is configured for accepting the status updates. The later also supports dynamic configuration of the TimeMonitor.
+                </p>
+	      				  <p>
+For details see the <a href="../docs/TimeMonitor-Manual.pdf">TimeMonitor manual</a> (only available in Enterprise Edition).
+                </p>
+	            </div>
+          			          <div class="section">
+    <h3>
+      <a name="Installation Packages"></a>
+      Installation Packages
+    </h3>
+      				  <p>
+See res/install/debian/README.building for instructions for creating Debian packages for SignServer.
+                </p>
+	            </div>
+          			          <div class="section">
+    <h3>
+      <a name="Contributed Howtos"></a>
+      Contributed Howtos
+    </h3>
+      				  <p>
+Contributed howtos and installation guides can be found under doc/howtos.
+                </p>
+	      				  <ul>
+                    <li>
+Installation guide for SignServer 3.1 and RHEL5.3 / CentOS 5.3 by Christophe Sahut called signserver31-rhel5.txt.                        
+                    </li>
+                    <li>
+Installation package for SignServer 3.2.4 and Debian 6.0 contributed by Antoine Louiset called signserver32-debian6-by-antoine-louiset.zip.
+                    </li>
+                </ul>
+	            </div>
+          			          <div class="section">
+    <h3>
+      <a name="References"></a>
+      References
+    </h3>
+      				  <ul>
+                    <li>Java  (<a href="http://java.sun.com">http://java.sun.com</a>)</li>
+                    <li>JBoss  (<a href="http://www.jboss.org">http://www.jboss.org</a>)</li>
+                    <li>Apache Ant (<a href="http://ant.apache.org">http://ant.apache.org</a>)</li>
+                    <li>Bouncycastle (<a href="http://www.bouncycastle.org">http://www.bouncycastle.org</a>)</li>
+                    <li>RFC3161, Time-Stamp Protocol (TSP) (<a href="http://www.ietf.org">http://www.ietf.org</a>)</li>
+                </ul>
+	            </div>
+                </div>
+  
+    
+    </div>
+  </div>
+
+        <p class="copyright" style="text-align:center;">
+        Copyright &copy; 2007-2015 PrimeKey Solutions AB.
+        <script type="text/javascript" language="JavaScript"><!--
+                document.write(" - "+"Last Published: " + document.lastModified);
+              //  -->
+        </script>
+      </p>
+<!-- Piwik -->
+<script type="text/javascript">
+var pkBaseURL = (("https:" == document.location.protocol) ? "https://stat.primekey.se/piwik/" : "http://stat.primekey.se/piwik/");
+document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script type="text/javascript">
+try {
+var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 6);
+piwikTracker.trackPageView();
+piwikTracker.enableLinkTracking();
+} catch( err ) {}
+</script><noscript><p><img src="//stat.primekey.se/piwik/piwik.php?idsite=6" style="border:0;" alt="" /></p></noscript>
+<!-- End Piwik Tracking Code -->      
+    </body>
+  </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

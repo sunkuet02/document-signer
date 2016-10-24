@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+
+  <properties>
+    <title>Home</title>
+    <description>Powerful, flexible and secure digital signature software. PDF and XML Signing, Code Signing, Time Stamping and more.</description>
+  </properties>
+
+<body>
+  <section name="News and Info">
+<table class="promotion"><!--AC table for twitterwidget and Note area-->
+
+<tr>
+<td valign="top"><!--TWITTER WIDGET-->
+<div class="frame note" id="twitter" style="border:0;">
+
+<a class="twitter-timeline" width="260" height="310" data-dnt="true" href="https://twitter.com/primekeyPKI"  data-widget-id="344774465936306176">Tweets by @primekeyPKI</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+</div>
+</td>
+
+<td colspan="1" rowspan="1" valign="top" align="left">
+<div class="frame note">
+<div class="label pr">
+<a href="http://blog.ejbca.org?pk_campaign=ssorg&amp;pk_kwd=ejbca-tech-blog" target="blog">EJBCA Tech Blog</a>
+<a href="https://www.primekey.se/technologies/products-overview/pki-appliance/?pk_campaign=ssorg&amp;pk_kwd=pki-in-a-box" target="pk">PKI-in-a-box</a>
+<a href="https://www.primekey.se/technologies/products-overview/signserver-enterprise/?pk_campaign=ssorg&amp;pk_kwd=signserver_enterprise" target="pk">SignServer Enterprise</a>
+<a href="https://www.primekey.se/service-support/support/?pk_campaign=ssorg&amp;pk_kwd=enterprise_support" target="pk">Enterprise Support</a>
+</div>
+<div class="content first">
+<p><strong>SignServer 3.6.2 is now out!</strong>
+        <a href="download.html">Visit the download section to get SignServer.</a><br />
+  <span class="date"> Posted: 2014-11-28</span>
+ </p>
+    <p>
+        <strong>SignServer Enterprise 3.6.3 is now out!</strong><br/>
+         For entire non-community features, only available in SignServer Enterprise, see the section on <a href="features.html#Enterprise%20Edition%20features">"Enterprise Edition features" in the features list</a>.<br/>
+        <span class="date"> Posted: 2015-04-01</span>
+    </p>
+<p style="margin:0 0 .2em 0;"><strong>Main Features of SignServer!</strong></p>
+    <div>
+        <ul style="margin:.4em 0 0 0;">
+            <li><a href="manual/complete.en.html#SignServer%20Signers">Signers for different signature types</a></li>
+            <li>Multiple administration interfaces</li>
+            <li>Plug-in functionality</li>
+            <li>HSM support</li>
+        </ul>
+    </div>
+
+    <p><a href="features.html">See complete list of features</a><br />
+    <span class="date"> Posted: 2014-10-24</span>
+    </p>
+
+<!--
+    <p><strong>Stronger Safety with PrimeKey's Appliance!</strong>
+  By integrating secure hardware technology with the flexibility, reliability and feature set of SignServer Enterprise (or EJBCA Enterprise), 
+  the turnkey Appliance features an easy to install PKI-in-a-box, offering predictable costs and increased quality to your PKI solution. Check out the simpler, yet safer, <a href="https://www.primekey.se/technologies/products-overview/pki-appliance/?pk_campaign=ssorg&amp;pk_kwd=primekey-pki-appliance" target="pk">PrimeKey PKI Appliance</a>.
+        <ul>
+            <li>Code Signing Appliance (Authenticode, CMS, Plain)</li>
+            <li>Document Signing Appliance (PDF, XML, MRTD, ...)</li>
+            <li>Time Stamping Appliance</li>
+            <li>and more...</li>
+        </ul>
+  <br /><span class="date"> Posted: 2014-10-24</span>
+  </p>
+  -->
+    <p><strong>Authenticode Code Signing with SignServer!</strong>
+    <br/>
+    Read our Tech Blog on <a href="http://blog.ejbca.org" target="ejbcablog">Authenticode Code Signing with SignServer</a>, or 
+  <br/>
+  check out the turn-key <a href="https://www.primekey.se/technologies/products-overview/code-signing-appliance/" target="primekey">Code Signing Appliance</a>.
+  <br/>
+  <span class="date"> Posted: 2015-07-05</span>
+  </p>  
+  
+</div>
+</div>
+</td>
+</tr>
+</table>
+   </section>
+
+<section name="What is SignServer?">
+<p>
+SignServer is an application framework performing cryptographic operations for
+other applications. It's intended to be used in environments where keys are
+supposed to be protected in hardware but it isn't possible to connect such
+hardware to existing enterprise applications or where the operations are
+considered extra sensitive so the hardware has to be protected more carefully.
+Another usage is to provide a simplified method to provide signatures in
+different application managed from one location in the company.
+</p>
+<p> 
+SignServer is based on loadable modules that perform various operations.
+SignServer has ready to use modules for:
+</p>
+<ul>
+<li>TimeStamp Authority: RFC 3161 and MS authenticode compliant</li>
+<li>Signers for different documents: PDF, XML, XAdES (BES and T), ODF, OOXML</li>
+<li>ePassport Document Signer: MRTD Document Signer, Master List (CSCA ML) Signer</li>
+<li>Code Signing: Portable Executables (Authenticode)</li>
+<li>General purpose signers: CMS, Plain signatures</li>
+<li>Validators for documents: XML, XAdES-BES, XAdES-T</li>
+</ul>
+<p>The modules can be used using HTTP or web services interfaces. SignServer
+also contains functions for:</p>
+<ul>
+<li>Certificate Validation Service Framework for validating certificates using
+    CRLs or OCSP</li>
+</ul> 
+<p>
+SignServer has been designed for high-availability and can be clustered for
+maximum reliability.
+</p>
+<p>
+Different kinds of tokens can be used to perform sign and crypto operations:
+</p>
+<ul>
+<li>Soft token using JKS or PKCS12 files.</li>
+<li>PKCS#11 HSM tokens, such as the Utimaco CryptoServer, SafeNet ProtectServer
+    and Luna, Thales nShield or AEP KeyPer.</li>
+</ul>
+</section>
+
+<section name="What's new in SignServer 3.7?">
+<p>
+Some of the major new features in version 3.7 are:
+</p>
+<ul>
+    <li>Individual keys and certificates support</li>
+    <li>Initial support for building using Maven</li>
+    <li>GUI improvments</li>
+    <li>Upgraded dependencies</li>
+</ul>
+<p>
+More information can be found in the <a href="manual.html">manual</a> or in the
+<a href="https://jira.primekey.se/browse/DSS?report=com.atlassian.jira.plugin.system.project:changelog-panel">changelog</a>.
+</p>
+</section>
+
+<section name="Open Source Software">
+<p>
+SignServer is OSI Certified Open Source Software.
+OSI Certified is a certification mark of the Open Source Initiative.
+</p>
+<p>
+The source code of SignServer is hosted in a (mostly) public <a href="repositories.html">Subversion repository</a> and downloads including ones with the complete source code can be downloaded from <a href="https://sourceforge.net/projects/signserver/">SourceForge</a>.
+</p>
+</section>
+
+<section name="Support and development">
+    <p>Commercial support, development, integration and maintenance for SignServer is available through <a href="https://www.primekey.se/?pk_campaign=ssorg&amp;pk_kwd=footer_primekey-solutions" target="pk">PrimeKey Solutions</a>. 
+    </p>
+</section>
+
+</body>
+</document>
+

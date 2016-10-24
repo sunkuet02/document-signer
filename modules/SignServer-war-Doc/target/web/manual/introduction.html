@@ -1,0 +1,875 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+    <html lang="en">
+    <!-- GENERATED FILE, DO NOT EDIT, EDIT THE XML FILE IN xdocs INSTEAD! -->
+    <head>
+      <META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+        <title>SignServer - Open Source server side Digital Signatures - Introduction</title>
+                <link rel="shortcut icon" href="../images/pk-favIcon.png">
+        <link type="text/css" href="../page.css" rel="stylesheet">
+        </head>
+
+    <body>
+
+      <div class="logobar">
+          <table width="100%">
+            <tr>
+                <td width="15%"><a href="http://www.signserver.org/"><img src="../images/SignServer_pki_by_primekey.png" alt="Click the PKI-by-PrimeKey-SignServer-logo to visit www.signserver.org" title="The logo squares follow a given magnitude of primes, symbolizing the encryption method of PrimeKey PKI." width="245" height="76" style="border:none;"></a></td>
+                <td style="text-align:right">
+                    <div class="searchcaption">
+                            Search signserver.org for:<br>
+                            <form id="searchForm" target="_blank" onsubmit="q.value = query.value + ' site:signserver.org'" action="http://www.google.com/search" method="get">
+                                <input name="q" type="hidden">
+                                <div style="height: 18px; white-space: nowrap;">
+                                    <input name="query" id="searchBox" maxlength="255">
+                                    <input type="submit" value="Go">
+                                </div>
+                            </form>
+                    </div>
+                </td>
+        	<td id="services"><a href="https://www.primekey.se/service-support/support/?pk_campaign=ssorg&amp;pk_kwd=head_click-here" target="pk">Click here to learn about PrimeKey Support Services!</a></td>
+            </tr>
+          </table>
+      </div>
+
+                    
+  <div class="menucontainer">
+
+    <div class="menu">
+      <ul>
+              <li><div class="menuheader">General Information</div>
+          <ul>
+                            <li>
+                                    <a href="../index.html">Home</a>
+                                </li>
+                            <li>
+                                    <a href="../features.html">Features</a>
+                                </li>
+                            <li>
+                                    <a href="../architecture.html">Architecture</a>
+                                </li>
+                            <li>
+                                    <a href="../license.html">License</a>
+                                </li>
+                            <li>
+                                    <a href="../contact.html">Contact & Support</a>
+                                </li>
+                            <li>
+                                    <a href="../credits.html">Credits</a>
+                                </li>
+                            <li>
+                                    <a href="../installations.html">Reference installations</a>
+                                </li>
+                            <li>
+                                    <a href="../required.html">Required software</a>
+                                </li>
+                            <li>
+                                    <a href="http://sourceforge.net/projects/signserver/" class="externalLink">SourceForge project</a>
+                                </li>
+                      </ul>
+        </li>
+              <li><div class="menuheader">Documentation</div>
+          <ul>
+                            <li>
+                                    <a href="../manual.html">Manual</a>
+                                </li>
+                            <li>
+                                    <a href="../manual/installguide.html">Installation Guide</a>
+                                </li>
+                            <li>
+                                    <a href="https://jira.primekey.se/browse/DSS?report=com.atlassian.jira.plugin.system.project:changelog-panel" class="externalLink">Changelog</a>
+                                </li>
+                      </ul>
+        </li>
+              <li><div class="menuheader">Download</div>
+          <ul>
+                            <li>
+                                    <a href="../download.html">Latest releases</a>
+                                </li>
+                      </ul>
+        </li>
+              <li><div class="menuheader">Contributing</div>
+          <ul>
+                            <li>
+                                    <a href="../contributors.html">Contributors</a>
+                                </li>
+                            <li>
+                                    <a href="https://jira.primekey.se/" class="externalLink">Bug Database</a>
+                                </li>
+                            <li>
+                                    <a href="../repositories.html">Repositories</a>
+                                </li>
+                      </ul>
+        </li>
+              <li><div class="menuheader">Continous integration</div>
+          <ul>
+                            <li>
+                                    <a href="../hudson.html">Jenkins</a>
+                                </li>
+                      </ul>
+        </li>
+            
+        <li><div class="menuheader">Used Services</div>
+          <p><br>
+          <a href="http://sourceforge.net/projects/signserver/"><img style="border:none; margin-left:20px;" src="http://sourceforge.net/sflogo.php?group_id=190195&amp;type=13" width="120" height="30" alt="Get SignServer at SourceForge.net. Fast, secure and Free Open Source software downloads" /></a>
+          </p>
+        </li>
+        <li><div class="menuheader">PKI by PrimeKey</div>
+          <p>
+          <br>
+                <a href="https://www.primekey.se/technologies/products-overview/ejbca-enterprise/" target="ejbca">
+                <img style="border:none; margin-left:20px;" src="../images/ejbca_pki_by_primekey.png" alt="Click the PKI-by-PrimeKey-EJBCA-logo to visit www.ejbca.org"/>
+                </a>
+          </p>
+          <p>
+                <a href="https://www.primekey.se/" target="primekey">
+                <img style="border:none; margin-left:20px;" src="../images/logo-PrimeKey.png" alt="Click the PrimeKey logo to check out the products and services offered at www.primekey.se" title="The logo squares follow a given magnitude of primes, symbolizing the encryption method of PrimeKey PKI."/>
+                </a>
+          </p>
+        </li>
+      </ul>
+    </div>
+ 	
+  </div>
+  <div class="main">
+  <div class="content">
+                <div id="minitoc-area">
+            <ul class="chapterminitoc">
+                                    <li><a href="#ch_introduction">Introduction</a> 
+                                            
+                                                <ul class="minitoc">
+                                                            <li><a href="#Introduction/scope">Introduction/scope</a>
+                                                                                                        </li>
+                                                            <li><a href="#Major changes from previous versions">Major changes from previous versions</a>
+                                                                                                                 <ul class="minitoc">
+                                                                                            <li><a href="#Changes between version 3.6 and 3.7">Changes between version 3.6 and 3.7</a></li>
+                                                                                            <li><a href="#Changes between version 3.5 and 3.6">Changes between version 3.5 and 3.6</a></li>
+                                                                                            <li><a href="#Changes between version 3.4 and 3.5">Changes between version 3.4 and 3.5</a></li>
+                                                                                            <li><a href="#Changes between version 3.3 and 3.4">Changes between version 3.3 and 3.4</a></li>
+                                                                                            <li><a href="#Changes between version 3.2 and 3.3">Changes between version 3.2 and 3.3</a></li>
+                                                                                            <li><a href="#Changes between version 3.1 and 3.2">Changes between version 3.1 and 3.2</a></li>
+                                                                                            <li><a href="#Changes between version 3.0 and 3.1">Changes between version 3.0 and 3.1</a></li>
+                                                                                            <li><a href="#Changes between version 2 and 3">Changes between version 2 and 3</a></li>
+                                                                                            <li><a href="#Changes between version 1 and 2">Changes between version 1 and 2</a></li>
+                                                                                      </ul>
+                                                                    </li>
+                                                            <li><a href="#Terms Used in This Document">Terms Used in This Document</a>
+                                                                                                        </li>
+                                                            <li><a href="#Overall Architecture">Overall Architecture</a>
+                                                                                                        </li>
+                                                    </ul>
+
+                    </li>
+
+
+                             </ul>
+                            <a href="complete.en.html">Complete manual</a>
+                    </div>
+        
+            <div class="chapter">
+    <h2>
+      <a name="ch_introduction"></a>
+      Introduction
+    </h2>
+      			          <div class="section">
+    <h3>
+      <a name="Introduction/scope"></a>
+      Introduction/scope
+    </h3>
+      				  <p>
+The SignServer is an application framework performing cryptographic operations
+for other applications. It's intended to be used in environments where keys are
+supposed to be protected in hardware but it isn't possible to connect such
+hardware to existing enterprise applications or where the operations are
+considered extra sensitive so the hardware have to protected more carefully.
+Another usage is to provide a simplified method to provide signatures in
+different application managed from one location in the company.
+                </p>
+	      				  <p>
+The SignServer have been designed for high-availability and can be clustered for maximum
+reliability.
+                </p>
+	      				  <p>
+The SignServer comes with a RFC 3161 compliant Time-Stamp signer serving requests through
+HTTP or client-authenticated HTTPS. A MRTD (Machine Readable Travel Document, i.e. electronic
+passport) signer. A PDF signer that adds a signature automatically to a uploaded PDF document,
+ODF signer that adds a signature automatically to uploaded ODF document, OOXML Signer that
+adds signature automatically to a uploaded OOXML document, and a validation service used to
+lookup the validation of a given certificate.
+                </p>
+	      				  <p>
+                    <a href="../images/architecture.png">
+<img ALT="architecture" align="middle" border="0" height="305" src="../images/architecture.png" width="641" />
+</a>
+<br />
+                    Drawing 1: Overview of a possible set up of a highly available SignServer solution
+                </p>
+	            </div>
+          			          <div class="section">
+    <h3>
+      <a name="Major changes from previous versions"></a>
+      Major changes from previous versions
+    </h3>
+      			      	  <div class="subsection">
+      <h4>
+        <a name="Changes between version 3.6 and 3.7"></a>
+        Changes between version 3.6 and 3.7
+      </h4>
+      				  <ul>
+                        <li>Individual keys and certificates support</li>
+                        <li>PKCS#11 libraries used by crypto tokens must be defined at deploy-time</li>
+                        <li>Initial support for building using Maven</li>
+                    </ul>
+	            </div>
+	      			      	  <div class="subsection">
+      <h4>
+        <a name="Changes between version 3.5 and 3.6"></a>
+        Changes between version 3.5 and 3.6
+      </h4>
+      				  <ul>
+                        <li>Underlaying CESeCore library upgraded to version 6.1</li>
+                        <li>Separation between community and enterprise editions</li>
+                        <li>Separate worker and crypto tokens</li>
+                        <li>New application: SignServer TimeMonitor (enterprise edition)</li>
+                        <li>Querying of database archive from WS and GUI</li>
+                        <li>HSM keep alive service</li>
+                    </ul>
+	            </div>
+	      			      	  <div class="subsection">
+      <h4>
+        <a name="Changes between version 3.4 and 3.5"></a>
+        Changes between version 3.4 and 3.5
+      </h4>
+      				  <ul>
+                        <li>Support for JBoss AS 7.1, JBoss EAP 6.1 and GlassFish 3.1</li>
+                        <li>Support for MariaDB</li>
+                        <li>Support for JDK 7</li>
+                        <li>All worker configuration can now be done from the Admin GUI</li>
+                        <li>Document signer and validator for XAdES-BES and XAdES-T</li>
+                        <li>Support for different signature algorithms in XML signers</li>
+                        <li>Various AdminGUI/remote administration improvements</li>
+                        <li>Support for the group key framework has been discontinued</li>
+                    </ul>
+	            </div>
+	      			      	  <div class="subsection">
+      <h4>
+        <a name="Changes between version 3.3 and 3.4"></a>
+        Changes between version 3.3 and 3.4
+      </h4>
+      				  <ul>
+<!-- New major features -->
+                        <li>Secure logging to database from CESeCore</li>
+                        <li>Query audit log from CLI, GUI or over web services</li>
+                        <li>See ChangeLog.txt and RELASE_NOTES.txt for details.</li>
+                    </ul>
+	            </div>
+	      			      	  <div class="subsection">
+      <h4>
+        <a name="Changes between version 3.2 and 3.3"></a>
+        Changes between version 3.2 and 3.3
+      </h4>
+      				  <ul>
+<!-- New major features -->
+                        <li>New client web services API</li>
+                        <li>MS Authenticode time-stamp signer</li>
+                        <li>Support for archiving of time-stamp requests</li>
+                        <li>Logging of all changes to service components</li>
+                        <li>Stress test tool for measuring performance</li>
+                        <li>Dropped support for JBoss 4.2.x.</li>
+                        <li>Dropped support for cluster class loader</li>
+                        <li>Dropped support for WSRA</li>
+                        <li>Upgrade of cryptographic library</li>
+                        <li>Many more minor changes and bug fixes. See 
+                            ChangeLog.txt and RELASE_NOTES.txt for details.</li>
+                    </ul>
+	            </div>
+	      			      	  <div class="subsection">
+      <h4>
+        <a name="Changes between version 3.1 and 3.2"></a>
+        Changes between version 3.1 and 3.2
+      </h4>
+      				  <ul>
+<!-- New major features -->
+                        <li>
+A new administration web service (WS) for remote administration of SignServer.
+                        </li>
+
+                        <li>
+A new administration GUI desktop application for managing workers. Supports
+key generation and both local and remote administration.
+                        </li>
+
+                        <li>
+A new client command line interface (CLI) for requesting signing and validation.
+                        </li>
+
+<!-- New support -->
+                        <li>
+Support for GlassFish Server 2.1.1.
+                        </li>
+                        <li>
+Support for JBoss Application Server 5.1.
+                        </li>
+
+                        <li>
+Support for Oracle Database.
+                        </li>
+
+<!-- New workers -->
+                        <li>
+Worker renewing signers by generating new keys and sending certificate requests
+to EJBCA.
+                        </li>
+
+<!-- Improvements -->
+                        <li>
+Better audit and transaction logging.
+                        </li>
+                        <li>
+New build scripts and project structure with the goal of decouple the different
+SignServer modules and sub-projects and simplify future development.
+                        </li>
+                        <li>
+Front page listing all demo web pages.
+                        </li>
+
+<!-- Other -->
+                        <li>
+The bundled SMTP server and MailSigner build of SignServer has been removed.
+                        </li>
+
+                    </ul>
+	            </div>
+	      			      	  <div class="subsection">
+      <h4>
+        <a name="Changes between version 3.0 and 3.1"></a>
+        Changes between version 3.0 and 3.1
+      </h4>
+      				  <ul>
+                        <li>
+A new Cluster Class Loader, simplifying the management of customized workers in a
+cluster. All the resource data including the classes themselves are stored in database and
+accessible from all nodes simultaneously. It is also possible to run multiple versions of the
+same worker in the same SignServer cluster, this is useful when migrating a worker to new
+code since both the old and new worker can be run at the same time.
+                        </li>
+                        <li>
+PDF Signer, Time-Stamp Authority and MRTD and their specific libraries have the
+possibility to build into separate module archives (MAR files) that have to be uploaded to
+the SignServer installation before usage, if the cluster classloader is enabled (default).
+                        </li>
+                        <li>
+Installation packages for Linux/Windows of both SignServer and MailSigner using
+generation software from Bitrock.
+                        </li>
+                        <li>
+New extended module for signing ePassports: MRTD-SOD.
+                        </li>
+                        <li>
+New modules for signing and validating XML documents.
+                        </li>
+                        <li>
+A new ODF Signer module that adds signature to ODF documents, such as : odt,ods,odt
+(tested with OpenOffice.org 3.1.0). Simple web page is added where ODF document can be
+uploaded for signing, and resulted signed document downloaded.
+                        </li>
+                        <li>
+A new OOXML Signer Module that adds signature to Office Open XML documents, such as
+docx,xlsx,pptx (tested with Microsoft Office 2007).Simple web page is added where open
+office xml document can be uploaded for signing, and resulted signed document
+downloaded.
+                        </li>
+                        <li>
+Validators for several document types as well.
+                        </li>
+                        <li>
+Java 5 is no longer supported.
+                        </li>
+                        <li>
+For minor changes see the change log at https://jira.primekey.se
+                        </li>
+                </ul>
+	            </div>
+	      			      	  <div class="subsection">
+      <h4>
+        <a name="Changes between version 2 and 3"></a>
+        Changes between version 2 and 3
+      </h4>
+      				  <ul>
+                        <li>
+Complete refactorisation of J2EE from EJB2 to EJB3 to simplify further development.
+                        </li>
+                        <li>
+Renamed component "Service" to "TimedService" since 3.0 supports other services.
+                        </li>
+                        <li>
+A "TimedService" can now be configured with a 'cron-like' settings to have services
+executed in other than just periodical intervals.
+                        </li>
+                        <li>
+A Validation Service API used to validate certificate from different issuers. The Validation
+Service API have it's own easy to use Web Service used to integrate with other platforms.
+A Group Key Service API used to generate and manage group keys, symmetric or
+asymmetric.
+                        </li>
+                        <li>
+Possibility to have customized authorization of requests, not just the built in client certificate
+authorization list.
+                        </li>
+                        <li>
+The name SignToken is changed to CryptoToken and introduced a new concept of
+ExtendedCryptoToken that supports symmetric operations.
+                        </li>
+                        <li>
+The RMI-SSL interface have been removed and replaced with a JAX-WS interface with a
+simple client framework supporting different load-balance or high availability policies.
+                        </li>
+                        <li>
+All request data have changed from serialization to externalization to be easier to translate to
+other platforms.
+                        </li>
+                        <li>
+A completely new MailSigner API based upon the JAMES SMTP server to perform
+automated cryptographic operations on e-mails very similar to the plug-ins for the
+SignServer.
+                        </li>
+                        <li>
+Java 1.4 is no longer supported.
+                        </li>
+                        <li>
+A lot of new JUnit tests in the test suite.
+                        </li>
+                        <li>
+A PDF Signer that can add a signature to a PDF document through a simple HTML
+interface.
+                        </li>
+                        <li>
+PKCS11 Crypto Token to connect to different PKCS11 implementations.
+                        </li>
+                    </ul>
+	            </div>
+	      			      	  <div class="subsection">
+      <h4>
+        <a name="Changes between version 1 and 2"></a>
+        Changes between version 1 and 2
+      </h4>
+      				  <ul>
+                        <li>
+  signserver_server.property file have been removed and replaced with a global configuration
+  store.
+                        </li>
+                        <li>
+  It is now possible to dynamically add and remove available signers
+                        </li>
+                        <li>
+  A new type of component, "Service" that is run on a timely basis, used to perform
+  maintenance or report generation.
+                        </li>
+                        <li>
+  Improved cluster deployment functionality.
+                        </li>
+                        <li>
+  New CLI tools to batch configure the SignServer, and to backup a current configuration.
+                        </li>
+                        <li>
+  This makes it possible to set-up a configuration in test environment, dump the configuration
+  and configure the same it in production.
+                        </li>
+                    </ul>
+	            </div>
+	            </div>
+          			          <div class="section">
+    <h3>
+      <a name="Terms Used in This Document"></a>
+      Terms Used in This Document
+    </h3>
+      				        <table class="ForrestTable" cellspacing="1" cellpadding="4">
+              <tr>
+                      <th colspan="1" rowspan="1"
+      valign="top" align="left">
+          Term
+      </th>
+                          <th colspan="1" rowspan="1"
+      valign="top" align="left">
+          Explanation
+      </th>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          Signer
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          A Processable service performing signatures upon requests. This could be a ready made signer or a custom developed one.
+      </td>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          Crypto Token (former Sign Token)
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          A Crypto Token is a name for the entity containing the private key and is responsible for its cryptographic operations. Each worker can contain a crypto token or reference a crypto token from an other worker.
+      </td>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          Crypto Worker
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          Is a worker not performing any operations on its own and instead only hosts a Crypto Token that can be referenced by other workers.
+      </td>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          Extended Crypto Token
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          An enhanced Crypto Token with support for symmetric key operations.
+      </td>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          PKCS11CryptoToken
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          A Crypto Token able to communicate with Hardware Security Modules through the standard PKCS11 interface.
+      </td>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          TimedService (former Service)
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          A TimedService is a task that is run on a timely basis, performing maintenance tasks like changing active key or generate a report.
+      </td>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          Worker
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          A common name for Processable (Signer or other type of service) and TimedService
+      </td>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          Processable
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          A type of worker that is used to process requests, i.e. not a TimedService.
+      </td>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          Worker Configuration
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          Each Worker can be configured with properties specific for that worker. There are two sets of worker configuration one "Active" that is used by the signer and one "current" which is the one configured by the administrator. The current configuration isn't used in production until the administrator issued the reload command. This makes it possible for the administrator to configure multiple properties and double-check them before they are actually used.
+      </td>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          Global Configuration Store
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          Is a dynamic store used to define available Workers and their Crypto Tokens. But other data that needs to be read globally could be set there as well. The global configuration properties are activated immediately. There are two different scopes for the store data, Global Scope and Node Scope.
+      </td>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          Global Scope
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          Data stored in the global configuration that can be read by all nodes in the cluster.
+      </td>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          Node Scope
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          Data that is node specific and can only be read within the same node.
+      </td>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          Worker Id
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          Unique identifier of a worker, an integer larger than 0
+      </td>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          Worker Name
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          A name used as a human readable synonym for a Worker Id
+      </td>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          Validation Service 
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          A Processable that checks if a certificate is valid or not. Have a Default Validation Service implementation that should work in most cases.<br />A Validation Service should have one or more Validators configured.
+      </td>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          Certificate Validator (former Validator)
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          A Certificate Validator is responsible for checking the status of one or more issuer's certificates. This could be as an OCSP client or a CRL checker or just looking up the status in a database.
+      </td>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          Document Validator
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          A Document Validator is validating a signed document by checking its signature and corresponding certificate(s) and returns the validation result.
+      </td>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          Authorizer
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          An interface that enables developers to integrate the authorization parts with existing authorization systems of who is authorized to perform requests to a Processable.
+      </td>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          Time Stamp Signer
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          A Signer that can be used to set up a Timestamp Authority according to RFC 3161. 
+      </td>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          MRTD Signer
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          A Signer that performs signatures of MRTD (Machine Readable Travel Documents, i.e. Electronic Passports) blobs.
+      </td>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          MRTD SOD Signer
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          A Signer that creates the complete security object (SOd) for a MRTD (Machine Readable Travel Document, i.e. Electronic Passports) by signing the data groups.
+      </td>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          PDF Signer
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          A Signer that attaches an electronic signature signature to a PDF document.
+      </td>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          XML Signer
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          A Signer that puts in an enveloped signature in XML documents (XMLDSig)
+      </td>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          XML Validator
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          A Document Validator that validates signed XML documents (XMLDSig)
+      </td>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          XAdES Signer
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          A Signer signing XML documents using XAdES
+      </td>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          ODF Signer
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          A Signer that attaches an electronic signature to an ODF document. ODF Signer is tested with documents produced by <a href="http://www.openoffice.org">OpenOffice.org v 3.1.0</a>
+
+      </td>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          ODF (Open Document Format) Document
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          XML-based file format for representing electronic documents such as spreadsheets, charts, presentations and word processing documents. <a href="http://en.wikipedia.org/wiki/OpenDocument">more...</a>
+
+      </td>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          OOXML (Office Open XML) Document
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          XML-based file format  for representing spreadsheets, charts, presentations and word processing documents. <a href="http://en.wikipedia.org/wiki/Office_Open_XML">more...</a>
+
+      </td>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          OOXML Signer
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          A Signer that attaches an electronic signature to an OOXML document.
+      </td>
+      </tr>
+                  <tr>
+                      <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          Archiver
+      </td>
+                          <td colspan="1" rowspan="1"
+      valign="top" align="left">
+          
+Implementation handling archiving of a worker's response and/or request by storing it in a database or similar.
+                        
+      </td>
+      </tr>
+        </table>
+                </div>
+          			          <div class="section">
+    <h3>
+      <a name="Overall Architecture"></a>
+      Overall Architecture
+    </h3>
+      				  <p>
+The SignServer is a framework designed to perform different kind of cryptographic operations for different applications.
+                    </p>
+	      				  <p>
+Since the 3.0 version there are three kind of processable services. Signers (used to sign or in other way  process requested data). Validation Services used to verify the validity of a certificate against a set of backed issuers. The validation service can be used to simply the integration of PKIs into existing applications. In addition to processable services there also exists another concept called Timed Service (called just 'service' in 2.0 edition) which are plug-ins run at defined intervals performing maintenance or reporting routines.
+                    </p>
+	      				  <p>
+The main way of communicating with the SignServer is through HTTP (web server) interface. There is also a web services (SOAP WS) interface available but that uses a special binary format for encoding the requests and responses.
+                    </p>
+	      				  <p>
+For an overview of the different concepts in the SignServer see illustration 1. The base component is called Worker which is assigned an id, optionally a name and a configuration. A sub component is a Processable which receives and processes requests. A Processable (optionally) have access to a cryptographic token (CryptoToken) in charge of managing the keys of a Processable. A CryptoToken can be either software or hardware based.
+                    </p>
+	      				  <p>
+The applications i administrated through a command-line interface, where the properties and access control can be configured.
+                    </p>
+	      				  <p>
+One SignServer can have multiple services for different purposes.
+                    </p>
+	      				  <p>
+                        <a href="../docs/SignServer_Manual_3_0_odt_18c42972.png">
+<img align="middle" alt="SignServer components" border="0" height="252" src="../docs/SignServer_Manual_3_0_odt_18c42972.png" width="493" />
+</a>
+<br />
+                        Illustration 1: Components in the SignServer project
+                    </p>
+	            </div>
+                </div>
+  
+    
+    </div>
+  </div>
+
+        <p class="copyright" style="text-align:center;">
+        Copyright &copy; 2007-2015 PrimeKey Solutions AB.
+        <script type="text/javascript" language="JavaScript"><!--
+                document.write(" - "+"Last Published: " + document.lastModified);
+              //  -->
+        </script>
+      </p>
+<!-- Piwik -->
+<script type="text/javascript">
+var pkBaseURL = (("https:" == document.location.protocol) ? "https://stat.primekey.se/piwik/" : "http://stat.primekey.se/piwik/");
+document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script type="text/javascript">
+try {
+var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 6);
+piwikTracker.trackPageView();
+piwikTracker.enableLinkTracking();
+} catch( err ) {}
+</script><noscript><p><img src="//stat.primekey.se/piwik/piwik.php?idsite=6" style="border:0;" alt="" /></p></noscript>
+<!-- End Piwik Tracking Code -->      
+    </body>
+  </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
