@@ -15,15 +15,7 @@ package org.signserver.server.cryptotokens;
 import org.signserver.common.*;
 
 import java.io.ByteArrayInputStream;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.KeyFactory;
-import java.security.KeyStore;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
-import java.security.NoSuchProviderException;
-import java.security.PrivateKey;
-import java.security.PublicKey;
-import java.security.Security;
+import java.security.*;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
@@ -38,6 +30,11 @@ import java.util.Properties;
 import org.bouncycastle.util.encoders.Base64;
 import org.cesecore.util.query.QueryCriteria;
 import org.signserver.server.IServices;
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+
 import static org.signserver.server.cryptotokens.HardCodedCryptoTokenAliases.KEY_ALIAS_1;
 import static org.signserver.server.cryptotokens.HardCodedCryptoTokenAliases.KEY_ALIAS_2;
 import static org.signserver.server.cryptotokens.HardCodedCryptoTokenAliases.KEY_ALIAS_3;
@@ -330,7 +327,12 @@ public class HardCodedCryptoToken extends BaseCryptoToken {
     public int getCryptoTokenStatus() {
         return WorkerStatus.STATUS_ACTIVE;
     }
-    
+
+    @Override
+    public byte[] decryptByteData(String alias, String authcode, byte[] encryptedData, IServices services) throws NoSuchAlgorithmException, NoSuchPaddingException, BadPaddingException, IllegalBlockSizeException, CryptoTokenOfflineException, UnrecoverableKeyException, KeyStoreException, InvalidKeyException {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
     @Override
     public int getCryptoTokenStatus(final IServices services) {
         return getCryptoTokenStatus();
@@ -497,6 +499,11 @@ public class HardCodedCryptoToken extends BaseCryptoToken {
     public List<Certificate> getCertificateChain(String alias) throws CryptoTokenOfflineException {
         checkAlias(alias);
         return getCertificateChain(PURPOSE_SIGN);
+    }
+
+    @Override
+    public byte[] decryptByteData(String alias, String pin, byte[] encryptedData) throws NoSuchPaddingException, NoSuchAlgorithmException, BadPaddingException, IllegalBlockSizeException, CryptoTokenOfflineException, UnrecoverableKeyException, KeyStoreException, InvalidKeyException {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override

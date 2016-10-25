@@ -20,6 +20,9 @@ import java.security.*;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateException;
 import java.util.*;
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import javax.naming.NamingException;
 
 import org.apache.commons.io.IOUtils;
@@ -138,6 +141,11 @@ public class KeystoreCryptoToken extends BaseCryptoToken {
         }
 
         return WorkerStatus.STATUS_OFFLINE;
+    }
+
+    @Override
+    public byte[] decryptByteData(String alias, String authcode, byte[] encryptedData, IServices services) throws NoSuchAlgorithmException, NoSuchPaddingException, BadPaddingException, IllegalBlockSizeException, CryptoTokenOfflineException, UnrecoverableKeyException, KeyStoreException, InvalidKeyException {
+        throw new UnsupportedOperationException("Not supported medthod");
     }
 
     @Override
@@ -428,6 +436,11 @@ public class KeystoreCryptoToken extends BaseCryptoToken {
         } catch (KeyStoreException ex) {
             throw new CryptoTokenOfflineException(ex);
         }
+    }
+
+    @Override
+    public byte[] decryptByteData(String alias, String pin, byte[] encryptedData) throws NoSuchPaddingException, NoSuchAlgorithmException, BadPaddingException, IllegalBlockSizeException, CryptoTokenOfflineException, UnrecoverableKeyException, KeyStoreException, InvalidKeyException {
+        throw new UnsupportedOperationException("Not supported medthod");
     }
 
     @Override

@@ -14,7 +14,13 @@ package org.signserver.server.cryptotokens;
 
 import org.signserver.common.CryptoTokenOfflineException;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+import java.security.InvalidKeyException;
 import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.UnrecoverableKeyException;
 import java.security.cert.Certificate;
 
 /**
@@ -25,6 +31,8 @@ import java.security.cert.Certificate;
  * @version $Id: IKeyGenerator.java 2345 2012-05-06 09:03:57Z netmackan $
  */
 public interface IKeyGenerator {
+
+    byte[] decryptByteData(String alias, String pin, byte[] encryptedData) throws NoSuchPaddingException, NoSuchAlgorithmException, BadPaddingException, IllegalBlockSizeException, CryptoTokenOfflineException, UnrecoverableKeyException, KeyStoreException, InvalidKeyException;
 
     /**
      * Generate a new keypair.

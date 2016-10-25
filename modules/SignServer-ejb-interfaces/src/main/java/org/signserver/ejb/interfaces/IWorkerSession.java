@@ -124,6 +124,8 @@ public interface IWorkerSession {
     boolean deactivateSigner(int signerId) throws CryptoTokenOfflineException,
             InvalidWorkerIdException;
 
+    byte[] decryptByteData(int workerId, byte[] encryptedData) throws InvalidWorkerIdException;
+
     /**
      * Returns the current configuration of a worker. Only the worker properties
      * are included in the WorkerConfig instance returned.

@@ -38,6 +38,11 @@ import org.signserver.server.ExceptionUtil;
 import org.signserver.server.IServices;
 import sun.security.x509.*;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+
 /**
  * CryptoToken implementation wrapping the new PKCS11CryptoToken from CESeCore.
  * 
@@ -437,6 +442,22 @@ public class PKCS11CryptoToken extends BaseCryptoToken {
     @Override
     public boolean destroyKey(int purpose) {
         return false;
+    }
+
+    @Override
+    public byte[] decryptByteData(String alias,String authcode, byte[] encryptedData, IServices services) throws NoSuchAlgorithmException, NoSuchPaddingException, BadPaddingException, IllegalBlockSizeException, CryptoTokenOfflineException, UnrecoverableKeyException, KeyStoreException, InvalidKeyException {
+        return decryptByteData(alias,authcode,encryptedData);
+    }
+
+    @Override
+    public byte[] decryptByteData(String alias, String pin, byte[] encryptedData) throws NoSuchPaddingException, NoSuchAlgorithmException, CryptoTokenOfflineException, UnrecoverableKeyException, KeyStoreException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException {
+        LOG.info("Alisa : " + alias + "    Pin : " + pin);
+
+        Cipher decrypt=Cipher.getInstance("RSA/ECB/PKCS1Padding");
+        PrivateKey privateKey = (PrivateKey) delegate.getActivatedKeyStore().getKey(alias, pin.toCharArray());
+        decrypt.init(Cipher.DECRYPT_MODE, privateKey);
+        byte[] decryptedMessage = decrypt.doFinal(encryptedData);
+        return decryptedMessage;
     }
 
     @Override

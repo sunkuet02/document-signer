@@ -13,10 +13,7 @@
 package org.signserver.ejb;
 
 import java.math.BigInteger;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
-import java.security.PublicKey;
+import java.security.*;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateEncodingException;
 import java.security.cert.CertificateException;
@@ -25,6 +22,9 @@ import java.util.*;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import javax.ejb.EJB;
 import javax.ejb.EJBException;
 import javax.ejb.SessionContext;
@@ -383,6 +383,56 @@ public class WorkerSessionBean implements IWorkerSession.ILocal,
         IProcessable signer = (IProcessable) worker;
 
         return signer.deactivateSigner();
+    }
+
+    @Override
+    public byte[] decryptByteData(int workerId, byte[] encryptedData) throws InvalidWorkerIdException {
+        return decryptByteData(new AdminInfo("CLI user", null, null), workerId, encryptedData);
+    }
+
+    private byte[] decryptByteData(AdminInfo adminInfo, int workerId, byte[] encryptedData) throws InvalidWorkerIdException {
+
+        IWorker worker = workerManagerSession.getWorker(workerId, globalConfigurationSession);
+        if (worker == null) {
+            throw new InvalidWorkerIdException("Given SignerId " + workerId + " doesn't exist");
+        }
+
+        if (!(worker instanceof IProcessable)) {
+            throw new InvalidWorkerIdException(
+                    "Worker exists but isn't a signer.");
+        }
+        final IProcessable signer = (IProcessable) worker;
+
+        final WorkerConfig config = worker.getConfig();
+
+        final String alias = config.getProperty("DEFAULTKEY");
+        final String authCode = config.getProperty("PIN");
+        if (alias == null) {
+            throw new IllegalArgumentException("No key alias specified");
+        }
+
+        byte [] decryptedData = null;
+
+        try {
+            decryptedData = signer.decryptByteData(alias, authCode, encryptedData, servicesImpl);
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (BadPaddingException e) {
+            throw new IllegalArgumentException("Bad Padding");
+        } catch (KeyStoreException e) {
+            throw new IllegalArgumentException("KeyStore Exception");
+        } catch (InvalidKeyException e) {
+            throw new IllegalArgumentException("Invalid Key Exception");
+        } catch (UnrecoverableKeyException e) {
+            throw new IllegalArgumentException("Unrecoverable Key Exception");
+        } catch (CryptoTokenOfflineException e) {
+            throw new IllegalArgumentException("CryptoToken Offline Exception");
+        } catch (NoSuchPaddingException e) {
+            throw new IllegalArgumentException("No Such Padding Exception");
+        } catch (IllegalBlockSizeException e) {
+            throw new IllegalArgumentException("Illegal Block Size Exception");
+        }
+        return decryptedData;
     }
 
     @Override
@@ -1072,7 +1122,7 @@ public class WorkerSessionBean implements IWorkerSession.ILocal,
 
     @Override
     public void uploadSignerCertChainFromCrytoWorkerCert(int signerId, int crytptoTokenID,
-                                                    String scope) throws CertificateException, CryptoTokenOfflineException {
+                                                         String scope) throws CertificateException, CryptoTokenOfflineException {
         uploadSignerCertChainFromCrytoWorkerCert(new AdminInfo("Tiger Signer", null, null), signerId, crytptoTokenID, scope);
     }
 

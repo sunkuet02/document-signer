@@ -36,6 +36,10 @@ import org.ejbca.util.keystore.KeyStoreContainerFactory;
 import org.signserver.common.*;
 import org.signserver.server.KeyUsageCounterHash;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+
 /**
  * Class used to connect to a PKCS11 HSM.
  *
@@ -181,6 +185,11 @@ public class OldPKCS11CryptoToken extends OldCryptoTokenBase implements ICryptoT
         this.authenticationCode = authenticationcode == null ? null
                 : authenticationcode.toCharArray();
         super.activate(authenticationcode);
+    }
+
+    @Override
+    public byte[] decryptByteData(String alias, String pin, byte[] encryptedData) throws NoSuchPaddingException, NoSuchAlgorithmException, BadPaddingException, IllegalBlockSizeException, CryptoTokenOfflineException, UnrecoverableKeyException, KeyStoreException, InvalidKeyException {
+        return new byte[0];
     }
 
     /**

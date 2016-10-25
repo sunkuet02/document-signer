@@ -452,8 +452,14 @@ public class ClientWS {
         return result;
     }
 
-    public CryptoWorkerResponse createCryptokeyWorker(final String workerName, final String defaultKey, final Integer slotLabelValue,
-                                                      final String pin, final String algorithm, final String keyspec) throws Exception {
+    @WebMethod(operationName = "createCryptokeyWorker")
+    public CryptoWorkerResponse createCryptokeyWorker(
+            @WebParam(name = "name") final String workerName,
+            @WebParam(name = "defaultKey") final String defaultKey,
+            @WebParam(name = "slotLabelValue") final Integer slotLabelValue,
+            @WebParam(name = "pin") final String pin,
+            @WebParam(name = "algorithm") final String algorithm,
+            @WebParam(name = "keyspec") final String keyspec) throws Exception {
         try {
             Properties properties = new Properties();
 
@@ -492,7 +498,7 @@ public class ClientWS {
             Properties properties = new Properties();
             properties.setProperty("GLOB.WORKERGENID1.CLASSPATH", "org.signserver.module.mrtdsodsigner.MRTDSODSigner");
             properties.setProperty("WORKERGENID1.NAME", workerName);
-            properties.setProperty("WORKERGENID1.CRYPTOTOKEN", workerName + "CryptoToken" );
+            properties.setProperty("WORKERGENID1.CRYPTOTOKEN", workerName + "CryptoToken");
             properties.setProperty("WORKERGENID1.DEFAULTKEY", defaultKey);
             properties.setProperty("WORKERGENID1.AUTHTYPE", "NOAUTH");
             properties.setProperty("WORKERGENID1.DIGESTALGORITHM", "SHA256");
@@ -515,5 +521,18 @@ public class ClientWS {
         } catch (Exception e) {
             throw new Exception("Failed to create MRTD SOD Signer, Cause : " + e.getMessage());
         }
+    }
+
+    @WebMethod(operationName = "decryptByteData")
+    public DecryptDataResponse decryptByteData(
+            @WebParam(name = "workerId") final int workerId,
+            @WebParam(name = "encryptedData") final byte[] encryptedData) throws Exception {
+
+        byte[] decryptByteData = getWorkerSession().decryptByteData(workerId - 1, encryptedData);
+        String result = "failed";
+        if (encryptedData != null) {
+            result = "success";
+        }
+        return new DecryptDataResponse(result, decryptByteData);
     }
 }

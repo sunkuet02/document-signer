@@ -13,15 +13,7 @@
 package org.signserver.server;
 
 import java.io.UnsupportedEncodingException;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.KeyStore;
-import java.security.KeyStoreException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.security.PrivateKey;
-import java.security.Provider;
-import java.security.PublicKey;
-import java.security.Security;
+import java.security.*;
 import java.security.cert.Certificate;
 import java.util.Arrays;
 import java.util.Collection;
@@ -31,6 +23,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import javax.persistence.EntityManager;
 
 import org.apache.log4j.Logger;
@@ -599,6 +594,11 @@ public abstract class BaseProcessable extends BaseWorker implements IProcessable
         }
 
         @Override
+        public byte[] decryptByteData(String alias, String pin, byte[] encryptedData) throws NoSuchPaddingException, NoSuchAlgorithmException, BadPaddingException, IllegalBlockSizeException, CryptoTokenOfflineException, UnrecoverableKeyException, KeyStoreException, InvalidKeyException {
+            return delegate.decryptByteData(alias,pin,encryptedData);
+        }
+
+        @Override
         public void generateKey(String keyAlgorithm, String keySpec, String alias, char[] authCode) throws CryptoTokenOfflineException, IllegalArgumentException {
             delegate.generateKey(keyAlgorithm, keySpec, alias, authCode);
         }
@@ -697,8 +697,18 @@ public abstract class BaseProcessable extends BaseWorker implements IProcessable
         }
 
         @Override
+        public byte[] decryptByteData(String alias, String authcode, byte[] encryptedData, IServices services) throws NoSuchAlgorithmException, NoSuchPaddingException, BadPaddingException, IllegalBlockSizeException, CryptoTokenOfflineException, UnrecoverableKeyException, KeyStoreException, InvalidKeyException {
+            return delegate.decryptByteData(alias,authcode,encryptedData,services);
+        }
+
+        @Override
         public int getCryptoTokenStatus(IServices services) {
             return delegate.getCryptoTokenStatus(services);
+        }
+
+        @Override
+        public byte[] decryptByteData(String alias, String pin, byte[] encryptedData) throws NoSuchPaddingException, NoSuchAlgorithmException, BadPaddingException, IllegalBlockSizeException, CryptoTokenOfflineException, UnrecoverableKeyException, KeyStoreException, InvalidKeyException {
+            return delegate.decryptByteData(alias,pin,encryptedData);
         }
     }
 
@@ -1021,6 +1031,26 @@ public abstract class BaseProcessable extends BaseWorker implements IProcessable
             log.error(FAILED_TO_GET_CRYPTO_TOKEN_ + e.getMessage());
         }
         return result;
+    }
+
+    @Override
+    public byte[] decryptByteData(String alias, String pin, byte[] encryptedData, IServices services) throws NoSuchPaddingException, UnrecoverableKeyException, NoSuchAlgorithmException, IllegalBlockSizeException, BadPaddingException, KeyStoreException, InvalidKeyException, CryptoTokenOfflineException {
+        try {
+            ICryptoToken token = getCryptoToken();
+            if (token == null) {
+                throw new CryptoTokenOfflineException("Crypto token offline");
+            } else if (token instanceof ICryptoTokenV3) {
+                return ((ICryptoTokenV3) token).decryptByteData(alias, pin, encryptedData, services);
+            } else if (token instanceof IKeyGenerator) {
+                return ((IKeyGenerator) token).decryptByteData(alias, pin, encryptedData);
+            } else {
+                throw new IllegalArgumentException(
+                        "Key generation not supported by crypto token");
+            }
+        } catch (SignServerException e) {
+            log.error(FAILED_TO_GET_CRYPTO_TOKEN_ + e.getMessage());
+            throw new CryptoTokenOfflineException(e);
+        }
     }
     
     @Override

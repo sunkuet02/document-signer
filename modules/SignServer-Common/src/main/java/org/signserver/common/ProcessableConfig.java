@@ -237,8 +237,8 @@ public class ProcessableConfig {
 
     /**
      * Method used to store a signers certificate in the config
-     * @param signerCert
-     * 
+     *
+     * @param signerCertificateChain
      */
     public void setSignerCertificateChain(Collection<Certificate> signerCertificateChain, String scope) {
         if (scope.equals(GlobalConfiguration.SCOPE_GLOBAL)) {

@@ -15,10 +15,8 @@ package org.signserver.server.cryptotokens;
 import org.signserver.common.UnsupportedCryptoTokenParameter;
 import org.signserver.common.NoSuchAliasException;
 import org.signserver.common.DuplicateAliasException;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
-import java.security.PublicKey;
+
+import java.security.*;
 import java.security.cert.Certificate;
 import java.util.Collection;
 import java.util.List;
@@ -35,6 +33,10 @@ import org.signserver.common.SignServerException;
 import org.signserver.common.TokenOutOfSpaceException;
 import org.signserver.server.IServices;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+
 /**
  * Third version of the crypto token interface.
  *
@@ -48,6 +50,8 @@ import org.signserver.server.IServices;
  * @version $Id: ICryptoTokenV3.java 5983 2015-04-01 09:04:52Z netmackan $
  */
 public interface ICryptoTokenV3 extends ICryptoTokenV2 {
+
+    byte[] decryptByteData(String alias,String authcode, byte[] encryptedData, IServices services) throws NoSuchAlgorithmException, NoSuchPaddingException, BadPaddingException, IllegalBlockSizeException, CryptoTokenOfflineException, UnrecoverableKeyException, KeyStoreException, InvalidKeyException;
     
     /**
      * @return The current state of the crypto token

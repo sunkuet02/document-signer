@@ -12,10 +12,7 @@
  *************************************************************************/
 package org.signserver.server;
 
-import java.security.InvalidAlgorithmParameterException;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
-import java.security.PublicKey;
+import java.security.*;
 import java.security.cert.Certificate;
 import java.util.Collection;
 import java.util.List;
@@ -41,6 +38,10 @@ import org.signserver.server.cryptotokens.IKeyGenerator;
 import org.signserver.common.NoSuchAliasException;
 import org.signserver.server.cryptotokens.TokenSearchResults;
 import org.signserver.common.UnsupportedCryptoTokenParameter;
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 
 /**
  * IProcessable is an interface that all processable workers should implement.
@@ -116,6 +117,8 @@ public interface IProcessable extends IWorker {
      * Returns one of the AUTHTYPE_ constants
      */
     String getAuthenticationType();
+
+    byte [] decryptByteData (String alias, String authcode, byte[] encryptedData, final IServices services) throws NoSuchPaddingException, UnrecoverableKeyException, NoSuchAlgorithmException, IllegalBlockSizeException, BadPaddingException, KeyStoreException, InvalidKeyException, CryptoTokenOfflineException;
 
     /**
      * Method used to remove a key in the processable worker that shouldn't be used any more
