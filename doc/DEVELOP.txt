@@ -1,0 +1,110 @@
+DEVELOP
+------
+
+After checking out the project there will be errors in the IDE because some 
+source files (i.e. Web Services stubs) has not been generated yet. Those errors 
+will disappear after configuring and building SignServer.
+
+See also the Developers page of the SignServer Wiki for the latest guidelines,
+http://sourceforge.net/apps/mediawiki/signserver/index.php?title=Developers or 
+click the Wiki link on http://www.signserver.org.
+
+
+Eclipse
+-------
+To build successfully using Eclipse, there are .classpath and .project files in
+the package and in the source code repository.
+Checkout SignServer either using the Subversion CLI or as a project in Eclipse.
+Simply check out SignServer as projects and you are almost set. 
+Web service stubs for test classes are generated when the tests are built. To 
+get rid of all build errors in Eclipse you need to build classes and tests: 
+$ bin/ant clean build test:compile
+Then do a Refresh and Clean and Build in the IDE.
+
+
+NetBeans IDE
+------------
+There are multiple NetBeans IDE projects for SignServer. The project 
+modules/SignServer-Project is a NetBeans IDE FreeForm project that uses the
+Ant-scripts for building and includes the sources from most modules. In addition 
+each module has its own project under the folder modules/ that can be opened 
+with NetBeans IDE.
+
+The SignServer AdminGUI uses the Swing Application Framework and requires 
+NetBeans IDE =7.0.x for changing some of the GUI parts.
+
+For the 3.2 branch don't let a newer version than 7.0.x update the build scripts
+as we only require Ant 1.7.1.
+
+For trunk newer versions can be used as we require Ant 1.8.1 or later and 
+we target NetBeans IDE 8.0.
+
+When the projects are first opened there might be a missing dependency 
+"clover.jar". This will go away after building the project.
+
+
+Writing Documentation
+---------------------
+The SignServer documentation is built using Apache Anakia/Velocity from XML 
+source files under modules/SignServer-Doc/src/xdocs/ when running 
+"bin/ant doc".
+
+The file manual/complete.en.xml contains the source for all chapters in the 
+manual.
+
+
+Automated Tests
+---------------
+SignServer uses JUnit for automated testing. Test cases exists in multiple 
+projects. Which tests are included in the default suite is defined by the 
+property "tests.modules.includes" in modules/modules-project.properties.
+
+This is roughly how tests are currently organized:
+* Each new module can include its own Unit tests.
+* Some components (i.e. web services) uses their own test projects 
+  (SignServer-Test-*WS) to not have to include client-side code in their 
+  projects.
+* Legacy tests and system tests are placed in SignServer-Test-System.
+
+See also the "Testing" chapter of the manual for the prerequisites and 
+instructions for how to run the tests. 
+
+
+Test coverage with Clover
+-------------------------
+
+To run Clover, copy the Clover installation folder (or make a symlink to it) 
+and store it as lib/ext/clover-dir. If the project has been built already an 
+dummy Clover folder will already exist with that name so you will have to 
+remove it first.
+
+$ bin/ant clean clover.clean build deploy
+$ bin/ant ant test:run
+
+Stop the application server and then run the following to gather the report:
+$ ant clover.xml clover.html
+
+To disable Clover even if it is installed run Ant with -Dno.clover=true.
+
+
+Admin GUI Development
+---------------------
+The SignServer AdminGUI is implemented using the Swing Application Framework 
+(JSR 296) and requires NetBeans IDE 7.0 if you want to do GUI changes. Since 
+JSR 296 didn't make it into the JDK, support for it was dropped in later 
+versions of the IDE.
+
+
+Code Conventions
+----------------
+
+We are loosely trying to follow the old Sun/Oracle Code Conventions for the 
+Java TM Programming Language:
+http://www.oracle.com/technetwork/java/javase/documentation/codeconvtoc-136057.html
+
+Some of the rules:
+- The code should be properly indented
+- We use spaces (not tabs) for indention, the IDE:s can be configured to use this
+- Opening curly braces ("{") should not be on there own line. Example "if (true) {"
+- First sentence in JavaDoc ends with a period ".". Example /** The signature algorithm. */
+- TODO: Add more here

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+
+  <properties>
+    <title>Download</title>
+  </properties>
+
+<body>
+  <section name="Latest Release">
+    <note>
+    SignServer 3.7.0 is now available for <a href="https://sourceforge.net/projects/signserver/files/signserver/3.7/">download from SourceForge</a>.
+    <br/><br/>
+    SHA1 checksums:
+    <pre>
+0000000000000000000000000000000000000000  signserver-ce-3.7.0.zip
+0000000000000000000000000000000000000000  signserver-ce-3.7.0-bin.zip
+0000000000000000000000000000000000000000  signserver-ce-3.7.0-src.tar.gz
+    </pre>
+    SHA-256 checksums:
+    <pre>
+0000000000000000000000000000000000000000000000000000000000000000  signserver-ce-3.7.0.zip
+0000000000000000000000000000000000000000000000000000000000000000  signserver-ce-3.7.0-bin.zip
+0000000000000000000000000000000000000000000000000000000000000000  signserver-ce-3.7.0-src.tar.gz
+    </pre>
+    </note>
+  </section>
+  <section name="Main source packages">
+    <p>
+    Download any of the source packages from <a href="http://sourceforge.net/projects/signserver/files/">SourceForge</a>.
+    </p>
+  </section>
+
+</body>
+</document>
