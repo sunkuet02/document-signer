@@ -12,6 +12,7 @@
  *************************************************************************/
 package org.signserver.test.utils.mock;
 
+import java.io.UnsupportedEncodingException;
 import java.security.*;
 import java.security.cert.Certificate;
 import java.util.Collection;
@@ -19,14 +20,20 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import org.apache.log4j.Logger;
+import org.cesecore.keys.token.*;
 import org.cesecore.util.query.QueryCriteria;
 import org.signserver.common.*;
+import org.signserver.common.CryptoTokenOfflineException;
 import org.signserver.server.IServices;
 import org.signserver.server.cryptotokens.DefaultCryptoInstance;
 import org.signserver.server.cryptotokens.ICryptoInstance;
 import org.signserver.server.cryptotokens.ICryptoToken;
 import org.signserver.server.cryptotokens.ICryptoTokenV3;
 import org.signserver.server.cryptotokens.TokenSearchResults;
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 
 /**
  * CryptoToken backed by the provided Keys and Certificates.
@@ -64,7 +71,17 @@ public class MockedCryptoToken implements ICryptoToken, ICryptoTokenV3 {
         LOG.debug(">getCryptoTokenStatus");
         return WorkerStatus.STATUS_ACTIVE;
     }
-    
+
+    @Override
+    public String decryptByteData(String alias, String authcode, byte[] encryptedData, IServices services) throws NoSuchAlgorithmException, NoSuchPaddingException, BadPaddingException, IllegalBlockSizeException, CryptoTokenOfflineException, UnrecoverableKeyException, KeyStoreException, InvalidKeyException, UnsupportedEncodingException {
+        throw new UnsupportedOperationException("Not supported medthod");
+    }
+
+    @Override
+    public byte[] encryptMessage(String alias, String authcode, String message, IServices services) throws NoSuchAlgorithmException, NoSuchPaddingException, org.cesecore.keys.token.CryptoTokenOfflineException, InvalidKeyException, UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException {
+        throw new UnsupportedOperationException("Not supported medthod");
+    }
+
     public int getCryptoTokenStatus(final IServices services) {
         return getCryptoTokenStatus();
     }
@@ -167,6 +184,16 @@ public class MockedCryptoToken implements ICryptoToken, ICryptoTokenV3 {
     @Override
     public List<Certificate> getCertificateChain(String alias) throws CryptoTokenOfflineException {
         return certificateChain;
+    }
+
+    @Override
+    public String decryptByteData(String alias, String pin, byte[] encryptedData) throws NoSuchPaddingException, NoSuchAlgorithmException, BadPaddingException, IllegalBlockSizeException, CryptoTokenOfflineException, UnrecoverableKeyException, KeyStoreException, InvalidKeyException, UnsupportedEncodingException {
+        throw new UnsupportedOperationException("Not supported medthod");
+    }
+
+    @Override
+    public byte[] encryptMessage(String alias, String authcode, String message) throws NoSuchPaddingException, NoSuchAlgorithmException, org.cesecore.keys.token.CryptoTokenOfflineException, InvalidKeyException, UnsupportedEncodingException, BadPaddingException, IllegalBlockSizeException {
+        throw new UnsupportedOperationException("Not supported medthod");
     }
 
     @Override

@@ -12,6 +12,7 @@
  *************************************************************************/
 package org.signserver.server.cryptotokens;
 
+import java.io.UnsupportedEncodingException;
 import java.security.*;
 import java.security.cert.Certificate;
 import java.util.Collection;
@@ -20,8 +21,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import org.apache.log4j.Logger;
+import org.cesecore.keys.token.*;
 import org.cesecore.util.query.QueryCriteria;
 import org.signserver.common.*;
+import org.signserver.common.CryptoTokenOfflineException;
 import org.signserver.server.IServices;
 
 import javax.crypto.BadPaddingException;
@@ -146,8 +149,13 @@ public class NullCryptoToken extends BaseCryptoToken {
     }
 
     @Override
-    public byte[] decryptByteData(String alias, String authcode, byte[] encryptedData, IServices services) throws NoSuchAlgorithmException, NoSuchPaddingException, BadPaddingException, IllegalBlockSizeException, CryptoTokenOfflineException, UnrecoverableKeyException, KeyStoreException, InvalidKeyException {
+    public String decryptByteData(String alias, String authcode, byte[] encryptedData, IServices services) throws NoSuchAlgorithmException, NoSuchPaddingException, BadPaddingException, IllegalBlockSizeException, CryptoTokenOfflineException, UnrecoverableKeyException, KeyStoreException, InvalidKeyException {
         throw new CryptoTokenOfflineException("Unsupported by crypto token");
+    }
+
+    @Override
+    public byte[] encryptMessage(String alias, String authcode, String message, IServices services) throws NoSuchAlgorithmException, NoSuchPaddingException, org.cesecore.keys.token.CryptoTokenOfflineException, InvalidKeyException, UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException {
+        return new byte[0];
     }
 
     @Override
@@ -223,8 +231,13 @@ public class NullCryptoToken extends BaseCryptoToken {
     }
 
     @Override
-    public byte[] decryptByteData(String alias, String pin, byte[] encryptedData) throws NoSuchPaddingException, NoSuchAlgorithmException, BadPaddingException, IllegalBlockSizeException, CryptoTokenOfflineException, UnrecoverableKeyException, KeyStoreException, InvalidKeyException {
+    public String decryptByteData(String alias, String pin, byte[] encryptedData) throws NoSuchPaddingException, NoSuchAlgorithmException, BadPaddingException, IllegalBlockSizeException, CryptoTokenOfflineException, UnrecoverableKeyException, KeyStoreException, InvalidKeyException {
         throw new CryptoTokenOfflineException("Unsupported by crypto token");
+    }
+
+    @Override
+    public byte[] encryptMessage(String alias, String authcode, String message) throws NoSuchPaddingException, NoSuchAlgorithmException, org.cesecore.keys.token.CryptoTokenOfflineException, InvalidKeyException, UnsupportedEncodingException, BadPaddingException, IllegalBlockSizeException {
+        throw new UnsupportedOperationException("No such operation found");
     }
 
     @Override

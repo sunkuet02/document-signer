@@ -530,11 +530,24 @@ public class ClientWS {
             @WebParam(name = "workerId") final int workerId,
             @WebParam(name = "encryptedData") final byte[] encryptedData) throws Exception {
 
-        byte[] decryptByteData = getWorkerSession().decryptByteData(workerId - 1, encryptedData);
+        String decryptByteData = getWorkerSession().decryptByteData(workerId - 1, encryptedData);
         String result = "failed";
         if (encryptedData != null) {
             result = "success";
         }
         return new DecryptDataResponse(result, decryptByteData);
+    }
+
+    @WebMethod(operationName = "encryptMessage")
+    public EncryptedMessageResponse encryptMessage(
+            @WebParam(name = "workerId") final int workerId,
+            @WebParam(name = "message") final String message) throws Exception {
+
+        byte[] encryptedMessage = getWorkerSession().encryptMessage(workerId - 1, message);
+        String result = "failed";
+        if (encryptedMessage != null) {
+            result = "success";
+        }
+        return new EncryptedMessageResponse(result, encryptedMessage);
     }
 }

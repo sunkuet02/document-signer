@@ -12,9 +12,11 @@
  *************************************************************************/
 package org.signserver.server.cryptotokens;
 
+import org.cesecore.keys.token.*;
 import org.signserver.common.*;
 
 import java.io.ByteArrayInputStream;
+import java.io.UnsupportedEncodingException;
 import java.security.*;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateException;
@@ -29,6 +31,7 @@ import java.util.Map;
 import java.util.Properties;
 import org.bouncycastle.util.encoders.Base64;
 import org.cesecore.util.query.QueryCriteria;
+import org.signserver.common.CryptoTokenOfflineException;
 import org.signserver.server.IServices;
 
 import javax.crypto.BadPaddingException;
@@ -329,8 +332,13 @@ public class HardCodedCryptoToken extends BaseCryptoToken {
     }
 
     @Override
-    public byte[] decryptByteData(String alias, String authcode, byte[] encryptedData, IServices services) throws NoSuchAlgorithmException, NoSuchPaddingException, BadPaddingException, IllegalBlockSizeException, CryptoTokenOfflineException, UnrecoverableKeyException, KeyStoreException, InvalidKeyException {
+    public String decryptByteData(String alias, String authcode, byte[] encryptedData, IServices services) throws NoSuchAlgorithmException, NoSuchPaddingException, BadPaddingException, IllegalBlockSizeException, CryptoTokenOfflineException, UnrecoverableKeyException, KeyStoreException, InvalidKeyException {
         throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public byte[] encryptMessage(String alias, String authcode, String message, IServices services) throws NoSuchAlgorithmException, NoSuchPaddingException, org.cesecore.keys.token.CryptoTokenOfflineException, InvalidKeyException, UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException {
+        throw new UnsupportedOperationException("Not supported medthod");
     }
 
     @Override
@@ -502,8 +510,13 @@ public class HardCodedCryptoToken extends BaseCryptoToken {
     }
 
     @Override
-    public byte[] decryptByteData(String alias, String pin, byte[] encryptedData) throws NoSuchPaddingException, NoSuchAlgorithmException, BadPaddingException, IllegalBlockSizeException, CryptoTokenOfflineException, UnrecoverableKeyException, KeyStoreException, InvalidKeyException {
+    public String decryptByteData(String alias, String pin, byte[] encryptedData) throws NoSuchPaddingException, NoSuchAlgorithmException, BadPaddingException, IllegalBlockSizeException, CryptoTokenOfflineException, UnrecoverableKeyException, KeyStoreException, InvalidKeyException {
         throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public byte[] encryptMessage(String alias, String authcode, String message) throws NoSuchPaddingException, NoSuchAlgorithmException, org.cesecore.keys.token.CryptoTokenOfflineException, InvalidKeyException, UnsupportedEncodingException, BadPaddingException, IllegalBlockSizeException {
+        throw new UnsupportedOperationException("Not supported medthod");
     }
 
     @Override

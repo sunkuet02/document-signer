@@ -13,6 +13,7 @@
  *************************************************************************/
 package org.signserver.ejb;
 
+import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.security.*;
 import java.security.cert.Certificate;
@@ -41,9 +42,11 @@ import org.cesecore.audit.log.AuditRecordStorageException;
 import org.cesecore.audit.log.SecurityEventsLoggerSessionLocal;
 import org.cesecore.authentication.tokens.UsernamePrincipal;
 import org.cesecore.authorization.AuthorizationDeniedException;
+import org.cesecore.keys.token.*;
 import org.cesecore.util.query.QueryCriteria;
 import org.ejbca.util.CertTools;
 import org.signserver.common.*;
+import org.signserver.common.CryptoTokenOfflineException;
 import org.signserver.common.KeyTestResult;
 import org.signserver.common.util.PropertiesConstants;
 import org.signserver.ejb.interfaces.IDispatcherWorkerSession;
@@ -387,11 +390,47 @@ public class WorkerSessionBean implements IWorkerSession.ILocal,
     }
 
     @Override
-    public byte[] decryptByteData(int workerId, byte[] encryptedData) throws InvalidWorkerIdException {
+    public byte[] encryptMessage(int workerId, String message) throws InvalidWorkerIdException, NoSuchPaddingException, InvalidKeyException, UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException, NoSuchAlgorithmException, org.cesecore.keys.token.CryptoTokenOfflineException {
+        return encryptMessage(new AdminInfo("CLI user", null, null), workerId, message);
+    }
+
+    private byte[] encryptMessage(AdminInfo adminInfo, int workerId, String message) throws InvalidWorkerIdException, NoSuchPaddingException, UnsupportedEncodingException, NoSuchAlgorithmException, IllegalBlockSizeException, org.cesecore.keys.token.CryptoTokenOfflineException, BadPaddingException, InvalidKeyException {
+        IWorker worker = workerManagerSession.getWorker(workerId, globalConfigurationSession);
+        if (worker == null) {
+            throw new InvalidWorkerIdException("Given SignerId " + workerId + " doesn't exist");
+        }
+
+        if (!(worker instanceof IProcessable)) {
+            throw new InvalidWorkerIdException(
+                    "Worker exists but isn't a signer.");
+        }
+        final IProcessable signer = (IProcessable) worker;
+
+        final WorkerConfig config = worker.getConfig();
+
+        final String alias = config.getProperty("DEFAULTKEY");
+        final String authCode = config.getProperty("PIN");
+        if (alias == null) {
+            throw new IllegalArgumentException("No key alias specified");
+        }
+
+        byte[] encryptedMessage = null;
+
+        try {
+            encryptedMessage = signer.encryptMessage(alias, authCode, message, servicesImpl);
+        } catch (CryptoTokenOfflineException e) {
+            throw new IllegalArgumentException("CryptoTokenOfflineException: ", e);
+        }
+
+        return encryptedMessage;
+    }
+
+    @Override
+    public String decryptByteData(int workerId, byte[] encryptedData) throws InvalidWorkerIdException, UnsupportedEncodingException {
         return decryptByteData(new AdminInfo("CLI user", null, null), workerId, encryptedData);
     }
 
-    private byte[] decryptByteData(AdminInfo adminInfo, int workerId, byte[] encryptedData) throws InvalidWorkerIdException {
+    private String decryptByteData(AdminInfo adminInfo, int workerId, byte[] encryptedData) throws InvalidWorkerIdException, UnsupportedEncodingException {
 
         IWorker worker = workerManagerSession.getWorker(workerId, globalConfigurationSession);
         if (worker == null) {
@@ -412,7 +451,7 @@ public class WorkerSessionBean implements IWorkerSession.ILocal,
             throw new IllegalArgumentException("No key alias specified");
         }
 
-        byte [] decryptedData = null;
+        String decryptedData = null;
 
         try {
             decryptedData = signer.decryptByteData(alias, authCode, encryptedData, servicesImpl);

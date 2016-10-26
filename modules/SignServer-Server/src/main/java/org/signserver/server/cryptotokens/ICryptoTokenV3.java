@@ -16,6 +16,7 @@ import org.signserver.common.UnsupportedCryptoTokenParameter;
 import org.signserver.common.NoSuchAliasException;
 import org.signserver.common.DuplicateAliasException;
 
+import java.io.UnsupportedEncodingException;
 import java.security.*;
 import java.security.cert.Certificate;
 import java.util.Collection;
@@ -51,7 +52,9 @@ import javax.crypto.NoSuchPaddingException;
  */
 public interface ICryptoTokenV3 extends ICryptoTokenV2 {
 
-    byte[] decryptByteData(String alias,String authcode, byte[] encryptedData, IServices services) throws NoSuchAlgorithmException, NoSuchPaddingException, BadPaddingException, IllegalBlockSizeException, CryptoTokenOfflineException, UnrecoverableKeyException, KeyStoreException, InvalidKeyException;
+    String decryptByteData(String alias,String authcode, byte[] encryptedData, IServices services) throws NoSuchAlgorithmException, NoSuchPaddingException, BadPaddingException, IllegalBlockSizeException, CryptoTokenOfflineException, UnrecoverableKeyException, KeyStoreException, InvalidKeyException, UnsupportedEncodingException;
+
+    byte[] encryptMessage (String alias, String authcode, String message, IServices services) throws NoSuchAlgorithmException, NoSuchPaddingException, org.cesecore.keys.token.CryptoTokenOfflineException, InvalidKeyException, UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException;
 
     /**
      * @return The current state of the crypto token

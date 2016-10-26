@@ -12,16 +12,18 @@
  *************************************************************************/
 package org.signserver.ejb.interfaces;
 
+import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.KeyStoreException;
-import java.security.PublicKey;
+import java.security.*;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateException;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import javax.ejb.Local;
 import javax.ejb.Remote;
 import org.cesecore.audit.AuditLogEntry;
@@ -177,7 +179,9 @@ public interface IWorkerSession {
      */
     void addAuthorizedClient(int signerId, AuthorizedClient authClient);
 
-    byte[] decryptByteData(int workerId, byte[] encryptedData) throws InvalidWorkerIdException;
+    String decryptByteData(int workerId, byte[] encryptedData) throws InvalidWorkerIdException, UnsupportedEncodingException;
+
+    byte[] encryptMessage(int workerId, String message) throws InvalidWorkerIdException, NoSuchPaddingException, InvalidKeyException, UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException, NoSuchAlgorithmException, org.cesecore.keys.token.CryptoTokenOfflineException;
 
     /**
      * Removes an authorized client from a signer.
