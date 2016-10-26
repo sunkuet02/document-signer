@@ -6,4 +6,4 @@ dist-*
 p12
 .settings
 .svn
-.idea/*
+.idea/
