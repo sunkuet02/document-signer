@@ -13,6 +13,7 @@
 package org.signserver.clientws;
 
 import java.io.FileOutputStream;
+import java.rmi.RemoteException;
 import java.security.PublicKey;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateEncodingException;
@@ -25,14 +26,17 @@ import javax.ejb.Stateless;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
+import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.xml.ws.WebServiceContext;
 import javax.xml.ws.handler.MessageContext;
 
 import org.apache.log4j.Logger;
 import org.bouncycastle.util.encoders.Base64;
+import org.ejbca.util.CertTools;
 import org.signserver.common.*;
 import org.signserver.common.util.PropertiesConstants;
+import org.signserver.ejb.interfaces.IGlobalConfigurationSession;
 import org.signserver.ejb.interfaces.IWorkerSession;
 import org.signserver.server.CertificateClientCredential;
 import org.signserver.server.IClientCredential;
@@ -58,6 +62,8 @@ public class ClientWS {
     private static final Logger LOG = Logger.getLogger(ClientWS.class);
 
     private static final String HTTP_AUTH_BASIC_AUTHORIZATION = "Authorization";
+
+    ClientWSHelper helper = new ClientWSHelper();
 
     @Resource
     private WebServiceContext wsContext;
@@ -463,23 +469,24 @@ public class ClientWS {
             @WebParam(name = "algorithm") final String algorithm,
             @WebParam(name = "keyspec") final String keyspec) throws Exception {
         try {
-            Properties properties = new Properties();
+            int workerId = getWorkerSession().genFreeWorkerId();
+            helper.getGlobalConfigurationSession().setProperty(helper.SCOPE_GLOB, helper.WORKER_TEXT+workerId+helper.CLASSPATH_TEXT, helper.CRYPTOWORKER_CLASSPATH);
+            helper.getGlobalConfigurationSession().setProperty(helper.SCOPE_GLOB,helper.WORKER_TEXT+workerId+helper.SIGNERTOKEN_CLASSPATH_TEXT, helper.PKCS11_CRYPTOWORKER_SIGNERTOKEN_CLASSPATH);
 
-            properties.setProperty("GLOB.WORKERGENID1.CLASSPATH", "org.signserver.server.signers.CryptoWorker");
-            properties.setProperty("GLOB.WORKERGENID1.SIGNERTOKEN.CLASSPATH", "org.signserver.server.cryptotokens.PKCS11CryptoToken");
-            properties.setProperty("WORKERGENID1.NAME", workerName);
-            properties.setProperty("WORKERGENID1.SHAREDLIBRARYNAME", "Utimaco");
-            properties.setProperty("WORKERGENID1.SLOTLABELTYPE", "SLOT_NUMBER");
-            properties.setProperty("WORKERGENID1.SLOTLABELVALUE", String.valueOf(slotLabelValue));
-            properties.setProperty("WORKERGENID1.PIN", pin);
-            properties.setProperty("WORKERGENID1.DEFAULTKEY", defaultKey);
+            helper.getWorkerSession().setWorkerProperty(workerId, "NAME", workerName);
+            helper.getWorkerSession().setWorkerProperty(workerId,"SHAREDLIBRARYNAME", "Utimaco");
+            helper.getWorkerSession().setWorkerProperty(workerId,"SLOTLABELTYPE", "SLOT_NUMBER");
+            helper.getWorkerSession().setWorkerProperty(workerId,"SLOTLABELVALUE", String.valueOf(slotLabelValue) );
+            helper.getWorkerSession().setWorkerProperty(workerId,"PIN", pin);
+            helper.getWorkerSession().setWorkerProperty(workerId,"DEFAULTKEY", defaultKey );
+//
+//            Worker workerCreator = new Worker();
+//            int workerID = workerCreator.createWorker(properties);
+            getWorkerSession().reloadConfiguration(workerId);
+            Certificate certificate = getWorkerSession().generateSignerKeyAndGetCertificate(workerId, algorithm, keyspec, defaultKey, pin.toCharArray());
+            helper.getWorkerSession().activateSigner(workerId, pin);
 
-            Worker workerCreator = new Worker();
-            int workerID = workerCreator.createWorker(properties);
-            Certificate certificate = getWorkerSession().generateSignerKeyAndGetCertificate(workerID, algorithm, keyspec, defaultKey, pin.toCharArray());
-            getWorkerSession().activateSigner(workerID, pin);
-
-            return new CryptoWorkerResponse(workerID, certificate);
+            return new CryptoWorkerResponse(workerId, certificate.getEncoded());
         } catch (Exception e) {
             throw new Exception("Failed to create Worker. Cause : " + e.getMessage());
         }
@@ -497,28 +504,27 @@ public class ClientWS {
         try {
             CryptoWorkerResponse cryptoWorkerResponse = createCryptokeyWorker(workerName + "CryptoToken", defaultKey, slotLabelValue, pin, algorithm, keyspec);
 
-            Properties properties = new Properties();
-            properties.setProperty("GLOB.WORKERGENID1.CLASSPATH", "org.signserver.module.mrtdsodsigner.MRTDSODSigner");
-            properties.setProperty("WORKERGENID1.NAME", workerName);
-            properties.setProperty("WORKERGENID1.CRYPTOTOKEN", workerName + "CryptoToken" );
-            properties.setProperty("WORKERGENID1.DEFAULTKEY", defaultKey);
-            properties.setProperty("WORKERGENID1.AUTHTYPE", "NOAUTH");
-            properties.setProperty("WORKERGENID1.DIGESTALGORITHM", "SHA256");
-            properties.setProperty("WORKERGENID1.SIGNATUREALGORITHM", algorithm);
-            properties.setProperty("WORKERGENID1.DODATAGROUPHASHING", "true");
+            int workerId = helper.getWorkerSession().genFreeWorkerId();
+            helper.getGlobalConfigurationSession().setProperty(helper.SCOPE_GLOB, helper.WORKER_TEXT+workerId+helper.CLASSPATH_TEXT , helper.MRTDSODSIGNER_CLASSPATH );
+            getWorkerSession().setWorkerProperty(workerId,"NAME", workerName);
+            getWorkerSession().setWorkerProperty(workerId,"CRYPTOTOKEN", workerName + "CryptoToken" );
+            getWorkerSession().setWorkerProperty(workerId,"DEFAULTKEY", defaultKey);
+            getWorkerSession().setWorkerProperty(workerId,"AUTHTYPE", "NOAUTH");
+            getWorkerSession().setWorkerProperty(workerId,"DIGESTALGORITHM", "SHA256");
+            getWorkerSession().setWorkerProperty(workerId,"SIGNATUREALGORITHM", algorithm);
+            getWorkerSession().setWorkerProperty(workerId,"DODATAGROUPHASHING", "true");
 
-            Worker workerCreator = new Worker();
-            int workerID = workerCreator.createWorker(properties);
-
+            getWorkerSession().reloadConfiguration(workerId);
+            Certificate cert = CertTools.getCertfromByteArray(cryptoWorkerResponse.getCertificate());
             List<byte[]> certChain = new ArrayList<byte[]>();
-            certChain.add(cryptoWorkerResponse.getCertificate().getEncoded());
+            certChain.add(cert.getEncoded());
 
-            getWorkerSession().uploadSignerCertificate(workerID, cryptoWorkerResponse.getCertificate().getEncoded(), "GLOB.");
-            getWorkerSession().uploadSignerCertificateChain(workerID, certChain, "GLOB.");
+            getWorkerSession().uploadSignerCertificate(workerId, cert.getEncoded(), helper.SCOPE_GLOB);
+            getWorkerSession().uploadSignerCertificateChain(workerId, certChain, helper.SCOPE_GLOB);
 
-            getWorkerSession().reloadConfiguration(workerID);
+            getWorkerSession().reloadConfiguration(workerId);
 
-            return new MRTDSODSignerResponse(workerID, cryptoWorkerResponse.getCertificate().getPublicKey().getEncoded());
+            return new MRTDSODSignerResponse(workerId, cert.getPublicKey().getEncoded());
 
         } catch (Exception e) {
             throw new Exception("Failed to create MRTD SOD Signer, Cause : " + e.getMessage());

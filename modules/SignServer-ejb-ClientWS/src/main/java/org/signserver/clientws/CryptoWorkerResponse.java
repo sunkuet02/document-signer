@@ -8,12 +8,12 @@ import java.security.cert.Certificate;
 public class CryptoWorkerResponse {
 
     private int workerID;
-    private Certificate certificate;
+    private byte[] certificate;
 
     public CryptoWorkerResponse() {
     }
 
-    public CryptoWorkerResponse(int workerID, Certificate certificate) {
+    public CryptoWorkerResponse(int workerID, byte[] certificate) {
         this.workerID = workerID;
         this.certificate = certificate;
     }
@@ -26,11 +26,11 @@ public class CryptoWorkerResponse {
         this.workerID = workerID;
     }
 
-    public Certificate getCertificate() {
+    public byte[] getCertificate() {
         return certificate;
     }
 
-    public void setCertificate(Certificate certificate) {
+    public void setCertificate(byte[] certificate) {
         this.certificate = certificate;
     }
 }
