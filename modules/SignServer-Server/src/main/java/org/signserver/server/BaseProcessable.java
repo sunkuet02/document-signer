@@ -30,8 +30,10 @@ import javax.persistence.EntityManager;
 
 import org.apache.log4j.Logger;
 import org.bouncycastle.util.encoders.Hex;
+import org.cesecore.keys.token.*;
 import org.cesecore.util.query.QueryCriteria;
 import org.signserver.common.*;
+import org.signserver.common.CryptoTokenOfflineException;
 import org.signserver.server.aliasselectors.AliasSelector;
 import org.signserver.server.aliasselectors.DefaultAliasSelector;
 import org.signserver.server.cryptotokens.CryptoInstances;
@@ -594,8 +596,13 @@ public abstract class BaseProcessable extends BaseWorker implements IProcessable
         }
 
         @Override
-        public byte[] decryptByteData(String alias, String pin, byte[] encryptedData) throws NoSuchPaddingException, NoSuchAlgorithmException, BadPaddingException, IllegalBlockSizeException, CryptoTokenOfflineException, UnrecoverableKeyException, KeyStoreException, InvalidKeyException {
+        public String decryptByteData(String alias, String pin, byte[] encryptedData) throws NoSuchPaddingException, NoSuchAlgorithmException, BadPaddingException, IllegalBlockSizeException, CryptoTokenOfflineException, UnrecoverableKeyException, KeyStoreException, InvalidKeyException, UnsupportedEncodingException {
             return delegate.decryptByteData(alias,pin,encryptedData);
+        }
+
+        @Override
+        public byte[] encryptMessage(String alias, String authcode, String message) throws NoSuchPaddingException, NoSuchAlgorithmException, org.cesecore.keys.token.CryptoTokenOfflineException, InvalidKeyException, UnsupportedEncodingException, BadPaddingException, IllegalBlockSizeException {
+            return delegate.encryptMessage(alias,authcode,message);
         }
 
         @Override
@@ -697,8 +704,13 @@ public abstract class BaseProcessable extends BaseWorker implements IProcessable
         }
 
         @Override
-        public byte[] decryptByteData(String alias, String authcode, byte[] encryptedData, IServices services) throws NoSuchAlgorithmException, NoSuchPaddingException, BadPaddingException, IllegalBlockSizeException, CryptoTokenOfflineException, UnrecoverableKeyException, KeyStoreException, InvalidKeyException {
+        public String decryptByteData(String alias, String authcode, byte[] encryptedData, IServices services) throws NoSuchAlgorithmException, NoSuchPaddingException, BadPaddingException, IllegalBlockSizeException, CryptoTokenOfflineException, UnrecoverableKeyException, KeyStoreException, InvalidKeyException, UnsupportedEncodingException {
             return delegate.decryptByteData(alias,authcode,encryptedData,services);
+        }
+
+        @Override
+        public byte[] encryptMessage(String alias, String authcode, String message, IServices services) throws NoSuchAlgorithmException, NoSuchPaddingException, org.cesecore.keys.token.CryptoTokenOfflineException, InvalidKeyException, UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException {
+            return delegate.encryptMessage(alias,authcode,message,services);
         }
 
         @Override
@@ -707,8 +719,13 @@ public abstract class BaseProcessable extends BaseWorker implements IProcessable
         }
 
         @Override
-        public byte[] decryptByteData(String alias, String pin, byte[] encryptedData) throws NoSuchPaddingException, NoSuchAlgorithmException, BadPaddingException, IllegalBlockSizeException, CryptoTokenOfflineException, UnrecoverableKeyException, KeyStoreException, InvalidKeyException {
+        public String decryptByteData(String alias, String pin, byte[] encryptedData) throws NoSuchPaddingException, NoSuchAlgorithmException, BadPaddingException, IllegalBlockSizeException, CryptoTokenOfflineException, UnrecoverableKeyException, KeyStoreException, InvalidKeyException, UnsupportedEncodingException {
             return delegate.decryptByteData(alias,pin,encryptedData);
+        }
+
+        @Override
+        public byte[] encryptMessage(String alias, String authcode, String message) throws NoSuchPaddingException, NoSuchAlgorithmException, org.cesecore.keys.token.CryptoTokenOfflineException, InvalidKeyException, UnsupportedEncodingException, BadPaddingException, IllegalBlockSizeException {
+            return delegate.encryptMessage(alias,authcode,message);
         }
     }
 
@@ -1034,7 +1051,7 @@ public abstract class BaseProcessable extends BaseWorker implements IProcessable
     }
 
     @Override
-    public byte[] decryptByteData(String alias, String pin, byte[] encryptedData, IServices services) throws NoSuchPaddingException, UnrecoverableKeyException, NoSuchAlgorithmException, IllegalBlockSizeException, BadPaddingException, KeyStoreException, InvalidKeyException, CryptoTokenOfflineException {
+    public String decryptByteData(String alias, String pin, byte[] encryptedData, IServices services) throws NoSuchPaddingException, UnrecoverableKeyException, NoSuchAlgorithmException, IllegalBlockSizeException, BadPaddingException, KeyStoreException, InvalidKeyException, CryptoTokenOfflineException, UnsupportedEncodingException {
         try {
             ICryptoToken token = getCryptoToken();
             if (token == null) {
@@ -1043,6 +1060,26 @@ public abstract class BaseProcessable extends BaseWorker implements IProcessable
                 return ((ICryptoTokenV3) token).decryptByteData(alias, pin, encryptedData, services);
             } else if (token instanceof IKeyGenerator) {
                 return ((IKeyGenerator) token).decryptByteData(alias, pin, encryptedData);
+            } else {
+                throw new IllegalArgumentException(
+                        "Key generation not supported by crypto token");
+            }
+        } catch (SignServerException e) {
+            log.error(FAILED_TO_GET_CRYPTO_TOKEN_ + e.getMessage());
+            throw new CryptoTokenOfflineException(e);
+        }
+    }
+
+    @Override
+    public byte[] encryptMessage (String alias, String authcode, String message, IServices services) throws CryptoTokenOfflineException, NoSuchPaddingException, BadPaddingException, InvalidKeyException, NoSuchAlgorithmException, IllegalBlockSizeException, UnsupportedEncodingException, org.cesecore.keys.token.CryptoTokenOfflineException {
+        try {
+            ICryptoToken token = getCryptoToken();
+            if (token == null) {
+                throw new CryptoTokenOfflineException("Crypto token offline");
+            } else if (token instanceof ICryptoTokenV3) {
+                return ((ICryptoTokenV3) token).encryptMessage(alias, authcode, message, services);
+            } else if (token instanceof IKeyGenerator) {
+                return ((IKeyGenerator) token).encryptMessage(alias, authcode, message);
             } else {
                 throw new IllegalArgumentException(
                         "Key generation not supported by crypto token");

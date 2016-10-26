@@ -14,6 +14,7 @@ package org.signserver.server.cryptotokens;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.security.*;
 import java.security.cert.Certificate;
 import java.util.Collection;
@@ -28,12 +29,14 @@ import org.bouncycastle.operator.OperatorCreationException;
 import org.bouncycastle.operator.jcajce.JcaContentSignerBuilder;
 import org.bouncycastle.pkcs.PKCS10CertificationRequest;
 import org.bouncycastle.pkcs.jcajce.JcaPKCS10CertificationRequestBuilder;
+import org.cesecore.keys.token.*;
 import org.ejbca.core.model.ca.catoken.PKCS11CAToken;
 import org.ejbca.util.Base64;
 import org.ejbca.util.CertTools;
 import org.ejbca.util.keystore.KeyStoreContainer;
 import org.ejbca.util.keystore.KeyStoreContainerFactory;
 import org.signserver.common.*;
+import org.signserver.common.CryptoTokenOfflineException;
 import org.signserver.server.KeyUsageCounterHash;
 
 import javax.crypto.BadPaddingException;
@@ -188,8 +191,13 @@ public class OldPKCS11CryptoToken extends OldCryptoTokenBase implements ICryptoT
     }
 
     @Override
-    public byte[] decryptByteData(String alias, String pin, byte[] encryptedData) throws NoSuchPaddingException, NoSuchAlgorithmException, BadPaddingException, IllegalBlockSizeException, CryptoTokenOfflineException, UnrecoverableKeyException, KeyStoreException, InvalidKeyException {
-        return new byte[0];
+    public String decryptByteData(String alias, String pin, byte[] encryptedData) throws NoSuchPaddingException, NoSuchAlgorithmException, BadPaddingException, IllegalBlockSizeException, CryptoTokenOfflineException, UnrecoverableKeyException, KeyStoreException, InvalidKeyException {
+        throw new UnsupportedOperationException("No such operation found");
+    }
+
+    @Override
+    public byte[] encryptMessage(String alias, String authcode, String message) throws NoSuchPaddingException, NoSuchAlgorithmException, org.cesecore.keys.token.CryptoTokenOfflineException, InvalidKeyException, UnsupportedEncodingException, BadPaddingException, IllegalBlockSizeException {
+        throw new UnsupportedOperationException("No such operation found");
     }
 
     /**

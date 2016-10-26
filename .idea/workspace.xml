@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="ec5db73f-2ece-4788-8983-f71477ba7456" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib" afterPath="$PROJECT_DIR$/lib" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/SignServer-Lib-EJBCA-util/src/main/java/org/ejbca/util/CertTools.java" afterPath="$PROJECT_DIR$/modules/SignServer-Lib-EJBCA-util/src/main/java/org/ejbca/util/CertTools.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/SignServer-Module-MRTDSODSigner/src/main/java/org/signserver/module/mrtdsodsigner/MRTDSODSigner.java" afterPath="$PROJECT_DIR$/modules/SignServer-Module-MRTDSODSigner/src/main/java/org/signserver/module/mrtdsodsigner/MRTDSODSigner.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/SignServer-Module-MRTDSODSigner/nbproject/project.properties" afterPath="$PROJECT_DIR$/modules/SignServer-Module-MRTDSODSigner/nbproject/project.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/ext/cesecore-interfaces-6.1.1.jar" afterPath="$PROJECT_DIR$/lib/ext/cesecore-interfaces-6.1.1.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/SignServer-Lib-EJBCA-util/src/main/java/org/ejbca/util/CertTools.java" afterPath="$PROJECT_DIR$/modules/SignServer-Lib-EJBCA-util/src/main/java/org/ejbca/util/CertTools.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib" afterPath="$PROJECT_DIR$/lib" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/SignServer-Module-MRTDSODSigner/src/main/java/org/signserver/module/mrtdsodsigner/MRTDSODSigner.java" afterPath="$PROJECT_DIR$/modules/SignServer-Module-MRTDSODSigner/src/main/java/org/signserver/module/mrtdsodsigner/MRTDSODSigner.java" />
     </list>
     <ignored path="SignServer.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,14 +30,31 @@
       <file leaf-file-name="BaseProcessable.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/SignServer-Server/src/main/java/org/signserver/server/BaseProcessable.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="709" column="24" selection-start-line="709" selection-start-column="24" selection-end-line="709" selection-end-column="24" />
+            <state relative-caret-position="400">
+              <caret line="721" column="34" selection-start-line="721" selection-start-column="34" selection-end-line="721" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EncryptedMessageResponse.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/SignServer-ejb-ClientWS/src/main/java/org/signserver/clientws/EncryptedMessageResponse.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" column="31" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
               <folding>
-                <element signature="e#46915#46931#0" expanded="true" />
-                <element signature="e#48823#48839#0" expanded="true" />
-                <element signature="e#53949#53957#0" expanded="true" />
-                <element signature="e#54911#54927#0" expanded="true" />
+                <element signature="e#449#450#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IKeyGenerator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/SignServer-Server/src/main/java/org/signserver/server/cryptotokens/IKeyGenerator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="216">
+              <caret line="37" column="11" selection-start-line="37" selection-start-column="11" selection-end-line="37" selection-end-column="11" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -45,117 +62,93 @@
       <file leaf-file-name="PKCS11CryptoToken.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/SignServer-Server/src/main/java/org/signserver/server/cryptotokens/PKCS11CryptoToken.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="59" column="80" selection-start-line="59" selection-start-column="80" selection-end-line="59" selection-end-column="80" />
+            <state relative-caret-position="188">
+              <caret line="466" column="18" selection-start-line="466" selection-start-column="18" selection-end-line="466" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ClientWS.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/modules/SignServer-ejb-ClientWS/src/main/java/org/signserver/clientws/ClientWS.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="432">
+              <caret line="550" column="36" selection-start-line="550" selection-start-column="36" selection-end-line="550" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DecryptDataResponse.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/SignServer-ejb-ClientWS/src/main/java/org/signserver/clientws/DecryptDataResponse.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IWorkerSession.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/SignServer-ejb-interfaces/src/main/java/org/signserver/ejb/interfaces/IWorkerSession.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="188">
+              <caret line="183" column="11" selection-start-line="183" selection-start-column="11" selection-end-line="183" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IProcessable.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/SignServer-Server/src/main/java/org/signserver/server/IProcessable.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="196">
+              <caret line="134" column="11" selection-start-line="134" selection-start-column="11" selection-end-line="134" selection-end-column="11" />
               <folding>
-                <element signature="e#12353#12354#0" expanded="true" />
-                <element signature="e#12398#12399#0" expanded="true" />
-                <element signature="e#16713#16714#0" expanded="true" />
-                <element signature="e#16766#16767#0" expanded="true" />
-                <element signature="e#20148#20149#0" expanded="true" />
-                <element signature="e#20176#20177#0" expanded="true" />
+                <element signature="e#0#11862#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="P12CryptoToken.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/SignServer-Server/src/main/java/org/signserver/server/cryptotokens/P12CryptoToken.java">
+      <file leaf-file-name="ICryptoTokenV3.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/SignServer-Server/src/main/java/org/signserver/server/cryptotokens/ICryptoTokenV3.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+            <state relative-caret-position="173">
+              <caret line="51" column="3" selection-start-line="51" selection-start-column="3" selection-end-line="51" selection-end-column="3" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OldPKCS11CryptoToken.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/SignServer-Server/src/main/java/org/signserver/server/cryptotokens/OldPKCS11CryptoToken.java">
+      <file leaf-file-name="WorkerSessionBean.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/SignServer-ejb/src/main/java/org/signserver/ejb/WorkerSessionBean.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="536">
-              <caret line="460" column="1" selection-start-line="460" selection-start-column="1" selection-end-line="460" selection-end-column="1" />
+            <state relative-caret-position="443">
+              <caret line="419" column="45" selection-start-line="419" selection-start-column="45" selection-end-line="419" selection-end-column="45" />
               <folding>
-                <element signature="e#13231#13246#0" expanded="true" />
+                <element signature="e#0#71981#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#12171#12179#0" expanded="true" />
+                <element signature="e#22239#22255#0" expanded="true" />
+                <element signature="e#23282#23298#0" expanded="true" />
+                <element signature="e#25679#25695#0" expanded="true" />
+                <element signature="e#29837#29853#0" expanded="true" />
+                <element signature="e#32167#32183#0" expanded="true" />
+                <element signature="e#32827#32843#0" expanded="true" />
+                <element signature="e#33526#33542#0" expanded="true" />
+                <element signature="e#35441#35457#0" expanded="true" />
+                <element signature="e#36070#36086#0" expanded="true" />
+                <element signature="e#43717#43733#0" expanded="true" />
+                <element signature="e#50907#50923#0" expanded="true" />
+                <element signature="e#56008#56021#0" expanded="true" />
+                <element signature="e#57224#57237#0" expanded="true" />
+                <element signature="e#57732#57748#0" expanded="true" />
+                <element signature="e#60764#60779#0" expanded="true" />
+                <element signature="e#61730#61745#0" expanded="true" />
+                <element signature="e#62653#62668#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NullCryptoToken.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/SignServer-Server/src/main/java/org/signserver/server/cryptotokens/NullCryptoToken.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="149" column="77" selection-start-line="149" selection-start-column="77" selection-end-line="149" selection-end-column="77" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="KeystoreCryptoToken.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/SignServer-Server/src/main/java/org/signserver/server/cryptotokens/KeystoreCryptoToken.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="536">
-              <caret line="829" column="1" selection-start-line="829" selection-start-column="1" selection-end-line="829" selection-end-column="1" />
-              <folding>
-                <element signature="e#6484#6485#0" expanded="true" />
-                <element signature="e#6529#6530#0" expanded="true" />
-                <element signature="e#13059#13060#0" expanded="true" />
-                <element signature="e#13086#13087#0" expanded="true" />
-                <element signature="e#16559#16560#0" expanded="true" />
-                <element signature="e#16587#16588#0" expanded="true" />
-                <element signature="e#33702#33703#0" expanded="true" />
-                <element signature="e#33744#33745#0" expanded="true" />
-                <element signature="e#33802#33803#0" expanded="true" />
-                <element signature="e#33849#33850#0" expanded="true" />
-                <element signature="e#33894#33895#0" expanded="true" />
-                <element signature="e#33935#33936#0" expanded="true" />
-                <element signature="e#33997#33998#0" expanded="true" />
-                <element signature="e#34039#34040#0" expanded="true" />
-                <element signature="e#34117#34118#0" expanded="true" />
-                <element signature="e#34169#34170#0" expanded="true" />
-                <element signature="e#34232#34233#0" expanded="true" />
-                <element signature="e#34276#34277#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HardCodedCryptoToken.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/SignServer-Server/src/main/java/org/signserver/server/cryptotokens/HardCodedCryptoToken.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="344" column="51" selection-start-line="344" selection-start-column="51" selection-end-line="344" selection-end-column="51" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ICryptoInstance.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/SignServer-Server/src/main/java/org/signserver/server/cryptotokens/ICryptoInstance.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="470">
-              <caret line="62" column="13" selection-start-line="62" selection-start-column="13" selection-end-line="62" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ICryptoToken.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/SignServer-Server/src/main/java/org/signserver/server/cryptotokens/ICryptoToken.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="45" column="60" selection-start-line="45" selection-start-column="60" selection-end-line="45" selection-end-column="60" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SoftCryptoToken.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/modules/SignServer-Server/src/main/java/org/signserver/server/cryptotokens/SoftCryptoToken.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3108">
-              <caret line="65" column="33" selection-start-line="65" selection-start-column="33" selection-end-line="65" selection-end-column="33" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -182,12 +175,11 @@
         <option value="$PROJECT_DIR$/modules/SignServer-Lib-EJBCA-util/src/main/java/org/ejbca/util/CertTools.java" />
         <option value="$PROJECT_DIR$/mods-available/40_module.mrtdsodsigner.properties" />
         <option value="$PROJECT_DIR$/modules/SignServer-Module-MRTDSODSigner/src/main/java/org/signserver/module/mrtdsodsigner/MRTDSODSigner.java" />
-        <option value="$PROJECT_DIR$/modules/SignServer-ejb-ClientWS/src/main/java/org/signserver/clientws/ClientWS.java" />
+        <option value="$PROJECT_DIR$/modules/SignServer-Server/src/main/java/org/signserver/server/cryptotokens/ICryptoToken.java" />
         <option value="$PROJECT_DIR$/modules/SignServer-ejb-ClientWS/src/main/java/org/signserver/clientws/DecryptDataResponse.java" />
+        <option value="$PROJECT_DIR$/modules/SignServer-ejb-ClientWS/src/main/java/org/signserver/clientws/EncryptMessageResponse.java" />
         <option value="$PROJECT_DIR$/modules/SignServer-ejb-interfaces/src/main/java/org/signserver/ejb/interfaces/IWorkerSession.java" />
-        <option value="$PROJECT_DIR$/modules/SignServer-ejb/src/main/java/org/signserver/ejb/WorkerSessionBean.java" />
         <option value="$PROJECT_DIR$/modules/SignServer-Server/src/main/java/org/signserver/server/IProcessable.java" />
-        <option value="$PROJECT_DIR$/modules/SignServer-Server/src/main/java/org/signserver/server/BaseProcessable.java" />
         <option value="$PROJECT_DIR$/modules/SignServer-Server/src/main/java/org/signserver/server/cryptotokens/ICryptoTokenV3.java" />
         <option value="$PROJECT_DIR$/modules/SignServer-Server/src/main/java/org/signserver/server/cryptotokens/IKeyGenerator.java" />
         <option value="$PROJECT_DIR$/modules/SignServer-Server/src/main/java/org/signserver/server/cryptotokens/PKCS11CryptoToken.java" />
@@ -195,7 +187,11 @@
         <option value="$PROJECT_DIR$/modules/SignServer-Server/src/main/java/org/signserver/server/cryptotokens/NullCryptoToken.java" />
         <option value="$PROJECT_DIR$/modules/SignServer-Server/src/main/java/org/signserver/server/cryptotokens/KeystoreCryptoToken.java" />
         <option value="$PROJECT_DIR$/modules/SignServer-Server/src/main/java/org/signserver/server/cryptotokens/HardCodedCryptoToken.java" />
-        <option value="$PROJECT_DIR$/modules/SignServer-Server/src/main/java/org/signserver/server/cryptotokens/ICryptoToken.java" />
+        <option value="$PROJECT_DIR$/modules/SignServer-Test-Utils/src/main/java/org/signserver/test/utils/mock/MockedCryptoToken.java" />
+        <option value="$PROJECT_DIR$/modules/SignServer-Test-Utils/src/main/java/org/signserver/test/utils/mock/WorkerSessionMock.java" />
+        <option value="$PROJECT_DIR$/modules/SignServer-ejb/src/main/java/org/signserver/ejb/WorkerSessionBean.java" />
+        <option value="$PROJECT_DIR$/modules/SignServer-Server/src/main/java/org/signserver/server/BaseProcessable.java" />
+        <option value="$PROJECT_DIR$/modules/SignServer-ejb-ClientWS/src/main/java/org/signserver/clientws/ClientWS.java" />
       </list>
     </option>
   </component>
@@ -230,14 +226,96 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="signserver" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="signserver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; 1.7 &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="signserver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; 1.7 &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rt.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="signserver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; 1.7 &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rt.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="signserver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; 1.7 &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rt.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -261,6 +339,186 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="signserver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="signserver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SignServer-Test-Utils" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="signserver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="signserver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SignServer-Test-Utils" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="signserver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="signserver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SignServer-Test-Utils" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="signserver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="signserver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SignServer-Test-Utils" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="signserver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="signserver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="signserver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SignServer-Test-Utils" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="signserver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="utils" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mock" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="signserver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="signserver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SignServer-Test-Utils" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="signserver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="utils" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1512,28 +1770,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="SignServer-ejb-ClientWS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="setup" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="signserver" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="signserver" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="SignServer-ejb" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -1660,6 +1896,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -1939,7 +2177,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="39" y="24" width="1327" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1949,10 +2187,11 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.49102265" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32903227" sideWeight="0.49102265" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30679157" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.264637" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1964,7 +2203,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1987,109 +2225,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/modules/SignServer-ejb/src/main/java/org/signserver/ejb/worker/impl/IWorkerManagerSessionLocal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="43" column="12" selection-start-line="43" selection-start-column="12" selection-end-line="43" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/SignServer-Module-MRTDSODSigner/src/main/java/org/signserver/module/mrtdsodsigner/jmrtd/PassportFile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="65" column="10" selection-start-line="65" selection-start-column="10" selection-end-line="65" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/SignServer-ejb/src/main/java/org/signserver/ejb/worker/impl/WorkerManagerSessionBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="90" column="34" selection-start-line="90" selection-start-column="34" selection-end-line="90" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/SignServer-Common/src/main/java/org/signserver/common/GenericServletRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="44" column="11" selection-start-line="44" selection-start-column="11" selection-end-line="44" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/SignServer-Module-TSA/src/main/java/org/signserver/module/tsa/RequestedPolicyDispatcher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="183" column="66" selection-start-line="183" selection-start-column="66" selection-end-line="183" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/SignServer-ejb-interfaces/src/main/java/org/signserver/ejb/interfaces/IDispatcherWorkerSession.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="40" column="25" selection-start-line="40" selection-start-column="25" selection-end-line="40" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/SignServer-Common/src/main/java/org/signserver/common/ProcessRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-298">
-          <caret line="31" column="22" selection-start-line="31" selection-start-column="22" selection-end-line="31" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/SignServer-Common/src/main/java/org/signserver/common/SODSignRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="125" column="19" selection-start-line="125" selection-start-column="19" selection-end-line="125" selection-end-column="19" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-            <element signature="e#3472#3473#0" expanded="false" />
-            <element signature="e#3510#3511#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/SignServer-ejb/src/main/java/org/signserver/ejb/DispatcherWorkerSessionBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="121" column="32" selection-start-line="121" selection-start-column="32" selection-end-line="121" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/SignServer-Common/src/main/java/org/signserver/common/SODSignResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-43">
-          <caret line="25" column="46" selection-start-line="25" selection-start-column="46" selection-end-line="25" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/SignServer-ejb-ClientWS/src/main/java/org/signserver/clientws/SODResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="36" column="11" selection-start-line="36" selection-start-column="11" selection-end-line="36" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/SignServer-ejb-ClientWS/src/main/java/org/signserver/clientws/SODRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-523">
-          <caret line="26" column="25" selection-start-line="26" selection-start-column="25" selection-end-line="26" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/SignServer-ejb/src/main/java/org/signserver/ejb/WorkerProcessImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="283" column="56" selection-start-line="283" selection-start-column="56" selection-end-line="283" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///usr/lib/jvm/java-1.7.0-openjdk-amd64/jre/lib/rt.jar!/java/util/Iterator.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -2138,13 +2273,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mods-available/40_module.mrtdsigner.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/mods-available/40_module.mrtdsigner.properties" />
     <entry file="file://$PROJECT_DIR$/lib/update-jars-list.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-94">
@@ -2178,7 +2307,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2186,7 +2314,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2206,123 +2333,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/SignServer-ejb-ClientWS/src/main/java/org/signserver/clientws/DecryptDataResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
-          <folding>
-            <element signature="e#393#394#0" expanded="true" />
-            <element signature="e#422#423#0" expanded="true" />
-            <element signature="e#466#467#0" expanded="true" />
-            <element signature="e#502#503#0" expanded="true" />
-            <element signature="e#542#543#0" expanded="true" />
-            <element signature="e#578#579#0" expanded="true" />
-            <element signature="e#636#637#0" expanded="true" />
-            <element signature="e#686#687#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/SignServer-Server/src/main/java/org/signserver/server/cryptotokens/IKeyGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="34" column="11" selection-start-line="34" selection-start-column="11" selection-end-line="34" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/SignServer-ejb-ClientWS/src/main/java/org/signserver/clientws/ClientWS.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="532" column="58" selection-start-line="532" selection-start-column="58" selection-end-line="532" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/SignServer-ejb-interfaces/src/main/java/org/signserver/ejb/interfaces/IWorkerSession.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="179" column="11" selection-start-line="179" selection-start-column="11" selection-end-line="179" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/SignServer-ejb/src/main/java/org/signserver/ejb/WorkerSessionBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
-          <caret line="417" column="43" selection-start-line="417" selection-start-column="43" selection-end-line="417" selection-end-column="43" />
-          <folding>
-            <element signature="e#0#69970#0" expanded="true" />
-            <element signature="imports" expanded="true" />
-            <element signature="e#12034#12042#0" expanded="true" />
-            <element signature="e#20228#20244#0" expanded="true" />
-            <element signature="e#21271#21287#0" expanded="true" />
-            <element signature="e#23668#23684#0" expanded="true" />
-            <element signature="e#27826#27842#0" expanded="true" />
-            <element signature="e#30156#30172#0" expanded="true" />
-            <element signature="e#30816#30832#0" expanded="true" />
-            <element signature="e#31515#31531#0" expanded="true" />
-            <element signature="e#33430#33446#0" expanded="true" />
-            <element signature="e#34059#34075#0" expanded="true" />
-            <element signature="e#41706#41722#0" expanded="true" />
-            <element signature="e#48896#48912#0" expanded="true" />
-            <element signature="e#53997#54010#0" expanded="true" />
-            <element signature="e#55213#55226#0" expanded="true" />
-            <element signature="e#55721#55737#0" expanded="true" />
-            <element signature="e#58753#58768#0" expanded="true" />
-            <element signature="e#59719#59734#0" expanded="true" />
-            <element signature="e#60642#60657#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/SignServer-Server/src/main/java/org/signserver/server/IProcessable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="121" column="12" selection-start-line="121" selection-start-column="12" selection-end-line="121" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#11455#0" expanded="true" />
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/SignServer-Server/src/main/java/org/signserver/server/cryptotokens/ICryptoTokenV3.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="53" column="11" selection-start-line="53" selection-start-column="11" selection-end-line="53" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/SignServer-Server/src/main/java/org/signserver/server/BaseProcessable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="709" column="24" selection-start-line="709" selection-start-column="24" selection-end-line="709" selection-end-column="24" />
-          <folding>
-            <element signature="e#46915#46931#0" expanded="true" />
-            <element signature="e#48823#48839#0" expanded="true" />
-            <element signature="e#53949#53957#0" expanded="true" />
-            <element signature="e#54911#54927#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/SignServer-Server/src/main/java/org/signserver/server/cryptotokens/PKCS11CryptoToken.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="59" column="80" selection-start-line="59" selection-start-column="80" selection-end-line="59" selection-end-column="80" />
-          <folding>
-            <element signature="e#12353#12354#0" expanded="true" />
-            <element signature="e#12398#12399#0" expanded="true" />
-            <element signature="e#16713#16714#0" expanded="true" />
-            <element signature="e#16766#16767#0" expanded="true" />
-            <element signature="e#20148#20149#0" expanded="true" />
-            <element signature="e#20176#20177#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/modules/SignServer-Server/src/main/java/org/signserver/server/cryptotokens/P12CryptoToken.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -2331,62 +2341,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/SignServer-Server/src/main/java/org/signserver/server/cryptotokens/OldPKCS11CryptoToken.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="536">
-          <caret line="460" column="1" selection-start-line="460" selection-start-column="1" selection-end-line="460" selection-end-column="1" />
-          <folding>
-            <element signature="e#13231#13246#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/SignServer-Server/src/main/java/org/signserver/server/cryptotokens/NullCryptoToken.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="149" column="77" selection-start-line="149" selection-start-column="77" selection-end-line="149" selection-end-column="77" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/SignServer-Server/src/main/java/org/signserver/server/cryptotokens/KeystoreCryptoToken.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="536">
-          <caret line="829" column="1" selection-start-line="829" selection-start-column="1" selection-end-line="829" selection-end-column="1" />
-          <folding>
-            <element signature="e#6484#6485#0" expanded="true" />
-            <element signature="e#6529#6530#0" expanded="true" />
-            <element signature="e#13059#13060#0" expanded="true" />
-            <element signature="e#13086#13087#0" expanded="true" />
-            <element signature="e#16559#16560#0" expanded="true" />
-            <element signature="e#16587#16588#0" expanded="true" />
-            <element signature="e#33702#33703#0" expanded="true" />
-            <element signature="e#33744#33745#0" expanded="true" />
-            <element signature="e#33802#33803#0" expanded="true" />
-            <element signature="e#33849#33850#0" expanded="true" />
-            <element signature="e#33894#33895#0" expanded="true" />
-            <element signature="e#33935#33936#0" expanded="true" />
-            <element signature="e#33997#33998#0" expanded="true" />
-            <element signature="e#34039#34040#0" expanded="true" />
-            <element signature="e#34117#34118#0" expanded="true" />
-            <element signature="e#34169#34170#0" expanded="true" />
-            <element signature="e#34232#34233#0" expanded="true" />
-            <element signature="e#34276#34277#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/SignServer-Server/src/main/java/org/signserver/server/cryptotokens/HardCodedCryptoToken.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="344" column="51" selection-start-line="344" selection-start-column="51" selection-end-line="344" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/modules/SignServer-Server/src/main/java/org/signserver/server/cryptotokens/ICryptoInstance.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
+        <state relative-caret-position="332">
           <caret line="62" column="13" selection-start-line="62" selection-start-column="13" selection-end-line="62" selection-end-column="13" />
           <folding />
         </state>
@@ -2402,8 +2359,247 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/SignServer-Server/src/main/java/org/signserver/server/cryptotokens/SoftCryptoToken.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3108">
+        <state relative-caret-position="15">
           <caret line="65" column="33" selection-start-line="65" selection-start-column="33" selection-end-line="65" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/jdk1.7.0_80/src.zip!/java/lang/String.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="954" column="18" selection-start-line="954" selection-start-column="18" selection-end-line="954" selection-end-column="18" />
+          <folding>
+            <element signature="e#36782#36783#0" expanded="false" />
+            <element signature="e#36848#36849#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/SignServer-Server/src/main/java/org/signserver/server/cryptotokens/OldPKCS11CryptoToken.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="191" column="0" selection-start-line="191" selection-start-column="0" selection-end-line="191" selection-end-column="0" />
+          <folding>
+            <element signature="e#13803#13818#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/SignServer-Server/src/main/java/org/signserver/server/cryptotokens/NullCryptoToken.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="536">
+          <caret line="239" column="75" selection-start-line="239" selection-start-column="75" selection-end-line="239" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/SignServer-Server/src/main/java/org/signserver/server/cryptotokens/KeystoreCryptoToken.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="154" column="73" selection-start-line="154" selection-start-column="73" selection-end-line="154" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/SignServer-Server/src/main/java/org/signserver/server/cryptotokens/ICryptoTokenV2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="36" column="17" selection-start-line="36" selection-start-column="17" selection-end-line="36" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/SignServer-Server/src/main/java/org/signserver/server/cryptotokens/CryptoTokenUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="44" column="19" selection-start-line="44" selection-start-column="19" selection-end-line="44" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/SignServer-Server/src/main/java/org/signserver/server/cryptotokens/HardCodedCryptoToken.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="29">
+          <caret line="340" column="73" selection-start-line="340" selection-start-column="73" selection-end-line="340" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/SignServer-Server/src/main/java/org/signserver/server/cryptotokens/IKeyRemover.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="25" column="17" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/SignServer-Test-Utils/src/main/java/org/signserver/test/utils/mock/MockedCryptoToken.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="42" column="25" selection-start-line="42" selection-start-column="25" selection-end-line="42" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/SignServer-ejb/src/main/java/org/signserver/ejb/WorkerProcessImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="283" column="56" selection-start-line="283" selection-start-column="56" selection-end-line="283" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/SignServer-ejb/src/main/java/org/signserver/ejb/InternalWorkerSessionBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="51" column="13" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/SignServer-ejb/src/main/java/org/signserver/ejb/GlobalConfigurationSessionBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="281" column="0" selection-start-line="281" selection-start-column="0" selection-end-line="281" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/SignServer-Test-Utils/src/main/java/org/signserver/test/utils/mock/WorkerSessionMock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="341">
+          <caret line="237" column="5" selection-start-line="237" selection-start-column="5" selection-end-line="237" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/SignServer-ejb/src/main/java/org/signserver/ejb/ServiceTimerSessionBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-119">
+          <caret line="215" column="16" selection-start-line="215" selection-start-column="16" selection-end-line="215" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/SignServer-ejb-interfaces/src/main/java/org/signserver/ejb/interfaces/IServiceTimerSession.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/SignServer-ejb-interfaces/src/main/java/org/signserver/ejb/interfaces/IGlobalConfigurationSession.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="26" column="17" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/SignServer-ejb-interfaces/src/main/java/org/signserver/ejb/interfaces/IWorkerSession.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="183" column="11" selection-start-line="183" selection-start-column="11" selection-end-line="183" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/SignServer-ejb/src/main/java/org/signserver/ejb/WorkerSessionBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="443">
+          <caret line="419" column="45" selection-start-line="419" selection-start-column="45" selection-end-line="419" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#71981#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#12171#12179#0" expanded="true" />
+            <element signature="e#22239#22255#0" expanded="true" />
+            <element signature="e#23282#23298#0" expanded="true" />
+            <element signature="e#25679#25695#0" expanded="true" />
+            <element signature="e#29837#29853#0" expanded="true" />
+            <element signature="e#32167#32183#0" expanded="true" />
+            <element signature="e#32827#32843#0" expanded="true" />
+            <element signature="e#33526#33542#0" expanded="true" />
+            <element signature="e#35441#35457#0" expanded="true" />
+            <element signature="e#36070#36086#0" expanded="true" />
+            <element signature="e#43717#43733#0" expanded="true" />
+            <element signature="e#50907#50923#0" expanded="true" />
+            <element signature="e#56008#56021#0" expanded="true" />
+            <element signature="e#57224#57237#0" expanded="true" />
+            <element signature="e#57732#57748#0" expanded="true" />
+            <element signature="e#60764#60779#0" expanded="true" />
+            <element signature="e#61730#61745#0" expanded="true" />
+            <element signature="e#62653#62668#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/SignServer-Server/src/main/java/org/signserver/server/IProcessable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="134" column="11" selection-start-line="134" selection-start-column="11" selection-end-line="134" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#11862#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/SignServer-Server/src/main/java/org/signserver/server/cryptotokens/IKeyGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="37" column="11" selection-start-line="37" selection-start-column="11" selection-end-line="37" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/SignServer-Server/src/main/java/org/signserver/server/cryptotokens/ICryptoTokenV3.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="51" column="3" selection-start-line="51" selection-start-column="3" selection-end-line="51" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/SignServer-ejb-ClientWS/src/main/java/org/signserver/clientws/EncryptedMessageResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="31" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
+          <folding>
+            <element signature="e#449#450#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/SignServer-Server/src/main/java/org/signserver/server/cryptotokens/PKCS11CryptoToken.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="466" column="18" selection-start-line="466" selection-start-column="18" selection-end-line="466" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/SignServer-Server/src/main/java/org/signserver/server/BaseProcessable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="721" column="34" selection-start-line="721" selection-start-column="34" selection-end-line="721" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/SignServer-ejb-ClientWS/src/main/java/org/signserver/clientws/DecryptDataResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/SignServer-ejb-ClientWS/src/main/java/org/signserver/clientws/ClientWS.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="550" column="36" selection-start-line="550" selection-start-column="36" selection-end-line="550" selection-end-column="36" />
           <folding />
         </state>
       </provider>

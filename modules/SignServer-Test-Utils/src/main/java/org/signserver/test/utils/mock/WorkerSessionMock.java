@@ -12,6 +12,7 @@
  *************************************************************************/
 package org.signserver.test.utils.mock;
 
+import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.security.KeyStoreException;
 import java.security.PublicKey;
@@ -234,6 +235,16 @@ public class WorkerSessionMock implements IWorkerSession.ILocal,
     @Override
     public void addAuthorizedClient(int signerId, AuthorizedClient authClient) {
         throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public String decryptByteData(int workerId, byte[] encryptedData) throws InvalidWorkerIdException, UnsupportedEncodingException {
+        throw new UnsupportedOperationException("Not supported medthod");
+    }
+
+    @Override
+    public byte[] encryptMessage(int workerId, String message) throws InvalidWorkerIdException {
+        throw new UnsupportedOperationException("Not supported medthod");
     }
 
     @Override

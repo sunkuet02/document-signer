@@ -13,6 +13,7 @@
  *************************************************************************/
 package org.signserver.server;
 
+import java.io.UnsupportedEncodingException;
 import java.security.*;
 import java.security.cert.Certificate;
 import java.util.Collection;
@@ -119,7 +120,7 @@ public interface IProcessable extends IWorker {
      */
     String getAuthenticationType();
 
-    byte [] decryptByteData (String alias, String authcode, byte[] encryptedData, final IServices services) throws NoSuchPaddingException, UnrecoverableKeyException, NoSuchAlgorithmException, IllegalBlockSizeException, BadPaddingException, KeyStoreException, InvalidKeyException, CryptoTokenOfflineException;
+    String decryptByteData (String alias, String authcode, byte[] encryptedData, final IServices services) throws NoSuchPaddingException, UnrecoverableKeyException, NoSuchAlgorithmException, IllegalBlockSizeException, BadPaddingException, KeyStoreException, InvalidKeyException, CryptoTokenOfflineException, UnsupportedEncodingException;
 
     /**
      * Method used to remove a key in the processable worker that shouldn't be used any more
@@ -130,6 +131,8 @@ public interface IProcessable extends IWorker {
      * @return true if removal was successful.
      */
     boolean destroyKey(int purpose);
+
+    byte[] encryptMessage (String alias, String authcode, String message, IServices services) throws CryptoTokenOfflineException, NoSuchPaddingException, BadPaddingException, InvalidKeyException, NoSuchAlgorithmException, IllegalBlockSizeException, UnsupportedEncodingException, org.cesecore.keys.token.CryptoTokenOfflineException;
 
     /**
      * @see IKeyGenerator#generateKey(java.lang.String, java.lang.String,
