@@ -39,18 +39,4 @@ public class ClientWSHelper {
         }
         return globalConfig;
     }
-
-    private IWorkerSession.IRemote signsession;
-    public IWorkerSession.IRemote getWorkerSession() throws RemoteException {
-        if (signsession == null) {
-            try {
-                signsession = ServiceLocator.getInstance().lookupRemote(
-                        IWorkerSession.IRemote.class);
-            } catch (NamingException e) {
-                LOG.error("Error looking up signserver interface");
-                throw new RemoteException("Error looking up signserver interface", e);
-            }
-        }
-        return signsession;
-    }
 }

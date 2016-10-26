@@ -473,18 +473,16 @@ public class ClientWS {
             helper.getGlobalConfigurationSession().setProperty(helper.SCOPE_GLOB, helper.WORKER_TEXT+workerId+helper.CLASSPATH_TEXT, helper.CRYPTOWORKER_CLASSPATH);
             helper.getGlobalConfigurationSession().setProperty(helper.SCOPE_GLOB,helper.WORKER_TEXT+workerId+helper.SIGNERTOKEN_CLASSPATH_TEXT, helper.PKCS11_CRYPTOWORKER_SIGNERTOKEN_CLASSPATH);
 
-            helper.getWorkerSession().setWorkerProperty(workerId, "NAME", workerName);
-            helper.getWorkerSession().setWorkerProperty(workerId,"SHAREDLIBRARYNAME", "Utimaco");
-            helper.getWorkerSession().setWorkerProperty(workerId,"SLOTLABELTYPE", "SLOT_NUMBER");
-            helper.getWorkerSession().setWorkerProperty(workerId,"SLOTLABELVALUE", String.valueOf(slotLabelValue) );
-            helper.getWorkerSession().setWorkerProperty(workerId,"PIN", pin);
-            helper.getWorkerSession().setWorkerProperty(workerId,"DEFAULTKEY", defaultKey );
-//
-//            Worker workerCreator = new Worker();
-//            int workerID = workerCreator.createWorker(properties);
+            getWorkerSession().setWorkerProperty(workerId, "NAME", workerName);
+            getWorkerSession().setWorkerProperty(workerId,"SHAREDLIBRARYNAME", "Utimaco");
+            getWorkerSession().setWorkerProperty(workerId,"SLOTLABELTYPE", "SLOT_NUMBER");
+            getWorkerSession().setWorkerProperty(workerId,"SLOTLABELVALUE", String.valueOf(slotLabelValue) );
+            getWorkerSession().setWorkerProperty(workerId,"PIN", pin);
+            getWorkerSession().setWorkerProperty(workerId,"DEFAULTKEY", defaultKey );
+
             getWorkerSession().reloadConfiguration(workerId);
             Certificate certificate = getWorkerSession().generateSignerKeyAndGetCertificate(workerId, algorithm, keyspec, defaultKey, pin.toCharArray());
-            helper.getWorkerSession().activateSigner(workerId, pin);
+            getWorkerSession().activateSigner(workerId, pin);
 
             return new CryptoWorkerResponse(workerId, certificate.getEncoded());
         } catch (Exception e) {
@@ -504,7 +502,7 @@ public class ClientWS {
         try {
             CryptoWorkerResponse cryptoWorkerResponse = createCryptokeyWorker(workerName + "CryptoToken", defaultKey, slotLabelValue, pin, algorithm, keyspec);
 
-            int workerId = helper.getWorkerSession().genFreeWorkerId();
+            int workerId = getWorkerSession().genFreeWorkerId();
             helper.getGlobalConfigurationSession().setProperty(helper.SCOPE_GLOB, helper.WORKER_TEXT+workerId+helper.CLASSPATH_TEXT , helper.MRTDSODSIGNER_CLASSPATH );
             getWorkerSession().setWorkerProperty(workerId,"NAME", workerName);
             getWorkerSession().setWorkerProperty(workerId,"CRYPTOTOKEN", workerName + "CryptoToken" );
