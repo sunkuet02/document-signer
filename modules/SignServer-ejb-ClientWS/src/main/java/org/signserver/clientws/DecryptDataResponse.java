@@ -5,12 +5,12 @@ package org.signserver.clientws;
  */
 public class DecryptDataResponse {
     private String result;
-    private String decryptedData;
+    private byte[] decryptedData;
 
     public DecryptDataResponse() {
     }
 
-    public DecryptDataResponse(String result, String decryptedData) {
+    public DecryptDataResponse(String result, byte[] decryptedData) {
         this.result = result;
         this.decryptedData = decryptedData;
     }
@@ -23,11 +23,11 @@ public class DecryptDataResponse {
         this.result = result;
     }
 
-    public String getDecryptedData() {
+    public byte[] getDecryptedData() {
         return decryptedData;
     }
 
-    public void setDecryptedData(String decryptedData) {
+    public void setDecryptedData(byte[] decryptedData) {
         this.decryptedData = decryptedData;
     }
 }

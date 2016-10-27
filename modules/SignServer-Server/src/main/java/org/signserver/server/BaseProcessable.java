@@ -12,6 +12,7 @@
  *************************************************************************/
 package org.signserver.server;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.*;
 import java.security.cert.Certificate;
@@ -26,6 +27,7 @@ import java.util.Properties;
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
+import javax.crypto.ShortBufferException;
 import javax.persistence.EntityManager;
 
 import org.apache.log4j.Logger;
@@ -596,12 +598,12 @@ public abstract class BaseProcessable extends BaseWorker implements IProcessable
         }
 
         @Override
-        public String decryptByteData(String alias, String pin, byte[] encryptedData) throws NoSuchPaddingException, NoSuchAlgorithmException, BadPaddingException, IllegalBlockSizeException, CryptoTokenOfflineException, UnrecoverableKeyException, KeyStoreException, InvalidKeyException, UnsupportedEncodingException {
+        public byte[] decryptByteData(String alias, String pin, byte[] encryptedData) throws NoSuchPaddingException, NoSuchAlgorithmException, BadPaddingException, IllegalBlockSizeException, CryptoTokenOfflineException, UnrecoverableKeyException, KeyStoreException, InvalidKeyException, IOException, ShortBufferException {
             return delegate.decryptByteData(alias,pin,encryptedData);
         }
 
         @Override
-        public byte[] encryptMessage(String alias, String authcode, String message) throws NoSuchPaddingException, NoSuchAlgorithmException, org.cesecore.keys.token.CryptoTokenOfflineException, InvalidKeyException, UnsupportedEncodingException, BadPaddingException, IllegalBlockSizeException {
+        public byte[] encryptMessage(String alias, String authcode, byte[] message) throws NoSuchPaddingException, NoSuchAlgorithmException, org.cesecore.keys.token.CryptoTokenOfflineException, InvalidKeyException, IOException, BadPaddingException, IllegalBlockSizeException, ShortBufferException {
             return delegate.encryptMessage(alias,authcode,message);
         }
 
@@ -704,12 +706,12 @@ public abstract class BaseProcessable extends BaseWorker implements IProcessable
         }
 
         @Override
-        public String decryptByteData(String alias, String authcode, byte[] encryptedData, IServices services) throws NoSuchAlgorithmException, NoSuchPaddingException, BadPaddingException, IllegalBlockSizeException, CryptoTokenOfflineException, UnrecoverableKeyException, KeyStoreException, InvalidKeyException, UnsupportedEncodingException {
+        public byte[] decryptByteData(String alias, String authcode, byte[] encryptedData, IServices services) throws NoSuchAlgorithmException, NoSuchPaddingException, BadPaddingException, IllegalBlockSizeException, CryptoTokenOfflineException, UnrecoverableKeyException, KeyStoreException, InvalidKeyException, IOException, ShortBufferException {
             return delegate.decryptByteData(alias,authcode,encryptedData,services);
         }
 
         @Override
-        public byte[] encryptMessage(String alias, String authcode, String message, IServices services) throws NoSuchAlgorithmException, NoSuchPaddingException, org.cesecore.keys.token.CryptoTokenOfflineException, InvalidKeyException, UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException {
+        public byte[] encryptMessage(String alias, String authcode, byte[] message, IServices services) throws NoSuchAlgorithmException, NoSuchPaddingException, org.cesecore.keys.token.CryptoTokenOfflineException, InvalidKeyException, IOException, IllegalBlockSizeException, BadPaddingException, ShortBufferException {
             return delegate.encryptMessage(alias,authcode,message,services);
         }
 
@@ -719,12 +721,12 @@ public abstract class BaseProcessable extends BaseWorker implements IProcessable
         }
 
         @Override
-        public String decryptByteData(String alias, String pin, byte[] encryptedData) throws NoSuchPaddingException, NoSuchAlgorithmException, BadPaddingException, IllegalBlockSizeException, CryptoTokenOfflineException, UnrecoverableKeyException, KeyStoreException, InvalidKeyException, UnsupportedEncodingException {
+        public byte[] decryptByteData(String alias, String pin, byte[] encryptedData) throws NoSuchPaddingException, NoSuchAlgorithmException, BadPaddingException, IllegalBlockSizeException, CryptoTokenOfflineException, UnrecoverableKeyException, KeyStoreException, InvalidKeyException, IOException, ShortBufferException {
             return delegate.decryptByteData(alias,pin,encryptedData);
         }
 
         @Override
-        public byte[] encryptMessage(String alias, String authcode, String message) throws NoSuchPaddingException, NoSuchAlgorithmException, org.cesecore.keys.token.CryptoTokenOfflineException, InvalidKeyException, UnsupportedEncodingException, BadPaddingException, IllegalBlockSizeException {
+        public byte[] encryptMessage(String alias, String authcode, byte[] message) throws NoSuchPaddingException, NoSuchAlgorithmException, org.cesecore.keys.token.CryptoTokenOfflineException, InvalidKeyException, IOException, BadPaddingException, IllegalBlockSizeException, ShortBufferException {
             return delegate.encryptMessage(alias,authcode,message);
         }
     }
@@ -1051,7 +1053,7 @@ public abstract class BaseProcessable extends BaseWorker implements IProcessable
     }
 
     @Override
-    public String decryptByteData(String alias, String pin, byte[] encryptedData, IServices services) throws NoSuchPaddingException, UnrecoverableKeyException, NoSuchAlgorithmException, IllegalBlockSizeException, BadPaddingException, KeyStoreException, InvalidKeyException, CryptoTokenOfflineException, UnsupportedEncodingException {
+    public byte[] decryptByteData(String alias, String pin, byte[] encryptedData, IServices services) throws NoSuchPaddingException, UnrecoverableKeyException, NoSuchAlgorithmException, IllegalBlockSizeException, BadPaddingException, KeyStoreException, InvalidKeyException, CryptoTokenOfflineException, UnsupportedEncodingException {
         try {
             ICryptoToken token = getCryptoToken();
             if (token == null) {
@@ -1067,11 +1069,15 @@ public abstract class BaseProcessable extends BaseWorker implements IProcessable
         } catch (SignServerException e) {
             log.error(FAILED_TO_GET_CRYPTO_TOKEN_ + e.getMessage());
             throw new CryptoTokenOfflineException(e);
+        } catch (ShortBufferException e) {
+            throw new CryptoTokenOfflineException("ShortBufferException", e);
+        } catch (IOException e) {
+            throw new CryptoTokenOfflineException("IOException", e);
         }
     }
 
     @Override
-    public byte[] encryptMessage (String alias, String authcode, String message, IServices services) throws CryptoTokenOfflineException, NoSuchPaddingException, BadPaddingException, InvalidKeyException, NoSuchAlgorithmException, IllegalBlockSizeException, UnsupportedEncodingException, org.cesecore.keys.token.CryptoTokenOfflineException {
+    public byte[] encryptMessage (String alias, String authcode, byte[] message, IServices services) throws CryptoTokenOfflineException, NoSuchPaddingException, BadPaddingException, InvalidKeyException, NoSuchAlgorithmException, IllegalBlockSizeException, UnsupportedEncodingException, org.cesecore.keys.token.CryptoTokenOfflineException {
         try {
             ICryptoToken token = getCryptoToken();
             if (token == null) {
@@ -1087,6 +1093,10 @@ public abstract class BaseProcessable extends BaseWorker implements IProcessable
         } catch (SignServerException e) {
             log.error(FAILED_TO_GET_CRYPTO_TOKEN_ + e.getMessage());
             throw new CryptoTokenOfflineException(e);
+        } catch (ShortBufferException e) {
+            throw new CryptoTokenOfflineException("ShortBufferException", e);
+        } catch (IOException e) {
+            throw new CryptoTokenOfflineException("IOException", e);
         }
     }
 

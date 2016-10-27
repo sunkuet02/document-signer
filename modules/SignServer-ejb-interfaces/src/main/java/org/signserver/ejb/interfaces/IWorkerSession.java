@@ -179,9 +179,9 @@ public interface IWorkerSession {
      */
     void addAuthorizedClient(int signerId, AuthorizedClient authClient);
 
-    String decryptByteData(int workerId, byte[] encryptedData) throws InvalidWorkerIdException, UnsupportedEncodingException;
+    byte[] decryptByteData(int workerId, byte[] encryptedData) throws InvalidWorkerIdException, UnsupportedEncodingException;
 
-    byte[] encryptMessage(int workerId, String message) throws InvalidWorkerIdException, NoSuchPaddingException, InvalidKeyException, UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException, NoSuchAlgorithmException, org.cesecore.keys.token.CryptoTokenOfflineException;
+    byte[] encryptMessage(int workerId, byte[] message) throws InvalidWorkerIdException, NoSuchPaddingException, InvalidKeyException, UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException, NoSuchAlgorithmException, org.cesecore.keys.token.CryptoTokenOfflineException;
 
     /**
      * Removes an authorized client from a signer.
