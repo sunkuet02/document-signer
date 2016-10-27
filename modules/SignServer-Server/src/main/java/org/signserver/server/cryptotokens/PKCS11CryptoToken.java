@@ -445,8 +445,6 @@ public class PKCS11CryptoToken extends BaseCryptoToken {
 
     @Override
     public byte[] decryptByteData(String alias, String pin, byte[] encryptedData) throws NoSuchPaddingException, NoSuchAlgorithmException, CryptoTokenOfflineException, UnrecoverableKeyException, KeyStoreException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException, IOException, ShortBufferException {
-        LOG.info("Alisa : " + alias + "    Pin : " + pin);
-
         Cipher decrypt=Cipher.getInstance("RSA/ECB/PKCS1Padding");
         PrivateKey privateKey = (PrivateKey) delegate.getActivatedKeyStore().getKey(alias, pin.toCharArray());
         decrypt.init(Cipher.DECRYPT_MODE, privateKey);
