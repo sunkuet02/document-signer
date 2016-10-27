@@ -554,4 +554,11 @@ public class ClientWS {
         }
         return new EncryptedMessageResponse(result, encryptedMessage);
     }
+
+    @WebMethod(operationName = "removeWorker")
+    public String removeWorker(
+            @WebParam(name = "workerId")final int workerId) {
+        String result = helper.removeWorker(workerId, getWorkerSession());
+        return result;
+    }
 }
