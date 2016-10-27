@@ -238,12 +238,12 @@ public class WorkerSessionMock implements IWorkerSession.ILocal,
     }
 
     @Override
-    public String decryptByteData(int workerId, byte[] encryptedData) throws InvalidWorkerIdException, UnsupportedEncodingException {
+    public byte[] decryptByteData(int workerId, byte[] encryptedData) throws InvalidWorkerIdException, UnsupportedEncodingException {
         throw new UnsupportedOperationException("Not supported medthod");
     }
 
     @Override
-    public byte[] encryptMessage(int workerId, String message) throws InvalidWorkerIdException {
+    public byte[] encryptMessage(int workerId, byte[] message) throws InvalidWorkerIdException {
         throw new UnsupportedOperationException("Not supported medthod");
     }
 

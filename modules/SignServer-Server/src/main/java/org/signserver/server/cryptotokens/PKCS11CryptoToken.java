@@ -35,10 +35,7 @@ import org.signserver.server.ExceptionUtil;
 import org.signserver.server.IServices;
 import sun.security.x509.*;
 
-import javax.crypto.BadPaddingException;
-import javax.crypto.Cipher;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
+import javax.crypto.*;
 
 /**
  * CryptoToken implementation wrapping the new PKCS11CryptoToken from CESeCore.
@@ -442,35 +439,35 @@ public class PKCS11CryptoToken extends BaseCryptoToken {
     }
 
     @Override
-    public String decryptByteData(String alias,String authcode, byte[] encryptedData, IServices services) throws NoSuchAlgorithmException, NoSuchPaddingException, BadPaddingException, IllegalBlockSizeException, CryptoTokenOfflineException, UnrecoverableKeyException, KeyStoreException, InvalidKeyException, UnsupportedEncodingException {
+    public byte[] decryptByteData(String alias,String authcode, byte[] encryptedData, IServices services) throws NoSuchAlgorithmException, NoSuchPaddingException, BadPaddingException, IllegalBlockSizeException, CryptoTokenOfflineException, UnrecoverableKeyException, KeyStoreException, InvalidKeyException, IOException, ShortBufferException {
         return decryptByteData(alias,authcode,encryptedData);
     }
 
     @Override
-    public String decryptByteData(String alias, String pin, byte[] encryptedData) throws NoSuchPaddingException, NoSuchAlgorithmException, CryptoTokenOfflineException, UnrecoverableKeyException, KeyStoreException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException, UnsupportedEncodingException {
+    public byte[] decryptByteData(String alias, String pin, byte[] encryptedData) throws NoSuchPaddingException, NoSuchAlgorithmException, CryptoTokenOfflineException, UnrecoverableKeyException, KeyStoreException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException, IOException, ShortBufferException {
         LOG.info("Alisa : " + alias + "    Pin : " + pin);
 
         Cipher decrypt=Cipher.getInstance("RSA/ECB/PKCS1Padding");
         PrivateKey privateKey = (PrivateKey) delegate.getActivatedKeyStore().getKey(alias, pin.toCharArray());
         decrypt.init(Cipher.DECRYPT_MODE, privateKey);
-        String decryptedMessage =  new String(decrypt.doFinal(encryptedData), "UTF-8");
-        return decryptedMessage;
+
+        byte[] decryptedDataBytes = cryptDataBytes(decrypt,encryptedData,false);
+        return decryptedDataBytes;
     }
 
 
     @Override
-    public byte[] encryptMessage (String alias, String authcode, String message, IServices services) throws NoSuchAlgorithmException, NoSuchPaddingException, org.cesecore.keys.token.CryptoTokenOfflineException, InvalidKeyException, UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException {
+    public byte[] encryptMessage (String alias, String authcode, byte[] message, IServices services) throws NoSuchAlgorithmException, NoSuchPaddingException, org.cesecore.keys.token.CryptoTokenOfflineException, InvalidKeyException, IOException, IllegalBlockSizeException, BadPaddingException, ShortBufferException {
         return encryptMessage(alias,authcode,message);
     }
 
     @Override
-    public byte[] encryptMessage (String alias, String authcode, String message ) throws NoSuchPaddingException, NoSuchAlgorithmException, org.cesecore.keys.token.CryptoTokenOfflineException, InvalidKeyException, UnsupportedEncodingException, BadPaddingException, IllegalBlockSizeException {
+    public byte[] encryptMessage (String alias, String authcode, byte[] message ) throws NoSuchPaddingException, NoSuchAlgorithmException, org.cesecore.keys.token.CryptoTokenOfflineException, InvalidKeyException, IOException, BadPaddingException, IllegalBlockSizeException, ShortBufferException {
         Cipher encrypt=Cipher.getInstance("RSA/ECB/PKCS1Padding");
         encrypt.init(Cipher.ENCRYPT_MODE, delegate.getPublicKey(alias));
-        byte[] encryptedMessage = encrypt.doFinal(message.getBytes("UTF-8"));
-        System.out.println(new String(encryptedMessage));
 
-        return encryptedMessage;
+        byte[] encryptedBytes = cryptDataBytes(encrypt,message,true);
+        return  encryptedBytes;
     }
 
     @Override
@@ -675,4 +672,33 @@ public class PKCS11CryptoToken extends BaseCryptoToken {
         */
     }
 
+    private byte[] cryptDataBytes(Cipher cipher, byte[] dataBytes, boolean encription)
+            throws BadPaddingException, IllegalBlockSizeException, IOException {
+        int blockSize = cipher.getBlockSize();
+        int outputSize = cipher.getOutputSize(blockSize);
+        if (blockSize == 0) {
+            blockSize = outputSize - 11;
+        }
+
+        int readingBlockSize = 0;
+        if(encription) {
+            readingBlockSize = blockSize;
+        } else {
+            readingBlockSize = outputSize;
+        }
+
+        int inLen = dataBytes.length;
+        int fullBlockCount = inLen / readingBlockSize;
+
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        int inOffset = 0;
+        for (int i=0; i<fullBlockCount; i++) {
+            outputStream.write(cipher.doFinal(dataBytes,inOffset,readingBlockSize));
+            inOffset += readingBlockSize;
+        }
+        if (inOffset < inLen) {
+            outputStream.write(cipher.doFinal(dataBytes,inOffset,inLen-inOffset) );
+        }
+        return outputStream.toByteArray();
+    }
 }

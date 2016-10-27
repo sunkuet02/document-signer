@@ -16,6 +16,7 @@ import org.signserver.common.UnsupportedCryptoTokenParameter;
 import org.signserver.common.NoSuchAliasException;
 import org.signserver.common.DuplicateAliasException;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.*;
 import java.security.cert.Certificate;
@@ -37,6 +38,7 @@ import org.signserver.server.IServices;
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
+import javax.crypto.ShortBufferException;
 
 /**
  * Third version of the crypto token interface.
@@ -52,9 +54,9 @@ import javax.crypto.NoSuchPaddingException;
  */
 public interface ICryptoTokenV3 extends ICryptoTokenV2 {
 
-    String decryptByteData(String alias,String authcode, byte[] encryptedData, IServices services) throws NoSuchAlgorithmException, NoSuchPaddingException, BadPaddingException, IllegalBlockSizeException, CryptoTokenOfflineException, UnrecoverableKeyException, KeyStoreException, InvalidKeyException, UnsupportedEncodingException;
+    byte[] decryptByteData(String alias,String authcode, byte[] encryptedData, IServices services) throws NoSuchAlgorithmException, NoSuchPaddingException, BadPaddingException, IllegalBlockSizeException, CryptoTokenOfflineException, UnrecoverableKeyException, KeyStoreException, InvalidKeyException, IOException, ShortBufferException;
 
-    byte[] encryptMessage (String alias, String authcode, String message, IServices services) throws NoSuchAlgorithmException, NoSuchPaddingException, org.cesecore.keys.token.CryptoTokenOfflineException, InvalidKeyException, UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException;
+    byte[] encryptMessage (String alias, String authcode, byte[] message, IServices services) throws NoSuchAlgorithmException, NoSuchPaddingException, org.cesecore.keys.token.CryptoTokenOfflineException, InvalidKeyException, IOException, IllegalBlockSizeException, BadPaddingException, ShortBufferException;
 
     /**
      * @return The current state of the crypto token

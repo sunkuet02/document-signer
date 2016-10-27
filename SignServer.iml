@@ -26,9 +26,9 @@
     <libelement value="file://$MODULE_DIR$/bin" />
     <libelement value="file://lib/ext/swing-app-framework/appframework-1.0.3.jar" />
     <libelement value="file://lib/ext/swing-app-framework/swing-worker-1.1.jar" />
-    <libelement value="file://modules/SignServer-AdminGUI/target/generated/jax-wsCache/AdminWebServiceService/" />
+    <libelement value="file://$MODULE_DIR$/modules/SignServer-AdminGUI/target/generated/jax-wsCache/AdminWebServiceService" />
     <libelement value="file://modules/SignServer-Module-Renewal/target/generated/jax-wsCache/EjbcaWSService/" />
-    <libelement value="file://modules/SignServer-Client-SignServerWS/target/generated/jax-wsCache/SignServerWSService/" />
+    <libelement value="file://$MODULE_DIR$/modules/SignServer-Client-SignServerWS/target/generated/jax-wsCache/SignServerWSService" />
     <libelement value="file://modules/SignServer-Test-SignServerWS/target/generated/jax-wsCache/SignServerWSService/" />
     <libelement value="file://modules/SignServer-Test-ValidationWS/target/generated/jax-wsCache/ValidationWSService/" />
     <libelement value="file://modules/SignServer-Test-System/target/generated/jax-wsCache/ValidationWSService/" />
@@ -58,7 +58,7 @@
     <varelement var="file://$JBOSS_HOME$/client/antlr.jar" value="JBOSS_HOME/client/antlr.jar" />
     <varelement var="file://$JBOSS_HOME$/common/lib/hsqldb.jar" value="JBOSS_HOME/common/lib/hsqldb.jar" />
     <varelement var="file://$JBOSS_HOME$/lib/dom4j.jar" value="JBOSS_HOME/lib/dom4j.jar" />
-    <varelement var="file://$ANT_HOME$/lib/ant.jar" value="ANT_HOME/lib/ant.jar" />
+    <varelement var="jar://$ANT_HOME$/lib/ant.jar!/" value="ANT_HOME/lib/ant.jar" />
     <src_description expected_position="44">
       <src_folder value="file://$MODULE_DIR$/modules/SignServer-Client-SigningAndValidationAPI/src/main/java" expected_position="0" />
       <src_folder value="file://$MODULE_DIR$/modules/SignServer-Module-SignerStatusReport/src/main/java" expected_position="1" />
@@ -222,7 +222,6 @@
       <sourceFolder url="file://$MODULE_DIR$/modules/SignServer-Test-ValidationWS/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/modules/SignServer-Test-ValidationWS/test" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/modules/SignServer-Test-AdminWS/target/generated/jax-wsCache/AdminWS" isTestSource="false" />
-      <excludeFolder url="file://$MODULE_DIR$/.idea" />
     </content>
     <orderEntry type="module-library">
       <library name="ejb3-persistence.jar">
@@ -255,6 +254,42 @@
       <library name="hibernate-entitymanager.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/lib/ext/hibernate/hibernate-entitymanager.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="jboss-ejb3x.jar">
+        <CLASSES>
+          <root url="file://lib/ext/ext/ejb/jboss-ejb3x.jar" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="jboss-j2ee.jar">
+        <CLASSES>
+          <root url="file://lib/ext/ext/ejb/jboss-j2ee.jar" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="saaj-api.jar">
+        <CLASSES>
+          <root url="file://lib/ext/jaxws/saaj-api.jar" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="saaj-impl.jar">
+        <CLASSES>
+          <root url="file://lib/ext/jaxws/saaj-impl.jar" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -305,6 +340,15 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="module-library">
+      <library name="commons-fileupload-1.2.1.jar">
+        <CLASSES>
+          <root url="file://lib/ext/commons-fileupload-1.2.1.jar" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="module-library">
       <library name="commons-lang-2.5.jar">
@@ -319,6 +363,15 @@
       <library name="log4j-1.2.14.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/lib/ext/log4j-1.2.14.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="quartz-1.6.0.jar">
+        <CLASSES>
+          <root url="file://lib/ext/quartz/quartz-1.6.0.jar" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -363,7 +416,7 @@
     <orderEntry type="module-library">
       <library name="ant.jar">
         <CLASSES>
-          <root url="file://$ANT_HOME$/lib/ant.jar" />
+          <root url="jar://$ANT_HOME$/lib/ant.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -379,9 +432,54 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
+      <library name="xercesImpl.jar">
+        <CLASSES>
+          <root url="file://lib/ext/module/ooxmlsigner/xercesImpl.jar" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
       <library name="bin/">
         <CLASSES>
           <root url="file://$MODULE_DIR$/bin" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="appframework-1.0.3.jar">
+        <CLASSES>
+          <root url="file://lib/ext/swing-app-framework/appframework-1.0.3.jar" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="swing-worker-1.1.jar">
+        <CLASSES>
+          <root url="file://lib/ext/swing-app-framework/swing-worker-1.1.jar" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="modules/SignServer-AdminGUI/target/generated/jax-wsCache/AdminWebServiceService/">
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/modules/SignServer-AdminGUI/target/generated/jax-wsCache/AdminWebServiceService" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="modules/SignServer-Client-SignServerWS/target/generated/jax-wsCache/SignServerWSService/">
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/modules/SignServer-Client-SignServerWS/target/generated/jax-wsCache/SignServerWSService" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -397,16 +495,7 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/lib/ext/iso_sod_preparation.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
+    <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
           <root url="jar://$MODULE_DIR$/lib/ext/aopalliance-1.0.jar!/" />
@@ -438,6 +527,7 @@
           <root url="jar://$MODULE_DIR$/lib/ext/ehcache-core-2.3.2.jar!/" />
           <root url="jar://$MODULE_DIR$/lib/ext/guice-2.0.jar!/" />
           <root url="jar://$MODULE_DIR$/lib/ext/guice-multibindings-2.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/ext/iso_sod_preparation.jar!/" />
           <root url="jar://$MODULE_DIR$/lib/ext/jackson-all-1.7.0.jar!/" />
           <root url="jar://$MODULE_DIR$/lib/ext/javaee-api-6.0.jar!/" />
           <root url="jar://$MODULE_DIR$/lib/ext/jaxen-1.1.jar!/" />
