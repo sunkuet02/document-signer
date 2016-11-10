@@ -507,7 +507,7 @@ public class ClientWS {
             LOG.info("*******Elapsed time for checking the default key and slot value : " + (endTimeForcheckingDandS-startTimeForcheckingDandS) + "ms");
 
             if(response.getWorkerID() == -1) {
-                return response;
+                throw new SignServerException("Unable to create Signer with Default key " + defaultKey +", and Slot value "+ slotLabelValue + ". Because a Default key with the same name exists in this slot");
             }
 
             CryptoWorkerResponse cryptoWorkerResponse = createCryptokeyWorker(workerName + "CryptoToken", defaultKey, slotLabelValue, pin, algorithm, keyspec);
