@@ -500,6 +500,16 @@ public class ClientWS {
             @WebParam(name = "keyspec") final String keyspec) throws Exception {
 
         try {
+
+            long startTimeForcheckingDandS = System.currentTimeMillis();
+            MRTDSODSignerResponse response = checkForSlotAndDefaultKey(defaultKey, slotLabelValue); // Type 2: for processable workers
+            long endTimeForcheckingDandS = System.currentTimeMillis();
+            LOG.info("*******Elapsed time for checking the default key and slot value : " + (endTimeForcheckingDandS-startTimeForcheckingDandS) + "ms");
+
+            if(response.getWorkerID() == -1) {
+                return response;
+            }
+
             CryptoWorkerResponse cryptoWorkerResponse = createCryptokeyWorker(workerName + "CryptoToken", defaultKey, slotLabelValue, pin, algorithm, keyspec);
 
             int workerId = getWorkerSession().genFreeWorkerId();
@@ -560,5 +570,25 @@ public class ClientWS {
             @WebParam(name = "workerId")final int workerId) {
         String result = helper.removeWorker(workerId, getWorkerSession());
         return result;
+    }
+
+    public MRTDSODSignerResponse checkForSlotAndDefaultKey(String defaultKey, int slotLabelValue) {
+        List<Integer> workerList = getWorkerSession().getWorkers(2);
+        MRTDSODSignerResponse response = new MRTDSODSignerResponse();
+        response.setWorkerID(0);
+        for (Integer id : workerList) {
+            WorkerConfig config = getWorkerSession().getCurrentWorkerConfig(id.intValue());
+            String priviousDefaultKey = config.getProperty("DEFAULTKEY");
+            String priviousSlotLabel = config.getProperty("SLOTLABELVALUE");
+            if(priviousSlotLabel == null || priviousSlotLabel == "") {
+                priviousSlotLabel = "-1";
+            }
+            int priviousSlotLabelValue = Integer.parseInt(priviousSlotLabel);
+            if(priviousDefaultKey.equals(defaultKey) && priviousSlotLabelValue == slotLabelValue) {
+                response.setWorkerID(-1);
+                break;
+            }
+        }
+        return response;
     }
 }

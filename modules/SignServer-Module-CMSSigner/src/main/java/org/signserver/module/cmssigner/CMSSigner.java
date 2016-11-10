@@ -39,6 +39,7 @@ import org.signserver.server.archive.DefaultArchivable;
 import org.signserver.server.cryptotokens.ICryptoInstance;
 import org.signserver.server.cryptotokens.ICryptoToken;
 import org.signserver.server.signers.BaseSigner;
+import org.cesecore.keys.token.CryptoTokenOfflineException;
 
 /**
  * A Signer signing arbitrary content and produces the result in
@@ -101,7 +102,7 @@ public class CMSSigner extends BaseSigner {
     @Override
     public ProcessResponse processData(final ProcessRequest signRequest,
             final RequestContext requestContext) throws IllegalRequestException,
-            CryptoTokenOfflineException, SignServerException {
+            org.signserver.common.CryptoTokenOfflineException, SignServerException {
 
         ProcessResponse signResponse;
 
