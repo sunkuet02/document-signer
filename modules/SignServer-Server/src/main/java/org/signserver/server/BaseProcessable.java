@@ -396,11 +396,17 @@ public abstract class BaseProcessable extends BaseWorker implements IProcessable
                     if (log.isDebugEnabled()) {
                         log.debug("Found cryptotoken classpath: " + className);
                     }
+                    log.info("Sun : Found cryptotoken classpath: " + className);
+
+
                     if (className == null) {
                         cryptoToken = null;
                     } else {
                         Class<?> implClass = Class.forName(className);
+                        log.info("Sun : Found cryptotoken classpath: ****" + className);
                         Object obj = implClass.newInstance();
+
+                        log.info("Sun : Found cryptotoken classpath:********* " + className);
                         final ICryptoToken token = (ICryptoToken) obj;
                         Properties properties = new Properties();
                         properties.putAll(defaultProperties);
